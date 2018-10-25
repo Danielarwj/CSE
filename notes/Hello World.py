@@ -50,8 +50,19 @@ print("I have a car called %s. It is a %s" % (car_name, car_type))
 
 print("My car has %s cylinders and it has %s miles per gallon" % (car_cylinders, car_miles_per_gallon))
 
+
+
 # Recasting
 real_age=int(input("How old are you again?"))
 hidden_age=real_age+5
 print("This is your real age: %d" % hidden_age)
+
+
+
+
+
+
+
+
+
 
