@@ -74,6 +74,8 @@ say_it()
 say_it()
 
 # f(x)=2x+3
+
+
 def f(x):
     print(2*x+3)
 
@@ -92,8 +94,9 @@ def distance(x1, y1, x2, y2):
 distance(0, 0, 3, 4)
 distance(0, 0, 5, 12)
 
-# Loops
-for i in range(1000):#THis gives the numbers 0 and 9,999
+# For Loops
+for i in range(1000):
+    # THis gives the numbers 0 and 9,999
     say_it()
 
 for i in range(10):
@@ -103,12 +106,43 @@ for i in range(5):
     f(i)
 
 # While loops
+a = 0
+while a < 10:
+    print(a)
+    a += 2
+
+    # This is the same as saying a=a+1
+
+"""
+At the moment you START the loop:
+For loops- Use when you know EXACTLY how many iterations
+While Loops- Use when you DON"T know how many iterations 
+"""
+
+# Control Structures (If statements)
+
+sunny = False
+if sunny:
+    print("Go Outside")
 
 
+def grade_calc(percentage):
+    if percentage >= 90:
+        return"A"
+    elif percentage >= 80:
+        return"B"
+    elif percentage >= 70:
+        return"C"
+    elif percentage >= 60:
+        return"D"
+    else:
+        return"F"
 
 
+your_grade = grade_calc(100)
+print(your_grade)
 
+#"Random Notes
 
-
-
-
+import random
+print(random.randint(0,100))
