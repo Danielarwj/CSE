@@ -1,18 +1,30 @@
 import random
-number = random.randint(0, 100)
 guesses = 5
+playing = True
+difficulty = input("Choose your difficulty- Easy,Difficult")
+if difficulty == "Easy":
+    number = random.randint(1, 20)
+    print("Your numbers are between 0 and 20")
+    guess = int(input("Guess a number"))
+else:
+    number = random.randint(1, 1000)
+    print("Your numbers are between one and 1000")
+    guess = int(input("Guess a number"))
 
-while guesses > 0:
-    print("Guess a Number between one and 20")
-    guess = int(input())
+while guesses != 0 and playing:
 
-    guesses = guesses-1
-    if guesses = 0 and guess > number:
-        print("You didn't guess it. Game Over")
     if guess < number:
         print("Guess is too low")
+        guess = int(input("Try Again"))
+        guesses = guesses - 1
     elif guess > number:
         print("Guess is too high")
+        guess = int(input("Try Again"))
+        guesses = guesses - 1
     if guess == number:
         print("Correct. Game Over")
         guesses = 0
+        playing = False
+
+if guesses == 0 and guess != number:
+    print("You didn't guess it! Game Over")
