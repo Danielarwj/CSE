@@ -1,8 +1,12 @@
 import random
 guesses = 5
 playing = True
-difficulty = input("Choose your difficulty- Easy,Difficult")
-if difficulty == "Easy":
+play_again = True
+print("Instructions: You have 5 guesses to guess a number.")
+print("The range of numbers is based on your difficulty")
+print("Remember to put use a space before you type in your difficulty")
+difficulty = input("Choose your difficulty-Easy or Impossible")
+if difficulty == " Easy":
     number = random.randint(1, 20)
     print("Your numbers are between 0 and 20")
     guess = int(input("Guess a number"))
@@ -27,4 +31,5 @@ while guesses != 0 and playing:
         playing = False
 
 if guesses == 0 and guess != number:
-    print("You didn't guess it! Game Over")
+    print("You didn't guess it! Game Over.")
+    print("The number was %i" % number)
