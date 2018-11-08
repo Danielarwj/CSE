@@ -1,27 +1,26 @@
 import random
-starting_amount = 15
+amount = 15
 print("Welcome to Lucky 7's. Here is the game where you constantly try to 'keep' your money")
 bet = 1
 dice1 = random.randint(1, 6)
 dice2 = random.randint(1, 6)
 roll = dice1+dice2
-print(roll)
+rounds = ("It took you %s to lose all of your money" % )
 
-while starting_amount > 0:
+while amount > 0:
+    dice1 = random.randint(1, 6)
+    dice2 = random.randint(1, 6)
+    roll = dice1+dice2
+    print("You rolled a " + str(roll))
+
     if roll == 7:
-        starting_amount += 4
-        print(starting_amount)
+        amount += 4
+        print("Your amount is " + str(amount))
+        print("Congratulations, you won 4 dollars!")
+
     else:
-        starting_amount -= 1
-        print(starting_amount)
+        amount -= 1
+        print("Your amount is " + str(amount))
         print("Oops, sorry. Why don't you roll again")
 
-
-if starting_amount == 0:
-    print("Sorry. You lost all your money.")
-
-
-
-
-
-
+print("Sorry. You lost all your money.")
