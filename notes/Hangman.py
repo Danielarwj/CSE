@@ -1,2 +1,2 @@
 import random
-words_EASY=("Ball, Car, Cat, ")
+words_EASY=(

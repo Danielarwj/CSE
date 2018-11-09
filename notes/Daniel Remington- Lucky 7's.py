@@ -5,22 +5,23 @@ bet = 1
 dice1 = random.randint(1, 6)
 dice2 = random.randint(1, 6)
 roll = dice1+dice2
-rounds = ("It took you %s to lose all of your money" % )
+rounds = 0
+
 
 while amount > 0:
     dice1 = random.randint(1, 6)
     dice2 = random.randint(1, 6)
     roll = dice1+dice2
     print("You rolled a " + str(roll))
-
+    rounds += 1
     if roll == 7:
         amount += 4
-        print("Your amount is " + str(amount))
         print("Congratulations, you won 4 dollars!")
 
     else:
         amount -= 1
-        print("Your amount is " + str(amount))
         print("Oops, sorry. Why don't you roll again")
+    print("Your amount is " + str(amount))
 
 print("Sorry. You lost all your money.")
+print("Wow, It took you %s rounds to lose all your money!. Impressive" % rounds)
