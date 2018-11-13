@@ -23,5 +23,10 @@ while amount > 0:
         print("Oops, sorry. Why don't you roll again")
     print("Your amount is " + str(amount))
 
+    if amount == amount >  :
+        maximum_money = amount
+
+
 print("Sorry. You lost all your money.")
 print("Wow, It took you %s rounds to lose all your money!. Impressive" % rounds)
+print (maximum_money)
