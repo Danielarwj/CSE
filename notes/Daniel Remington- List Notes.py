@@ -51,22 +51,25 @@ for items in colors:
 4. Print the full list
 """
 
-Star_Trek_Characters = ["Kirk", "Spock", "General U.", "Bones"]
-Star_Trek_Characters[2] ="Kahn"
+Star_Trek_Characters = ["Kirk", "Spock", "General U.", "Bones", "Picard", "Data", "Lore"]
+Star_Trek_Characters[2] = "Kahn"
 
 for item in Star_Trek_Characters:
     print(item)
 
 print(Star_Trek_Characters)
+print("The last thing in the list is %s" % Star_Trek_Characters[6])
+print("The last thing in the list is %s" % Star_Trek_Characters[len(Star_Trek_Characters)-1])
 
 
+# Slicing a list
+print(Star_Trek_Characters[1:3])
+# Includes first index and second index but not third index
 
 
-
-
-
-
-
+print(Star_Trek_Characters[1:])
+print(Star_Trek_Characters[0:4])
+print(Star_Trek_Characters[1:4])
 
 
 
