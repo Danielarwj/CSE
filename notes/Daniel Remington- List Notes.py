@@ -125,7 +125,7 @@ for i in range(len(list1)):  # i goes through all indices
     if list1[i] == "u":  # if we find a U
         list1.pop(i)  # remove the i-th index
         list1.insert(i, "*")  # put a * there instead
-     
+
 """
 for character in list1:
     if character == "u:
