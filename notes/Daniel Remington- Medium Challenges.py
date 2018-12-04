@@ -18,11 +18,16 @@ def challenge3(number):
 
 print(challenge3(2))
 
-def challege4(number):
-    if number < 1850:
-        print("%d is not within 150 of 2000")
-    elif number > 2150:
-        print("%d is not within 150 of 2000")
-    elif number >= 1850 and <= 2150:
-        print("%d is within 150 of 2000")
 
+def challenge4(number):
+    if number < 1850:
+        print("%d is not within 150 of 2000" % number)
+    elif number > 2150:
+        print("%d is not within 150 of 2000" % number)
+    elif number >= 1850:
+        print("%d is within 150 of 2000" % number)
+    elif number <= 2150:
+        print("%d is within 150 of 2000" % number)
+
+
+challenge4(2150)
