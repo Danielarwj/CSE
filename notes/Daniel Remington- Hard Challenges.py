@@ -1,15 +1,10 @@
 import math
-# challenge 10 is the datetime
 import datetime
-datetime.datetime.now()
-datetime.datetime(2018, 12, 4, 9, 17, 20)
-print(datetime.datetime.now())
 
+# Challenge 9
 vowels = ["a", "e", "i", "o", "u"]
 consonants = ["b", "c", "d", "f", "g", "h", "i", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "z"]
 y_potential_vowel = "y"
-
-# Challenge 9
 
 
 def challenge_one(letter):
@@ -22,6 +17,12 @@ def challenge_one(letter):
 
 
 challenge_one("r")
+
+# challenge 10 is the datetime
+datetime.datetime.now()
+datetime.datetime(2018, 12, 4, 9, 17, 20)
+print(datetime.datetime.now())
+
 
 # Challenge 11
 
