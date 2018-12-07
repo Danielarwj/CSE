@@ -16,11 +16,11 @@ NUMBERS = list(number_length)
 print("The number is %s digits long" % len(NUMBERS))
 
 
-def challenge_1(numbers):
-    list(numbers)
-    tuple(numbers)
+def challenge_1():
+    list()
+    tuple()
 
-
+print(challenge_1(17,12))
 
 
 
