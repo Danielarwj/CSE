@@ -11,8 +11,8 @@ print("I have " + str(cars) + " cars")
 
 age = input("How old are you")
 print("How my gosh! You are %s years old. I'm not even that old!" % age)
-
 colors = ["Red", "Blue", "Green", "Yellow", "Purple"]
+
 colors.append("Cyan")
 
 print(colors)
