@@ -13,6 +13,8 @@ while guesses_left > 0 and "*" in disp_list:
     guess = input("Guess a letter")
     if guess in secret_word:
         print("Correct")
+        str(disp_list).replace("*", guess)
+        print(disp_list)
     else:
         print("Oops. That's wrong")
         guesses_left -= 1
