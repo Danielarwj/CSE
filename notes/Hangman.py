@@ -6,17 +6,23 @@ disp_list = list("*" * len(secret_word))
 letter_list = [list(secret_word)]
 guesses_left = 8
 output = []
+guessed_letters = []
 # print(disp_list)
 
 while guesses_left > 0 and "*" in disp_list:
     # print(''.join(disp_list))
     print("You have %d guesses left" % guesses_left)
     guess = input("Guess a letter")
+    guessed_letters += guess
     if guess in secret_word:
         print("Correct")
         for i in range(len(output)):
             if guess in output:
                 print(output)
+
+        print(letter_list)
+        print(disp_list)
+
     else:
         print("Oops. That's wrong")
         guesses_left -= 1
