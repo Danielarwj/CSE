@@ -2,12 +2,12 @@ import random
 import string
 words = ["car", "lawn", "drive", "plane", "train", "folder", "box", "eight", "book", "value",
          "Are you going to Scarborough fair?"]
-secret_word = random.choice(words)
-disp_list = list("*" * len(secret_word))
+secret_word = "PIZZA"
+display_list = list("*" * len(secret_word))
 letter_list = list(secret_word)
 guesses_left = 8
 guessed_letters = []
-# print(disp_list)
+# print(display_list)
 guess = ' '
 win = False
 HIDDEN_CHAR = "_ "
@@ -44,7 +44,6 @@ while guesses_left >= 0 and not win:
 
     if guess == " ":
         print("That is not valid. Also, Space, Really?")
-
 
     # Add guess to list
     guessed_letters.append(guess)
