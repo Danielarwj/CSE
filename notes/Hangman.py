@@ -2,7 +2,7 @@ import random
 import string
 words = ["car", "lawn", "drive", "plane", "train", "folder", "box", "eight", "book", "value",
          "Are you going to Scarborough fair?"]
-secret_word = "PIZZA"
+secret_word = "dog"
 display_list = list("*" * len(secret_word))
 letter_list = list(secret_word)
 guesses_left = 8
@@ -48,9 +48,14 @@ while guesses_left >= 0 and not win:
     # Add guess to list
     guessed_letters.append(guess)
 
+    print(secret_word.swapcase())
+    if string.ascii_uppercase in secret_word:
+        secret_word = secret_word.swapcase()
+
     # Modify Guesses Left
     if guess in secret_word:
         print("Correct")
+
     else:
         print("Oops. That's wrong")
         guesses_left -= 1
