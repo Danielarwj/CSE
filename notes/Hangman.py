@@ -7,6 +7,7 @@ display_list = list("*" * len(secret_word))
 letter_list = list(secret_word)
 guesses_left = 8
 guessed_letters = []
+legal_letters = [string.ascii_uppercase, string.ascii_lowercase]
 # print(display_list)
 guess = ' '
 win = False
@@ -16,11 +17,23 @@ HIDDEN_CHAR = "_ "
 while guesses_left >= 0 and not win:
     # Show/Hide Letters
     output = []
-    for i in range(len(secret_word)):
-        if letter_list[i] in guessed_letters:
-            output.append(letter_list[i])
-        else:
-            output.append(HIDDEN_CHAR)
+    if guess in secret_word or guess.swapcase() in secret_word and guess not in guessed_letters and \
+            guess in legal_letters:
+        for i in range(len(secret_word)):
+            if letter_list[i] == guessed_letters[i]:
+                guessed_letters.append(guess)
+                guessed_letters.append(guess.swapcase())
+                output[i] = letter_list[i]
+            elif guess not in secret_word and guess.swapcase not in secret_word and guess in legal_letters:
+                 print("Incorrect")
+                 guessed_letters.append(guess)
+                 guesses_left -= 1
+            elif guess in guessed_letters:
+                print("You've already guessed this letter")
+                guesses_left -= 1
+            elif guess not in legal_letters:
+                print("You are like Benjamin Franklin but without the cool background. Learn you alphabet")
+                guesses_left -= 1
     print("".join(output))
 
     if guesses_left == 0 and HIDDEN_CHAR in output:
@@ -51,6 +64,7 @@ while guesses_left >= 0 and not win:
 
     if guess.swapcase() in letter_list:
         print("correct")
+
     # Modify Guesses Left
     if guess in secret_word:
         print("Correct")
