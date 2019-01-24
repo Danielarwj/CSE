@@ -8,8 +8,6 @@ display_list = list("*" * len(secret_word))
 letter_list = list(secret_word)
 guesses_left = 8
 guessed_letters = list(string.punctuation + " ")
-legal_letters = [string.ascii_uppercase, string.ascii_lowercase]
-# print(display_list)
 guess = ' '
 win = False
 print(string.ascii_uppercase)
@@ -24,6 +22,12 @@ while guesses_left > 0 and not win:
         else:
             output.append("_ ")
     print("".join(output))
+
+    if HIDDEN_CHAR not in output:
+        print("You have defeated me ")
+        print("(jerk)")
+        win = True
+        continue
 
     print("You have %d guesses left" % guesses_left)
 
@@ -47,7 +51,3 @@ while guesses_left > 0 and not win:
         print("You have lost! Shameful.")
         print("The word was %s" % secret_word)
 
-    if "_" not in output and win is True:
-        guesses_left = 0
-        print("You have defeated me")
-        print("(jerk)")
