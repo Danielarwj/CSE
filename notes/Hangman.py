@@ -1,8 +1,7 @@
 import string
 import random
 words = ["BEAR! RUN NOW!!", "lawn", "drive", "plane", "train", "folder", "box", "eight", "book", "value",
-         "Are you going to Scarborough fair?", "We are the champions", "Hallelujah Money", "Clint Eastwood",
-         "dogs"]
+         "Are you going to Scarborough fair?", "What is two plus two?", "Clint Eastwood", "dogs"]
 secret_word = random.choice(words)
 display_list = list("*" * len(secret_word))
 letter_list = list(secret_word)
@@ -41,13 +40,12 @@ while guesses_left > 0 and not win:
     guessed_letters.append(guess)
 
     # Modify Guesses Left
-    if guess in secret_word:
+    if guess.lower() in secret_word.lower():
         print("Correct")
-
+        guesses_left += 0
     else:
         print("Oops. That's wrong")
         guesses_left -= 1
     if guesses_left == 0 and not win:
         print("You have lost! Shameful.")
         print("The word was %s" % secret_word)
-
