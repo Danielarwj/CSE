@@ -110,5 +110,8 @@ In a dictionary, the key is the title or label to something like "FL". The value
 to the key. If we wanted to print and specify the dictionary the key is connected to   
 """
 
-
-
+states["AR"] = "Arizona?"
+# It isn't Arizona
+states["AR"] = "Arkansas"
+# Fixed it
+print(states["AR"])

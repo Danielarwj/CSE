@@ -4,7 +4,10 @@ world_map = {
         'DESCRIPTION': "This is the classroom you are in right now. "
                        "There are two doors on the north wall",
         'PATHS': {
-            'NORTH': 'PARKING_LOT'
+            'NORTH': 'PARKING_LOT',
+            'EAST': 'DRAMA BUILDING',
+            'WEST': 'SCIENCE BUILDING',
+            'SOUTH': 'QUAD'
 
         }
     },
@@ -12,13 +15,16 @@ world_map = {
         'NAME': "The North Parking Lot",
         'DESCRIPTION': "There are a couple cars parked here",
         'PATHS': {
-            'SOUTH': 'R19A'
+            'SOUTH': 'R19A',
+            'WEST': 'GYM PORTAL',
+            'EAST': 'HOBO ATTACKS YOU'
         }
     },
-    'R19B': {
-        'NAME': "",
-        'DESCRIPTION': "",
+    'HOBO ATTACKS YOU': {
+        'NAME': "Hobo quarters",
+        'DESCRIPTION': "There is a homeless person here. He does not like you. He hits you!",
         'PATHS': {
+            'SOUTH': 'HOBO WORLD'
 
         }
     }
