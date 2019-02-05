@@ -27,6 +27,37 @@ world_map = {
             'SOUTH': 'HOBO WORLD'
 
         }
+    },
+    'GYM PORTAL': {
+        'NAME': 'The Gym portal',
+        'DESCRIPTION': 'This is the gym. It is dark and extremely musty. I do not like it',
+        'PATHS': {
+            'UP': 'THE REALM OF THE HEISENWEIBE',
+            'DOWN': 'THE DARK TRENCHES OF PAPA PEARSON'
+        }
+    },
+    'SCIENCE BUILDING': {
+        'NAME': 'The science building',
+        'DESCRIPTION': 'This is the science building. I suppose you know what they teach in this, given the name.',
+        'PATHS': {
+            'UP': '2030',
+            'DOWN': 'CHERNOBYL',
+            'EAST': 'HOBO ATTACKS YOU',
+            'WEST': 'QUAD'
+        }
+    },
+    'QUAD': {
+        'NAME': 'The Quad',
+        'DESCRIPTION': 'The main area. There is an ampitheatre here. There is also a couple of lamp posts',
+        'PATHS': {
+            'WEST': 'W BUILDING',
+            'EAST': 'R BUILDING'
+        }
+    },
+    'W BUILDING': {
+        'NAME': 'W Building',
+        'DESCRIPTION': 'This is the W Building. It is a two story masterpiece of a building. '
+                       'It,conveniently, is the building for languages'
     }
 }
 
