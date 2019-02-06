@@ -2,12 +2,15 @@ world_map = {
     'R19A': {
         'NAME': "Mr. Wiebe's room",
         'DESCRIPTION': "This is the classroom you are in right now. "
-                       "There are two doors on the north wall",
+                       "There are two doors on the north wall. "
+                       "There is also doors on the east, west, and south Walls. "
+                       "There is a big mailbox in the sky for some reason",
         'PATHS': {
             'NORTH': 'PARKING_LOT',
             'EAST': 'DRAMA BUILDING',
             'WEST': 'SCIENCE BUILDING',
-            'SOUTH': 'QUAD'
+            'SOUTH': 'QUAD',
+            'UP': 'MAILBOX'
 
         }
     },
@@ -22,7 +25,8 @@ world_map = {
     },
     'HOBO ATTACKS YOU': {
         'NAME': "Hobo quarters",
-        'DESCRIPTION': "There is a homeless person here. He does not like you. He hits you!",
+        'DESCRIPTION': "There is a homeless person here. He does not like you. He hits you! You also can't seem to go "
+                       "back",
         'PATHS': {
             'SOUTH': 'HOBO WORLD'
 
@@ -57,8 +61,61 @@ world_map = {
     'W BUILDING': {
         'NAME': 'W Building',
         'DESCRIPTION': 'This is the W Building. It is a two story masterpiece of a building. '
-                       'It,conveniently, is the building for languages'
+                       'It,conveniently, is the building for languages',
+        'PATHS': {
+            'UP': 'LPDE',
+            'DOWN': 'TFP'
+
+        }
+    },
+    'MAILBOX': {
+        'NAME': 'THE HOLY MAILBOX WELCOMES YOU!',
+        'DESCRIPTION': 'WELCOME TO SCHOOL WARRIOR, THE HIGHEST QUALITY GAME IN SCHOOL BASED CHOOSE YOUR OWN ADVENTURE'
+                       'GAMES! DEFEAT ONE BOSS AND COLLECT 20 ITEMS TO WIN THE GAME!',
+        'PATHS': {
+            'DOWN': 'R19A'
+        }
+    },
+    'DRAMA BUILDING': {
+        'NAME': 'The Drama Building',
+        'DESCRIPTION': 'This is a long winding hallway. At the end there is a large telephone box. Paintings cover the '
+                       'walls',
+        'PATHS': {
+            'SOUTH': "SHAKESPEARE WORLD",
+            'NORTH': 'NIGHTMARE EDISON'
+        }
+    },
+    'R BUILDINGS': {
+        'NAME': 'The R buildings',
+        'DESCRIPTION': 'This is a row of buildings. You can only go North, however. The other areas are blocked off.',
+        'PATHS': {
+            'NORTH': 'THE ESSAY TYPING SESSION'
+        }
+    },
+    'HOBO WORLD': {
+        'NAME': 'Hobo World',
+        'DESCRIPTION': 'YoU haVe DECidEd tO Go SoUtH! Welcome to Hobo World, the realm of the desolate and the weak'
+                       'Here, you must complete one of'
+                       ' three challenges- Garbage collecting, tent folding, and the hardest one of '
+                       'all, finding 4 pieces of food. After you face these challenges, you win the game!',
+        'PATHS':{
+            'NORTH': 'THE CHALLENGE AREA'
+        }
+    },
+    'POOL': {
+        'NAME': 'POOL'
+    },
+    'THE CHALLENGE AREA':{
+        'NAME': 'THE CHALLENGE AREA',
+        'DESCRIPTION': 'If you go north, you collect garbage. If you go south, you fold tents. If you go east, '
+                   'you find food',
+        'PATHS': {
+
+        }
+
     }
+
+
 }
 
 # Controller
