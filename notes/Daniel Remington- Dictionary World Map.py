@@ -44,10 +44,11 @@ world_map = {
         'NAME': 'The science building',
         'DESCRIPTION': 'This is the science building. I suppose you know what they teach in this, given the name.',
         'PATHS': {
-            'UP': '2030',
-            'DOWN': 'CHERNOBYL',
             'EAST': 'HOBO ATTACKS YOU',
-            'WEST': 'QUAD'
+            'WEST': 'QUAD',
+            'NORTH': 'POOL',
+            'SOUTH': 'W BUILDING',
+            'UP': 'CEILING'
         }
     },
     'QUAD': {
@@ -64,7 +65,11 @@ world_map = {
                        'It,conveniently, is the building for languages',
         'PATHS': {
             'UP': 'LPDE',
-            'DOWN': 'TFP'
+            'DOWN': 'TFP',
+            'NORTH': 'PARKING_LOT',
+            'EAST': 'QUAD',
+            'WEST': 'PARKING LOT',
+            'SOUTH': 'R BUILDING',
 
         }
     },
@@ -82,14 +87,21 @@ world_map = {
                        'walls',
         'PATHS': {
             'SOUTH': "SHAKESPEARE WORLD",
-            'NORTH': 'NIGHTMARE EDISON'
+            'NORTH': 'NIGHTMARE EDISON',
+            'EAST': 'W BUILDING',
+            'WEST': 'PARKING LOT',
+            'UP': 'CEILING'
         }
     },
     'R BUILDINGS': {
         'NAME': 'The R buildings',
         'DESCRIPTION': 'This is a row of buildings. You can only go North, however. The other areas are blocked off.',
         'PATHS': {
-            'NORTH': 'THE ESSAY TYPING SESSION'
+            'NORTH': 'THE ESSAY TYPING SESSION',
+            'EAST': 'PARKING LOT',
+            'WEST': 'QUAD',
+            'SOUTH': 'GYM PORTAL',
+            'UP': 'CEILING'
         }
     },
     'HOBO WORLD': {
@@ -103,16 +115,48 @@ world_map = {
         }
     },
     'POOL': {
-        'NAME': 'POOL'
+        'NAME': 'POOL',
+        'DESCRIPTION':' CONGRATULATIONS! YOU HAVE REACHED THE POOL.',
+        'PATHS':{
+            'NORTH': 'POOL',
+            'SOUTH': 'POOL',
+            'EAST': 'POOL',
+            'WEST': 'POOL',
+            'UP': 'POOL',
+            'DOWN': 'POOL'
+        }
     },
-    'THE CHALLENGE AREA':{
-        'NAME': 'THE CHALLENGE AREA',
-        'DESCRIPTION': 'If you go north, you collect garbage. If you go south, you fold tents. If you go east, '
-                   'you find food',
+    'THE REALMS OF HEISENWIEBE':{
+        'NAME': 'The Realm of the Heisenwiebe',
+        'DESCRIPTION': 'Welcome to a world unlike any other- THE REALM OF HEISENWIEBE. This place is a maze.'
+                       'Once you enter the realm, you can not get out. Reach the end of the realm, fight the '
+                       'Heisenwiebe himself, then you win ',
         'PATHS': {
-
+            'NORTH': 'THE MAZE',
+            'SOUTH': 'THE MAZE',
+            'UP': 'THE MAZE',
+            'DOWN': 'THE MAZE',
+            'EAST': 'THE MAZE',
+            'WEST': 'THE MAZE'
         }
 
+    },
+    'THE DARK TRENCHES OF PAPA PEARSON': {
+        'NAME': 'The Dark Trenches of Papa Pearson',
+        'DESCRIPTION': 'Welcome. There really is not much to say about this place. There is a jar of Jolly Ranchers'
+                       'and Popcorn in the corner. In front of you is a long winding hallway that goes only north. '
+                       'It is dark. Really dark ',
+        'PATHS':{
+            'NORTH': 'LONG WINDING HALLWAY'
+        }
+    },
+    'NIGHTMARE EDISON': {
+        'NAME': 'NiGhTmArE EDiSon.',
+        'DESCRIPTION': 'WELCOME! This is Nightmare Edison. It is the same map as before only SPOOKY! Get back to the '
+                       'normal world to finish the game',
+        'PATHS': {
+            ''
+        }
     }
 
 
