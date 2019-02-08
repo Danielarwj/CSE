@@ -53,10 +53,11 @@ world_map = {
     },
     'QUAD': {
         'NAME': 'The Quad',
-        'DESCRIPTION': 'The main area. There is an ampitheatre here. There is also a couple of lamp posts',
+        'DESCRIPTION': 'The main area. There is an ampitheatre here. There is also a couple of lamp posts.'
+                       'You can only go East and West, for some reason. ',
         'PATHS': {
             'WEST': 'W BUILDING',
-            'EAST': 'R BUILDING'
+            'EAST': 'R BUILDINGS'
         }
     },
     'W BUILDING': {
@@ -110,14 +111,14 @@ world_map = {
                        'Here, you must complete one of'
                        ' three challenges- Garbage collecting, tent folding, and the hardest one of '
                        'all, finding 4 pieces of food. After you face these challenges, you win the game!',
-        'PATHS':{
+        'PATHS': {
             'NORTH': 'THE CHALLENGE AREA'
         }
     },
     'POOL': {
         'NAME': 'POOL',
-        'DESCRIPTION':' CONGRATULATIONS! YOU HAVE REACHED THE POOL.',
-        'PATHS':{
+        'DESCRIPTION': ' CONGRATULATIONS! YOU HAVE REACHED THE POOL.',
+        'PATHS': {
             'NORTH': 'POOL',
             'SOUTH': 'POOL',
             'EAST': 'POOL',
@@ -126,7 +127,7 @@ world_map = {
             'DOWN': 'POOL'
         }
     },
-    'THE REALMS OF HEISENWIEBE':{
+    'THE REALMS OF HEISENWIEBE': {
         'NAME': 'The Realm of the Heisenwiebe',
         'DESCRIPTION': 'Welcome to a world unlike any other- THE REALM OF HEISENWIEBE. This place is a maze.'
                        'Once you enter the realm, you can not get out. Reach the end of the realm, fight the '
@@ -145,9 +146,15 @@ world_map = {
         'NAME': 'The Dark Trenches of Papa Pearson',
         'DESCRIPTION': 'Welcome. There really is not much to say about this place. There is a jar of Jolly Ranchers'
                        'and Popcorn in the corner. In front of you is a long winding hallway that goes only north. '
-                       'It is dark. Really dark ',
-        'PATHS':{
-            'NORTH': 'LONG WINDING HALLWAY'
+                       'It is dark. Really dark. Also, any other direction you go seems to drop you in sometime of'
+                       'labyrinth ',
+        'PATHS': {
+            'NORTH': 'LONG WINDING HALLWAY',
+            'SOUTH': 'LABYRINTH',
+            'UP': 'CEILING',
+            'DOWN': 'FLOOR',
+            'EAST': 'LABYRINTH',
+            'WEST': 'LABYRINTH'
         }
     },
     'NIGHTMARE EDISON': {
@@ -155,9 +162,54 @@ world_map = {
         'DESCRIPTION': 'WELCOME! This is Nightmare Edison. It is the same map as before only SPOOKY! Get back to the '
                        'normal world to finish the game',
         'PATHS': {
-            ''
+            'SOUTH': 'NIGHTMARE R19A',
+            'NORTH': 'NIGHTMARE W BUILDING',
+            'UP': 'NIGHTMARE CEILING',
+            'DOWN': 'NIGHTMARE HOBO QUARTERS ',
+            'EAST': 'NIGHTMARE PARKING LOT',
+            'WEST': 'NIGHTMARE SCIENCE BUILDING'
+        }
+    },
+    'CEILING': {
+        'NAME': 'The Ceiling',
+        'DESCRIPTION': 'This is the ceiling. Do not go up, again!',
+        'PATHS': {
+            'NORTH': 'CEILING',
+            'EAST': 'CEILING',
+            'WEST': 'CEILING',
+            'SOUTH': 'CEILING',
+            'UP': 'CEILING'
+        }
+
+    },
+    'SHAKESPEARE WORLD': {
+        'NAME': 'Shakespeare World',
+        'DESCRIPTION': 'You are now in a medieval area. The buildings are that of 16th century. Everyone around you'
+                       'is wearing some type of Victorian clothing. In this world, you must act on a play. Essentially'
+                       'You are dropped into the world of the play and must find the way out.',
+        'PATHS': {
+            'NORTH': 'HAMLET',
+            'SOUTH': 'OTHELLO',
+            'UP': 'CEILING',
+            'DOWN': 'THE MERCHANT OF VENICE',
+            'EAST': 'TAMING OF THE SHREW',
+            'WEST': 'ROMEO AND JULIET'
+        }
+    },
+    'THE SPANISH DILEMMA': {
+        'NAME': 'LA PROBLEMA DE ESPANOL',
+        'DESCRIPTION': 'Este cuarto tiene una problema ese necesita resolver. '
+                       'Tu necesecitas resolver la problema rapidamente. '
+                       'Si tu resuelves en tiempo, tu seras GANAR!',
+        'PATHS': {
+            'SOUTH': '',
+            'UP': 'THE MAZE',
+            'DOWN': 'THE MAZE',
+            'EAST': 'THE MAZE',
+            'WEST': 'THE MAZE'
         }
     }
+
 
 
 }
