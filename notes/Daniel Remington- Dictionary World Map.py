@@ -208,6 +208,10 @@ world_map = {
             'EAST': 'THE MAZE',
             'WEST': 'THE MAZE'
         }
+    },
+    'THE FRENCH CONNECTION': {
+        'NAME': " The French Connection"
+        'De'
     }
 
 
