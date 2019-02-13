@@ -202,16 +202,21 @@ world_map = {
                        'Tu necesecitas resolver la problema rapidamente. '
                        'Si tu resuelves en tiempo, tu seras GANAR!',
         'PATHS': {
-            'SOUTH': '',
-            'UP': 'THE MAZE',
-            'DOWN': 'THE MAZE',
-            'EAST': 'THE MAZE',
-            'WEST': 'THE MAZE'
+            'SOUTH': 'PROBLEMA UNO',
+            'DOWN': 'PROBLEMA DOS',
+            'UP': 'CEILING',
+            'EAST': 'PROBLEMA TRES',
+            'WEST': 'DIFICIL'
+
         }
     },
     'THE FRENCH CONNECTION': {
-        'NAME': " The French Connection"
-        'De'
+        'NAME': " The French Connection",
+        'DESCRIPTION':'This is an area of espionage and trickery.',
+        'PATHS': {
+            'NORTH'
+        }
+
     }
 
 
