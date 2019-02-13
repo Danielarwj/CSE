@@ -65,8 +65,8 @@ world_map = {
         'DESCRIPTION': 'This is the W Building. It is a two story masterpiece of a building. '
                        'It,conveniently, is the building for languages',
         'PATHS': {
-            'UP': 'LPDE',
-            'DOWN': 'TFP',
+            'UP': 'THE SPANISH DILEMMA',
+            'DOWN': 'FLOOR',
             'NORTH': 'PARKING_LOT',
             'EAST': 'QUAD',
             'WEST': 'PARKING LOT',
@@ -210,11 +210,12 @@ world_map = {
 
         }
     },
-    'THE FRENCH CONNECTION': {
-        'NAME': " The French Connection",
-        'DESCRIPTION':'This is an area of espionage and trickery.',
+    'FLOOR': {
+        'NAME': " The FLOOR",
+        'DESCRIPTION': 'This is the floor',
         'PATHS': {
-            'NORTH'
+            'NORTH': "FLOOR",
+            'SOUTH':"FLOOR"
         }
 
     }
