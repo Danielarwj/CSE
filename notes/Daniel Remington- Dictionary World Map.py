@@ -214,9 +214,15 @@ world_map = {
         'NAME': " The FLOOR",
         'DESCRIPTION': 'This is the floor',
         'PATHS': {
-            'NORTH': "FLOOR",
-            'SOUTH':"FLOOR"
+            'NORTH': 'FLOOR',
+            'SOUTH': 'FLOOR',
+            'EAST': 'FLOOR',
+            'WEST': 'FLOOR',
+            'UP': 'FLOOR',
+            'DOWN': 'FLOOR'
         }
+
+
 
     }
 
