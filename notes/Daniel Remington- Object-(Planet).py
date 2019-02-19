@@ -31,11 +31,11 @@ class Planet(object):
             fuel -= 100
         if self.rings:
             print("There are rings on this planet. The existence of rings causes your ship to start going into the plan"
-                  "et very fast.")
+                  "et very fast. You stop halfway into the atmosphere. You are fine but a bit shaken")
 
     def landing(self):
         if self.state_of_matter == "GAS":
-            print("You can't land on this planet")
+            print("You can't land on this planet. It is gas")
         if self.state_of_matter == "SOLID":
             print("You're now on the planet. Nothing happens..."
                   "..."
@@ -43,6 +43,6 @@ class Planet(object):
                   "You are now safe")
 
 
-my_planet = Planet(False, False, 9, 4, "SOLID")
-my_planet.actual_flying(100, True)
+my_planet = Planet(True, False, 9, 4, "GAS")
+my_planet.actual_flying(10, False)
 my_planet.landing()
