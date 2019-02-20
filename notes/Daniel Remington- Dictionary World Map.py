@@ -20,7 +20,8 @@ world_map = {
         'PATHS': {
             'SOUTH': 'R19A',
             'WEST': 'GYM PORTAL',
-            'EAST': 'HOBO ATTACKS YOU'
+            'EAST': 'HOBO ATTACKS YOU',
+            'DOWN': 'FLOOR'
         }
     },
     'HOBO ATTACKS YOU': {
@@ -48,7 +49,8 @@ world_map = {
             'WEST': 'QUAD',
             'NORTH': 'POOL',
             'SOUTH': 'W BUILDING',
-            'UP': 'CEILING'
+            'UP': 'CEILING',
+            'DOWN': 'FLOOR'
         }
     },
     'QUAD': {
