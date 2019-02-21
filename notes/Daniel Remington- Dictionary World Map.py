@@ -192,10 +192,11 @@ world_map = {
         'PATHS': {
             'NORTH': 'HAMLET',
             'SOUTH': 'OTHELLO',
-            'UP': 'CEILING',
+            'UP': 'THE GENTLEMEN OF VERONA',
             'DOWN': 'THE MERCHANT OF VENICE',
             'EAST': 'TAMING OF THE SHREW',
-            'WEST': 'ROMEO AND JULIET'
+            'WEST': 'ROMEO AND JULIET',
+
         }
     },
     'THE SPANISH DILEMMA': {
