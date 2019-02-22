@@ -56,7 +56,30 @@ HOBO_WORLD = Room("THE CHALLENGE AREA", None, None, None, "Hobo World", "YoU haV
                   "Garbage collecting, tent folding, and the hardest one of all, finding 4 pieces of food. After you "
                   "face these challenges, you win the game!", None, None)
 
-POOL = Room
+POOL = Room("POOL", "POOL", "POOL", "POOL", "The Pool", "CONGRATULATIONS, YOU'VE MADE IT TO THE POOL!", "POOL", "POOL")
+
+THE_REALM_OF_HEISENWEIBE = Room("THE MAZE", "THE MAZE", "THE MAZE", "THE MAZE", " The Realm of Heisenwiebe", "Welcome"
+                                " to a world unlike any other- THE REALM OF HEISENWIEBE. This place is a maze. Once you"
+                                "enter the realm, you can not get out. Reach the end of the realm,fight the Heisenwiebe"
+                                " himself, then you win.", "THE MAZE", "THE MAZE")
+
+THE_DARK_TRENCHES_OF_PAPA_PEARSON = Room("THE_LONG_WINDING_HALLWAY", "LABYRINTH", "LABYRINTH", "LABYRINTH", "The Dark "
+                                         "Trenches of Papa Pearson", "Welcome. There really is not much to say about "
+                                         "this place. There is a jar of Jolly Ranchers. and Popcorn in the corner. In "
+                                         "front of you is a long winding hallway that goes only north. It is dark. "
+                                         "Really dark. Also, any other direction you go seems to drop you in sometime "
+                                         "of labyrinth ", "CEILING", "FLOOR")
+
+NIGHTMARE_EDISON = Room("NIGHTMARE_W_BUILDING", "NIGHTMARE R19A", "NIGHTMARE_PARKING_LOT", "NIGHTMARE_SCIENCE_BUILDING",
+                        "NiGhTmArE EDiSon.", "WELCOME! This is Nightmare Edison. It is the same map as before only "
+                        "SPOOKY! Get back to the normal world to win the game.", "NIGHTMARE_CEILING", None)
+
+CEILING = Room("CEILING", "CEILING", "CEILING", "CEILING", "The Ceiling", "This is the ceiling. Do not go up, again!",
+               "CEILING", None)
+
+
+SHAKESPEARE_WORLD = Room("HAMLET", "OTHELLO", "TAMING OF THE SHREW", "ROMEO AND JULIET", "Shakespeare World", "You are "
+                         "now in a medieval area. The buildings are that of 16th century. Everyone around you")
 
 print(GYM_PORTAL. description)
 print(R19A.north)

@@ -47,15 +47,16 @@
     <session id="-1396482444">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.40" value="1" />
           <entry key="project.open.time.42" value="1" />
+          <entry key="project.open.time.54" value="1" />
           <entry key="project.open.time.60" value="1" />
           <entry key="project.open.time.65" value="1" />
           <entry key="project.open.time.66" value="1" />
           <entry key="project.open.time.88" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -70,12 +71,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="5475" />
+          <entry key="py" value="6426" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="5475" />
+          <entry key="Python" value="6426" />
         </counts>
       </usages-collector>
     </session>
@@ -85,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Object Notes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+            <state relative-caret-position="1">
+              <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -106,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Daniel Remington- Dictionary World Map.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="114" column="105" selection-start-line="114" selection-start-column="24" selection-end-line="114" selection-end-column="105" />
+            <state relative-caret-position="131">
+              <caret line="188" column="115" selection-start-line="188" selection-start-column="24" selection-end-line="188" selection-end-column="115" />
             </state>
           </provider>
         </entry>
@@ -115,8 +116,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Daniel Remington- Object Dictionary World Map.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
+            <state relative-caret-position="477">
+              <caret line="81" column="109" selection-start-line="81" selection-start-column="109" selection-end-line="81" selection-end-column="109" />
             </state>
           </provider>
         </entry>
@@ -367,7 +368,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.32786885" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.32786885" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -494,13 +495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Object Notes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Special_Random.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -508,6 +502,13 @@
           <folding>
             <marker date="1550079586624" expanded="true" signature="52:57" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Object Notes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1">
+          <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -523,15 +524,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Daniel Remington- Dictionary World Map.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="114" column="105" selection-start-line="114" selection-start-column="24" selection-end-line="114" selection-end-column="105" />
+        <state relative-caret-position="131">
+          <caret line="188" column="115" selection-start-line="188" selection-start-column="24" selection-end-line="188" selection-end-column="115" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Daniel Remington- Object Dictionary World Map.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
+        <state relative-caret-position="477">
+          <caret line="81" column="109" selection-start-line="81" selection-start-column="109" selection-end-line="81" selection-end-column="109" />
         </state>
       </provider>
     </entry>
