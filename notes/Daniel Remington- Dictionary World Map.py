@@ -209,7 +209,8 @@ world_map = {
             'DOWN': 'PROBLEMA DOS',
             'UP': 'CEILING',
             'EAST': 'PROBLEMA TRES',
-            'WEST': 'DIFICIL'
+            'WEST': 'UN PROBLEMA DIFICIL',
+            'NORTH': 'PROBLEMA CUATRO'
 
         }
     },

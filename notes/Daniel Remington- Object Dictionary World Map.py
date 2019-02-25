@@ -21,7 +21,7 @@ R19A = Room("PARKING_LOT", "QUAD", "DRAMA_BUILDING", "SCIENCE_BUILDING", "R19A",
             "This is the classroom you are in right now. There are two doors on the north wall. There are two doors on"
             " the north wall. There is a big mailbox in the sky for some reason", "MAILBOX", None)
 
-PARKING_LOT = Room(None, "R19A", "HOBO_ATTACKS", "GYM PORTAL", "Parking Lot", "There are a couple cars parked here",
+PARKING_LOT = Room(None, "R19A", "HOBO_ATTACKS", "GYM PORTAL", "Parking Lot", "There are a couple cars parked here. ",
                    None, "FLOOR")
 
 HOBO_ATTACKS = Room(None, "HOBO_WORLD", None, None, "Hobo Attacks you", "There is a homeless person here. He does not"
@@ -79,7 +79,26 @@ CEILING = Room("CEILING", "CEILING", "CEILING", "CEILING", "The Ceiling", "This 
 
 
 SHAKESPEARE_WORLD = Room("HAMLET", "OTHELLO", "TAMING OF THE SHREW", "ROMEO AND JULIET", "Shakespeare World", "You are "
-                         "now in a medieval area. The buildings are that of 16th century. Everyone around you")
+                         "now in a medieval area. The buildings are that of 16th century.Everyone around you is wearing"                   
+                         "some type of Victorian clothing. In this world, you must act on a play. Essentially, You are"
+                         " dropped into the world of the play and must find the way out.", "THE_GENTLEMEN_OF_VERONA",
+                         "THE MERCHANT OF VENICE")
+
+THE_SPANISH_DILEMMA = Room("PROBLEMA_CUATRO", "PROBLEMA_UNO", "PROBLEMA_TRES", "UN PROBLEMA DIFICIL",
+                           "THE_SPANISH_DILEMMA", "Este cuarto tiene una problema ese necesita resolver. Tu necesecitas"
+                           " resolver la problema rapidamente. Si tu resuelves en tiempo, tu seras GANAR!", "CEILING",
+                           "PROBLEMA_DOS" )
+
+FLOOR = Room("FLOOR", "FLOOR", "FLOOR", "FLOOR", "FLOOR", "This is the floor", "FLOOR", "FLOOR")
+
+CHALLENGE_AREA = Room("PATH_1", "HOBO_WORLD", "PATH_3", "PATH_2", "Welcome to the Challenge area. This is a very dark "
+                      "and musty cave. From what it seems,in the cave there are walls that block off certain areas. "
+                      "Kind of like a maze?", "CEILING", "FLOOR")
+
+PATH_1 = Room("MINI_PATH_1", "HOBO_WORLD", "MINI_PATH_2", "DEAD_END", "The North Path", "This part of the challenge "
+              "area is quite large. I don't like it. North and East seem to both have something", "CEILING", "FLOOR")
+
+PATH_2 = Room("")
 
 print(GYM_PORTAL. description)
 print(R19A.north)
