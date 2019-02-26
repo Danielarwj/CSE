@@ -10,6 +10,28 @@ class Room(object):
         self.west = west
         self.name = name
 
+
+class Player(object):
+    def __init__(self, starting_location):
+        self.current_location = starting_location
+        self.inventory = []
+
+    def move(self, new_location):
+        """ This moves the player to a new room
+
+        :param new_location: The rooms object of which you are going to
+        """
+        self.current_location = new_location
+
+    def find_next_room(self, direction):
+        """ This method searches the current room to see if a room exists in that direction
+
+        :param direction: The direction that ypu want to move to
+        :return: The room object if it exists, or none if it does not
+        """
+        name_of_room = getattr(self.current_location, direction)
+        return globals()[name_of_room]
+
 # Blueprint for room
 # Ex. R-19A =(North-Parking lot, South-etc.)
 # Each room follows attributes set by object Room
@@ -42,16 +64,16 @@ W_BUILDING = Room("PARKING_LOT", "R_BUILDING", "QUAD", "PARKING_LOT", "W Buildin
 
 MAILBOX = Room(None, None, None, None, "THE HOLY MAILBOX WELCOMES YOU!", "WELCOME TO SCHOOL WARRIOR, THE HIGHEST "
                "QUALITY GAME IN SCHOOL BASED" "CHOOSE YOUR OWN ADVENTURE GAMES! DEFEAT ONE BOSS AND COLLECT 20 ITEMS TO"
-               "WIN THE GAME!", "R19A", None)
+               "WIN THE GAME!", None, "R19A")
 
-DRAMA_BUILDING = Room("NIGHTMARE EDISON", "SHAKESPEARE WORLD", "W_BUILDING", "PARKING_LOT", "The Drama Building", "This"
+DRAMA_BUILDING = Room("NIGHTMARE_EDISON", "SHAKESPEARE_WORLD", "W_BUILDING", "PARKING_LOT", "The Drama Building", "This"
                       "is a long winding hallway. At the end there is a large telephone box. Paintings cover the wall",
                       "CEILING", None)
 
 R_BUILDINGS = Room("THE_ESSAY_TYPING", "GYM_PORTAL", "PARKING_LOT", "QUAD", "The R Buildings", "This is a row of "
                    "buildings. You can only go North, however. The other areas are blocked off.", "CEILING", None)
 
-HOBO_WORLD = Room("THE CHALLENGE AREA", None, None, None, "Hobo World", "YoU haVe DECidEd tO Go SoUtH! Welcome to Hobo "
+HOBO_WORLD = Room("CHALLENGE_AREA", None, None, None, "Hobo World", "YoU haVe DECidEd tO Go SoUtH! Welcome to Hobo "
                   "World, the realm of the desolate and the weak. Here, you must complete one of  three challenges- "
                   "Garbage collecting, tent folding, and the hardest one of all, finding 4 pieces of food. After you "
                   "face these challenges, you win the game!", None, None)
@@ -87,13 +109,13 @@ SHAKESPEARE_WORLD = Room("HAMLET", "OTHELLO", "TAMING OF THE SHREW", "ROMEO AND 
 THE_SPANISH_DILEMMA = Room("PROBLEMA_CUATRO", "PROBLEMA_UNO", "PROBLEMA_TRES", "UN PROBLEMA DIFICIL",
                            "THE_SPANISH_DILEMMA", "Este cuarto tiene una problema ese necesita resolver. Tu necesecitas"
                            " resolver la problema rapidamente. Si tu resuelves en tiempo, tu seras GANAR!", "CEILING",
-                           "PROBLEMA_DOS" )
+                           "PROBLEMA_DOS")
 
 FLOOR = Room("FLOOR", "FLOOR", "FLOOR", "FLOOR", "FLOOR", "This is the floor", "FLOOR", "FLOOR")
 
-CHALLENGE_AREA = Room("PATH_1", "HOBO_WORLD", "PATH_3", "PATH_2", "Welcome to the Challenge area. This is a very dark "
-                      "and musty cave. From what it seems,in the cave there are walls that block off certain areas. "
-                      "Kind of like a maze?", "CEILING", "FLOOR")
+CHALLENGE_AREA = Room("PATH_1", "HOBO_WORLD", "PATH_3", "PATH_2", "The Challenge Area", "Welcome to the Challenge area."
+                      "This is a very dark and musty cave. From what it seems,in the cave there are walls that block "
+                      "off certain areas. Kind of like a maze?", "CEILING", "FLOOR")
 
 PATH_1 = Room("MINI_PATH_1", "HOBO_WORLD", "MINI_PATH_2", "DEAD_END", "The North Path", "This part of the challenge "
               "area is quite large. I don't like it. North and East seem to both have something", "CEILING", "FLOOR")
@@ -102,3 +124,26 @@ PATH_2 = Room("")
 
 print(GYM_PORTAL. description)
 print(R19A.north)
+
+player = Player(R19A)
+
+# Controller
+playing = True
+directions = ['north', 'south', "west", "east", "up", "down"]
+while playing:
+    print(player.current_location.name)  # player- indicates the instantiated object. current_location- refers to the
+    # variable. .name = refers to the attribute of the location
+    print(player.current_location.description)
+    command = input(">_")
+    if command.lower() in ["q", "quit", 'exit']:
+        playing = False
+        print("GAME OVER.")
+    elif command.lower() in directions:
+        try:
+            next_room = player.find_next_room(command)
+            player.move(next_room)
+
+        except KeyError:
+            print("I can't go that way!")
+    else:
+        print("Command not found")
