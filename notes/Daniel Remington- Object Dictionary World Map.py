@@ -1,6 +1,7 @@
 # Option 2- Set all at once, modify controller
 class Room(object):
-    def __init__(self, north=None, south=None, east=None, west=None, name=None, description=None, up=None, down=None):
+    def __init__(self, north=None, south=None, east=None, west=None, name=None, description=None, up=None, down=None,
+                 characters=None):
         self.description = description
         self.up = up
         self.down = down
@@ -9,6 +10,7 @@ class Room(object):
         self.east = east
         self.west = west
         self.name = name
+        self.characters = characters
 
 
 class Player(object):
@@ -31,6 +33,19 @@ class Player(object):
         """
         name_of_room = getattr(self.current_location, direction)
         return globals()[name_of_room]
+
+
+class Hobo(object):
+    def __init__(self, personality, cleanliness, clothing, appearance, items):
+            self.items = items
+            self.personality = personality
+            self.cleanliness = cleanliness
+            self.health = 100
+            self.appearance = appearance
+            self.clothing = clothing
+
+
+Krishang = Hobo("NICE", "CLEAN", "PLAID_SHIRT", "Scruffy yet, well kept", ["Sword", "Health_potion", "Roman_Candle"])
 
 # Blueprint for room
 # Ex. R-19A =(North-Parking lot, South-etc.)
@@ -68,7 +83,7 @@ MAILBOX = Room(None, None, None, None, "THE HOLY MAILBOX WELCOMES YOU!", "WELCOM
 
 DRAMA_BUILDING = Room("NIGHTMARE_EDISON", "SHAKESPEARE_WORLD", "W_BUILDING", "PARKING_LOT", "The Drama Building", "This"
                       "is a long winding hallway. At the end there is a large telephone box. Paintings cover the wall",
-                      "CEILING", None)
+                      "CEILING", None, Krishang)
 
 R_BUILDINGS = Room("THE_ESSAY_TYPING", "GYM_PORTAL", "PARKING_LOT", "QUAD", "The R Buildings", "This is a row of "
                    "buildings. You can only go North, however. The other areas are blocked off.", "CEILING", None)
