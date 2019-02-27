@@ -135,7 +135,30 @@ CHALLENGE_AREA = Room("PATH_1", "HOBO_WORLD", "PATH_3", "PATH_2", "The Challenge
 PATH_1 = Room("MINI_PATH_1", "HOBO_WORLD", "MINI_PATH_2", "DEAD_END", "The North Path", "This part of the challenge "
               "area is quite large. I don't like it. North and East seem to both have something", "CEILING", "FLOOR")
 
-PATH_2 = Room("")
+PATH_2 = Room("MINI_PATH_3", "DEAD_END", "MINI_PATH_4", "MINI_PATH_5", "The Western Path", "This part of the challenge "
+              "is strange. Odd paintings cover the walls. South seems to go somewhere... or does it?", "CEILING",
+              "FLOOR")
+
+NIGHTMARE_PARKING_LOT = Room("NIGHTMARE_CEILING", None, "NIGHTMARE_W_BUILDING", "NIGHTMARE_FLOOR", "Nightmare Floor",
+                             "Welcome to the Nightmare Version of the parking lot. All the cars are Hummers.Get spooked"
+                             " by their carbon emissions and their excessive gas prices!", "NIGHTMARE_GYM_PORTAL",
+                             "NIGHTMARE_R19A")
+
+NIGHTMARE_W_BUILDING = Room("NIGHTMARE_EDISON", "NIGHTMARE_CEILING", "NIGHTMARE_R_BUILDINGS", "NIGHTMARE_EDISON", "The "
+                            "Nightmare W Buildings", "The building in a never ending staircase. It's almost like... a "
+                            "maze. But it isn't. However, there are a lot of signs that just say- Look out for the "
+                            "start.", "NIGHTMARE_CEILING", "NIGHTMARE_EDISON")
+
+NIGHTMARE_R19A = Room("NIGHTMARE_GYM_PORTAL", "NIGHTMARE_HOBO_WORLD", "NIGHTMARE_DRAMA_BUILDING", "NIGHTMARE_QUAD",
+                      "Nightmare R19A", "This is a SpOoOky computer room. All of the computers are Windows 98 and are "
+                      "slower than paces of snails. ", "NIGHTMARE_CEILING", "NIGHTMARE_EDISON")
+
+NIGHTMARE_SCIENCE_BUILDING = Room("NIGHTMARE_QUAD", "NIGHTMARE_HOBO_WORLD", "NIGHTMARE_EDISON", "NIGHTMARE_FLOOR", "The"
+                                  "Nightmare Science Buildings", "The classes are terrifying! They're taught by "
+                                  "flat-earthers and people who are against vaccines. What has this world come to?!",
+                                  "NIGHTMARE_FLOOR", None)
+
+
 
 print(GYM_PORTAL. description)
 print(R19A.north)
