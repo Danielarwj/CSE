@@ -158,6 +158,31 @@ NIGHTMARE_SCIENCE_BUILDING = Room("NIGHTMARE_QUAD", "NIGHTMARE_HOBO_WORLD", "NIG
                                   "flat-earthers and people who are against vaccines. What has this world come to?!",
                                   "NIGHTMARE_FLOOR", None)
 
+HAMLET = Room("NORTH_ROOM", "SOUTH_ROOM", "HALLWAY", "GROVE", "Hamlet", "Considered to be his best play, Hamlet is "
+              "play in which Hamlet's father dies and it tells of his slow descent into madness. Get to the last scene "
+              "to win", "CEILING", "FLOOR")
+
+OTHELLO = Room("VENITIAN_STREET", "COUNCIL_CHAMBER", "SEA_PORT", "THE_CASTLE", "Othello", "Welcome to othello- The "
+               "play, not the game. The play is about a Venetian soldier who passed over promotion by Othello and the "
+               "story of how Othello undermines him, causing him to get revenge. Get to the last scene to win",
+               "CEILING", "FLOOR")
+
+PROBLEMA_UNO = ("SECCION_UNO", "SECCION_DOS", "SECCION_TRES", "SECCION_QUATRO", "Problema Uno", "Es el primero problema"
+                ". You need to solve one puzzle and ten queestions", "CEILING", "FLOOR")
+
+PROBLEMA_DOS = ("SECCION_CINCO", "SECCION_SEIS", "SECCION_SIETE", "SECCION_OCHO", "Problema Dos", " Es el segundo "
+                "problema. This challenges requires you to complete four mazes and code in spanish ", None, None)
+
+PROBLEMA_TRES = ("LOS_PANQUEQUES", "EL_FUTURO", "EL_PRETERITO", "PRESENTE-PROGRESIVO", "Problema Tres", "Es el trecero"
+                 " problema. In this one, you have to answer high intensity questions on verbs and vocabulary",
+                 "VOCABULARIO_UNO", None)
+THE_MAZE = ("NULL_PATH", "IMPORT_GOD_PATH", "__INIT__PATH", "BAD_JOKE_PATH", "The Maze", "Welcome to the Heisenwiebe "
+            "Maze. This maze has each path leading to a different aspect of the Heisenwiebe. Reach the center to win",
+            "SPAAAACE_PATH", "LUCKY_7'S_PATH")
+
+THE_LONG_WINDING_HALLWAY = ("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "THE_INTEGRAL_OF_THE_SIN_OF_THE_COSINE_OF_THE"
+                            "_DERIVATIVE_OF_INTEGRAL_OF_THE_LOG_OF_X_SQUARED_CUBED_SQUARED", "The Long Winding Hallway",
+                            "It's... just... It'sj really difficult. Complete all 4 to win","CEILING","FLOOR")
 
 
 print(GYM_PORTAL. description)
