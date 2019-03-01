@@ -58,7 +58,7 @@ R19A = Room("PARKING_LOT", "QUAD", "DRAMA_BUILDING", "SCIENCE_BUILDING", "R19A",
             "This is the classroom you are in right now. There are two doors on the north wall. There are two doors on"
             " the north wall. There is a big mailbox in the sky for some reason", "MAILBOX", None)
 
-PARKING_LOT = Room(None, "R19A", "HOBO_ATTACKS", "GYM PORTAL", "Parking Lot", "There are a couple cars parked here. ",
+PARKING_LOT = Room(None, "R19A", "HOBO_ATTACKS", "GYM_PORTAL", "Parking Lot", "There are a couple cars parked here. ",
                    None, "FLOOR")
 
 HOBO_ATTACKS = Room(None, "HOBO_WORLD", None, None, "Hobo Attacks you", "There is a homeless person here. He does not"
@@ -67,10 +67,10 @@ HOBO_ATTACKS = Room(None, "HOBO_WORLD", None, None, "Hobo Attacks you", "There i
 GYM_PORTAL = Room(None, None, None, None, "Gym Portal", "This is the gym. It is dark and extremely musty. "
                   "I do not like it", "THE_REALM_OF_HEISENWEIBE", "THE_TRENCHES_OF_PAPA_PEARSON")
 
-SCIENCE_BUILDING = Room("POOL", "W_BUILDING", "HOBO ATTACKS YOU", "QUAD", "The Science Building", "This is the science "
+SCIENCE_BUILDING = Room("POOL", "W_BUILDING", "HOBO_ATTACKS_YOU", "QUAD", "The Science Building", "This is the science "
                         "building. I suppose you know what they teach in this, given the name.", "CEILING", "FLOOR")
 
-QUAD = Room(None, None, "R BUILDINGS", "W BUILDINGS", "The Quad", "The main area. There is an ampitheatre here. There "
+QUAD = Room(None, None, "R_BUILDINGS", "W_BUILDINGS", "The Quad", "The main area. There is an ampitheatre here. There "
             "is also a couple of lamp posts.You can only go East and West, for some reason. ", "CEILING", "FLOOR")
 
 W_BUILDING = Room("PARKING_LOT", "R_BUILDING", "QUAD", "PARKING_LOT", "W Building", "This is the W Building. It is a "
@@ -95,7 +95,7 @@ HOBO_WORLD = Room("CHALLENGE_AREA", None, None, None, "Hobo World", "YoU haVe DE
 
 POOL = Room("POOL", "POOL", "POOL", "POOL", "The Pool", "CONGRATULATIONS, YOU'VE MADE IT TO THE POOL!", "POOL", "POOL")
 
-THE_REALM_OF_HEISENWEIBE = Room("THE MAZE", "THE MAZE", "THE MAZE", "THE MAZE", " The Realm of Heisenwiebe", "Welcome"
+THE_REALM_OF_HEISENWEIBE = Room("THE_MAZE", "THE_MAZE", "THE_MAZE", "THE_MAZE", " The Realm of Heisenwiebe", "Welcome"
                                 " to a world unlike any other- THE REALM OF HEISENWIEBE. This place is a maze. Once you"
                                 "enter the realm, you can not get out. Reach the end of the realm,fight the Heisenwiebe"
                                 " himself, then you win.", "THE MAZE", "THE MAZE")
@@ -107,7 +107,7 @@ THE_DARK_TRENCHES_OF_PAPA_PEARSON = Room("THE_LONG_WINDING_HALLWAY", "LABYRINTH"
                                          "Really dark. Also, any other direction you go seems to drop you in sometime "
                                          "of labyrinth ", "CEILING", "FLOOR")
 
-NIGHTMARE_EDISON = Room("NIGHTMARE_W_BUILDING", "NIGHTMARE R19A", "NIGHTMARE_PARKING_LOT", "NIGHTMARE_SCIENCE_BUILDING",
+NIGHTMARE_EDISON = Room("NIGHTMARE_W_BUILDING", "NIGHTMARE_R19A", "NIGHTMARE_PARKING_LOT", "NIGHTMARE_SCIENCE_BUILDING",
                         "NiGhTmArE EDiSon.", "WELCOME! This is Nightmare Edison. It is the same map as before only "
                         "SPOOKY! Get back to the normal world to win the game.", "NIGHTMARE_CEILING", None)
 
@@ -115,11 +115,11 @@ CEILING = Room("CEILING", "CEILING", "CEILING", "CEILING", "The Ceiling", "This 
                "CEILING", None)
 
 
-SHAKESPEARE_WORLD = Room("HAMLET", "OTHELLO", "TAMING OF THE SHREW", "ROMEO AND JULIET", "Shakespeare World", "You are "
+SHAKESPEARE_WORLD = Room("HAMLET", "OTHELLO", "TAMING_OF_THE_SHREW", "ROMEO_AND_JULIET", "Shakespeare World", "You are "
                          "now in a medieval area. The buildings are that of 16th century.Everyone around you is wearing"                   
                          "some type of Victorian clothing. In this world, you must act on a play. Essentially, You are"
                          " dropped into the world of the play and must find the way out.", "THE_GENTLEMEN_OF_VERONA",
-                         "THE MERCHANT OF VENICE")
+                         "THE_MERCHANT_OF_VENICE")
 
 THE_SPANISH_DILEMMA = Room("PROBLEMA_CUATRO", "PROBLEMA_UNO", "PROBLEMA_TRES", "UN PROBLEMA DIFICIL",
                            "THE_SPANISH_DILEMMA", "Este cuarto tiene una problema ese necesita resolver. Tu necesecitas"
@@ -176,6 +176,7 @@ PROBLEMA_DOS = ("SECCION_CINCO", "SECCION_SEIS", "SECCION_SIETE", "SECCION_OCHO"
 PROBLEMA_TRES = ("LOS_PANQUEQUES", "EL_FUTURO", "EL_PRETERITO", "PRESENTE-PROGRESIVO", "Problema Tres", "Es el trecero"
                  " problema. In this one, you have to answer high intensity questions on verbs and vocabulary",
                  "VOCABULARIO_UNO", None)
+
 THE_MAZE = ("NULL_PATH", "IMPORT_GOD_PATH", "__INIT__PATH", "BAD_JOKE_PATH", "The Maze", "Welcome to the Heisenwiebe "
             "Maze. This maze has each path leading to a different aspect of the Heisenwiebe. Reach the center to win",
             "SPAAAACE_PATH", "LUCKY_7'S_PATH")
@@ -183,7 +184,6 @@ THE_MAZE = ("NULL_PATH", "IMPORT_GOD_PATH", "__INIT__PATH", "BAD_JOKE_PATH", "Th
 THE_LONG_WINDING_HALLWAY = ("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "THE_INTEGRAL_OF_THE_SIN_OF_THE_COSINE_OF_THE"
                             "_DERIVATIVE_OF_INTEGRAL_OF_THE_LOG_OF_X_SQUARED_CUBED_SQUARED", "The Long Winding Hallway",
                             "It's... just... It'sj really difficult. Complete all 4 to win","CEILING","FLOOR")
-
 
 print(GYM_PORTAL. description)
 print(R19A.north)
