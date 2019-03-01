@@ -35,6 +35,7 @@ class Impala(Car):
     def __init__(self):
         super(Impala, self).__init__("Impala", 25)
 
+
 class KeylessCar(Car):
     def __init__(self, name, mileage):
         super(KeylessCar, self).__init__(name, mileage)
