@@ -188,6 +188,7 @@ THE_LONG_WINDING_HALLWAY = ("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "THE_IN
 print(GYM_PORTAL. description)
 print(R19A.north)
 
+
 player = Player(R19A)
 
 # Controller
