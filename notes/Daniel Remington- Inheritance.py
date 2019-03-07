@@ -5,10 +5,9 @@ class Item(object):
 
 
 class Armor(Item):
-    def __init__(self, type, durability):
-        super(Armor, self).__init__()
-        self.type = type
-        self.health = durability
+    def __init__(self, name, classification, durability):
+        super(Armor, self).__init__(name, durability)
+        self.type = classification
 
     def get_hit(self, dmg):
         print("Your armor looses some durability")
@@ -19,15 +18,15 @@ class Armor(Item):
 
 
 class Helmet(Armor):
-    def __init__(self, color, protection_ability, durability=100):
-        super(Helmet, self).__init__("Helmet", durability)
+    def __init__(self, name, color, protection_ability, durability=100):
+        super(Helmet, self).__init__(name, "Helmet", durability)
         self.ability = protection_ability
         self.color = color
 
 
 class Aegon(Helmet):
     def __init__(self):
-        super(Aegon, self).__init__("Blue", "Indestructible", 999999999999999999999999999999999999999999999)
+        super(Aegon, self).__init__("Aegon", "Blue", "Indestructible", 999999999999999999999999999999999999999999999)
         self.power = 100
 
     def get_hit(self, dmg):
@@ -38,11 +37,12 @@ class Aegon(Helmet):
     def power(self, exertion):
         super(Aegon, self).power(100)
         print("Your helmet sends back TEN THOUSANDS units of energy. Good Job")
-        self.power +=1
+        self.power += 1
+
 
 class Gold(Helmet):
     def __init__(self):
-        super(Gold, self).__init__("Gold", "Normal", durability=100)
+        super(Gold, self).__init__("Gold", "Gold", "Normal", durability=100)
         self.power = 50
 
     def get_hit(self, dmg):
@@ -56,7 +56,7 @@ class Gold(Helmet):
 
 class Leaf(Helmet):
     def __init__(self):
-        super(Leaf, self).__init__("Green", "Weak", durability=10)
+        super(Leaf, self).__init__("Leaf", "Green", "Weak", durability=10)
         self.power = 1
 
     def get_hit(self, dmg):
@@ -67,20 +67,69 @@ class Leaf(Helmet):
         super(Leaf, self).power(1)
         print("Don't even try.")
 
+
 class BodyArmor(Armor):
-        def __init__(self, protection_ability, durability=100,):
-            super(BodyArmor, self).__init__("Body Armor", durability)
+        def __init__(self, name, protection_ability, durability=100,):
+            super(BodyArmor, self).__init__(name, "Body Armor", durability)
             self.protection_abilty = protection_ability
 
 
 class Weapon(Item):
-    def __init__(self, size):
+    def __init__(self, size, name, classification):
         super(Weapon, self).__init__()
         self.durability = 100
         self.size = size
+        self.name = name
+        self.classification = classification
+
 
 class Sword(Weapon):
-    def __init__(self, agility, weight):
-        super(Sword, self).__init__(size=None)
+    def __init__(self, name, agility, weight, size, damage_output, health=100):
+        super(Sword, self).__init__(size, name, "Sword")
         self.agility = agility
         self.weight = weight
+        self.name = name
+        self.health = health
+        self.damage_output = damage_output
+
+
+class SevenBranchedSword(Sword):
+    def __init__(self):
+        super(SevenBranchedSword, self).__init__("Seven Branched Sword", "Quick", 150, 25, health=100, damage_output=30)
+
+
+class Urumi(Sword):
+    def __init__(self):
+        super(Urumi, self).__init__("The Urumi", "Quick", 400, 35, health=999999999999999999999, damage_output=99999999)
+
+
+class Pencil(Sword):
+    def __init__(self):
+        super(Pencil, self).__init__("A Pencil", "Slow", 0.2, 12, health=2, damage_output=3)
+
+
+class Noodle(Sword):
+    def __init__(self):
+        super(Noodle, self).__init__("A Noodle", "Immobile", "0.001", 5, health=1, damage_output=1)
+
+
+class SchoolMaterials(Item):
+    def __init__(self, name, durability, impact):
+        super(SchoolMaterials, self).__init__()
+        self.name = name
+        self.durability = durability
+        self.impact = impact
+
+
+class Food(SchoolMaterials):
+    def __init__(self,name, taste, size, quality, restoration):
+        super(Food, self).__init__(name, durability=None, impact=None)
+        self.taste = taste
+        self.size = size
+        self.quality = quality
+        self.health_restoration = restoration
+
+class CrappyLunch(Food):
+    def __init__(self, name, restoration, style, size):
+        super(CrappyLunch, self).__init__(name, "Deplorable", size, "Bad")
+
