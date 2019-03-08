@@ -83,6 +83,16 @@ class Weapon(Item):
         self.classification = classification
 
 
+class Lasers(Weapon):
+    def __init__(self, size, name, classification, joules, energy_output):
+        super(Lasers, self).__init__(size, name, classification)
+        self.joules = joules
+        self.energy = energy_output
+        self.size = size
+        self.name = name
+        self.classification = classification
+
+
 class Sword(Weapon):
     def __init__(self, name, agility, weight, size, damage_output, health=100):
         super(Sword, self).__init__(size, name, "Sword")
@@ -122,14 +132,61 @@ class SchoolMaterials(Item):
 
 
 class Food(SchoolMaterials):
-    def __init__(self,name, taste, size, quality, restoration):
+    def __init__(self, name, taste, size, quality, restoration):
         super(Food, self).__init__(name, durability=None, impact=None)
         self.taste = taste
         self.size = size
         self.quality = quality
         self.health_restoration = restoration
 
-class CrappyLunch(Food):
-    def __init__(self, name, restoration, style, size):
-        super(CrappyLunch, self).__init__(name, "Deplorable", size, "Bad")
 
+class CrappyLunch(Food):
+    def __init__(self, name, restoration, size, edibility):
+        super(CrappyLunch, self).__init__(name, "Deplorable", size, "Bad", restoration)
+        self.name = name
+        self.health_restoration = restoration
+        self.size = size
+        self.edibility = edibility
+
+
+# Reheated Broccoli, Chili, Pizza, Raw Chicken
+class Chili(CrappyLunch):
+    def __init__(self, color, present_container, health_restoration, size):
+        super(Chili, self).__init__("Chili", -20, size, "Unpalatable")
+        self.color = color
+        self.present_container = present_container
+        self.health_restoration = health_restoration
+
+
+class MeatLoversChili(Chili):
+    def __init__(self):
+        super(MeatLoversChili, self).__init__("Brown", "Styrofoam_Cup", -100, 80)
+
+
+class VegetarianChili(Chili):
+    def __init__(self):
+        super(VegetarianChili, self).__init__("Green", "Red_Cup", -70, 15)
+
+
+class Pizza(CrappyLunch):
+    def __init__(self, restoration, size, edibility, color):
+        super(Pizza, self).__init__("Pizza", restoration, size, edibility)
+        self.color = color
+        self.size = size
+        self.health_restoration = restoration
+        self.edibility = edibility
+
+
+class SaladPizza(Pizza):
+    def __init__(self):
+        super(SaladPizza, self).__init__(10, 15, "Tolerable", "Green")
+
+
+class CannedTunaPizza(Pizza):
+    def __init__(self):
+        super(CannedTunaPizza, self).__init__(1, 25, "Disgusting", "Brown")
+
+
+class DecentPizza(Pizza):
+    def __init__(self):
+        super(DecentPizza, self).__init__(20, 10, "Good", "Normal")
