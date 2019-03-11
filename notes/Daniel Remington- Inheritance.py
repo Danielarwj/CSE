@@ -68,12 +68,6 @@ class Leaf(Helmet):
         print("Don't even try.")
 
 
-class BodyArmor(Armor):
-        def __init__(self, name, protection_ability, durability=100,):
-            super(BodyArmor, self).__init__(name, "Body Armor", durability)
-            self.protection_abilty = protection_ability
-
-
 class Weapon(Item):
     def __init__(self, size, name, classification):
         super(Weapon, self).__init__()
@@ -190,3 +184,54 @@ class CannedTunaPizza(Pizza):
 class DecentPizza(Pizza):
     def __init__(self):
         super(DecentPizza, self).__init__(20, 10, "Good", "Normal")
+
+
+
+
+class BodyArmor(Armor):
+        def __init__(self, name, protection_ability, durability=100, ):
+            super(BodyArmor, self).__init__(name, "Body Armor", durability)
+            self.protection_abilty = protection_ability
+
+
+class TeacherSustenance(Food):
+    def __init__(self, name, taste, size, quality, restoration):
+        super(TeacherSustenance, self).__init__(name, taste, size, quality, restoration)
+        self.name = name
+        self.taste = taste
+        self.size = size
+        self.quality = quality
+        self.health_restoration = restoration
+
+
+class Eggs(TeacherSustenance):
+    def __init__(self, taste, size, quality, state, texture, restoration=100):
+        super(Eggs, self).__init__("EGGS", taste, size, quality, restoration)
+        self.taste = taste
+        self.size = size
+        self.quality = quality
+        self.texture = texture
+        self.state = state
+        self.health_restoration = restoration
+
+
+class BoiledEggs(Eggs):
+    def __init__(self):
+        super(BoiledEggs, self).__init__("GOOD", 10, "GOOD", "BOILED", "MUSHY", "Boiled Eggs")
+
+
+class ScrambledEggs(Eggs):
+    def __init__(self):
+        super(ScrambledEggs, self).__init__("GREAT", 12, "GOOD", "SCRAMBLED", "SOFT", )
+
+
+class VervainHummingbirdEggs(Eggs):
+    def __init__(self):
+        super(VervainHummingbirdEggs, self).__init__("GREAT", 0.3, "GREAT", "RAW", "LIQUID", 9999999999999)
+
+
+class Pastries(TeacherSustenance):
+    def __init__(self):
+        super(Pastries, self).__init__()
+
+
