@@ -77,16 +77,6 @@ class Weapon(Item):
         self.classification = classification
 
 
-class Lasers(Weapon):
-    def __init__(self, size, name, classification, joules, energy_output):
-        super(Lasers, self).__init__(size, name, classification)
-        self.joules = joules
-        self.energy = energy_output
-        self.size = size
-        self.name = name
-        self.classification = classification
-
-
 class Sword(Weapon):
     def __init__(self, name, agility, weight, size, damage_output, health=100):
         super(Sword, self).__init__(size, name, "Sword")
@@ -186,14 +176,6 @@ class DecentPizza(Pizza):
         super(DecentPizza, self).__init__(20, 10, "Good", "Normal")
 
 
-
-
-class BodyArmor(Armor):
-        def __init__(self, name, protection_ability, durability=100, ):
-            super(BodyArmor, self).__init__(name, "Body Armor", durability)
-            self.protection_abilty = protection_ability
-
-
 class TeacherSustenance(Food):
     def __init__(self, name, taste, size, quality, restoration):
         super(TeacherSustenance, self).__init__(name, taste, size, quality, restoration)
@@ -205,7 +187,7 @@ class TeacherSustenance(Food):
 
 
 class Eggs(TeacherSustenance):
-    def __init__(self, taste, size, quality, state, texture, restoration=100):
+    def __init__(self, taste, size, quality, state, texture, name, restoration=100):
         super(Eggs, self).__init__("EGGS", taste, size, quality, restoration)
         self.taste = taste
         self.size = size
@@ -213,6 +195,7 @@ class Eggs(TeacherSustenance):
         self.texture = texture
         self.state = state
         self.health_restoration = restoration
+        self.name = name
 
 
 class BoiledEggs(Eggs):
@@ -222,16 +205,80 @@ class BoiledEggs(Eggs):
 
 class ScrambledEggs(Eggs):
     def __init__(self):
-        super(ScrambledEggs, self).__init__("GREAT", 12, "GOOD", "SCRAMBLED", "SOFT", )
+        super(ScrambledEggs, self).__init__("GREAT", 12, "GOOD", "SCRAMBLED", "SOFT", "Scrambled Eggs")
 
 
 class VervainHummingbirdEggs(Eggs):
     def __init__(self):
-        super(VervainHummingbirdEggs, self).__init__("GREAT", 0.3, "GREAT", "RAW", "LIQUID", 9999999999999)
+        super(VervainHummingbirdEggs, self).__init__("GREAT", 0.3, "GREAT", "RAW", "LIQUID", "Vervain Hummingbird Eggs",
+                                                     9999999999999)
 
 
 class Pastries(TeacherSustenance):
     def __init__(self):
         super(Pastries, self).__init__()
+
+
+class BodyArmor(Armor):
+    def __init__(self, name, protection_ability, size, damage_output ,durability=100):
+        super(BodyArmor, self).__init__(name, "Body Armor", durability)
+        self.protection_ability = protection_ability
+        self.size = size
+        self.name = name
+        self.damage_output = damage_output
+
+
+class Cardstock(BodyArmor):
+    def __init__(self, exertion):
+        super(Cardstock, self).__init__("Cardstock", "WEAK", 15, 0, 20)
+        self.power = 10
+        self.exertion = exertion
+
+    def get_hit(self, dmg):
+            super(Cardstock, self).get_hit(dmg)
+            print("Your armor tries to fight back. IT IS A FUGILE ATTEMPT!")
+
+    def power(self, exertion):
+            super(Cardstock, self).power(10)
+            self.exertion = 10
+            print("It can't exert power back at them! It is destroyed")
+
+
+class ModularTacticalVest(BodyArmor):
+    def __init__(self, exertion, size):
+        super(ModularTacticalVest, self).__init__('Modular Tactical Vest', "STRONG", size, 9999999, 10)
+        self.exertion = exertion
+        self.power = 99999999999
+
+    def get_hit(self, dmg):
+            super(ModularTacticalVest, self).get_hit(dmg)
+            print("Your armor hits them back with the MIGHT OF ZEUS")
+
+    def power(self, exertion):
+            super(ModularTacticalVest, self).power(99999999999)
+            self.exertion = 999999999
+            print("YOU ARE INVINCIBLE! They are destroyed")
+
+
+class Lasers(Weapon):
+
+    def __init__(self, size, name, classification, joules, energy_output, damage_output):
+
+        super(Lasers, self).__init__(size, name, classification)
+        self.joules = joules
+        self.energy = energy_output
+        self.size = size
+        self.name = name
+        self.classification = classification
+        self.damage_output = damage_output
+
+
+class TwoPettawattLaser(Lasers):
+    def __init__(self, damage_ouput):
+        super(TwoPettawattLaser, self).__init__(78, "Two Pettawatt Laser", Lasers, 2000000000000, 2000000000000)
+        self.damage_output = damage_ouput
+
+# super(TwoPettawattLaser, self).damage_ouput(dmg)
+
 
 
