@@ -278,7 +278,32 @@ class TwoPettawattLaser(Lasers):
         super(TwoPettawattLaser, self).__init__(78, "Two Pettawatt Laser", Lasers, 2000000000000, 2000000000000)
         self.damage_output = damage_ouput
 
-# super(TwoPettawattLaser, self).damage_ouput(dmg)
+
+class Character(object):
+    def __init__(self, name, health: int, weapon, armor):
+
+        self.name = name
+        self.health = health
+        self.weapon = weapon
+        self.armor = armor
+
+    def take_damage(self, damage: int):
+        if self.armor.durability >= damage:
+            print("No damage is done because of some AMAZING armor")
+        else:
+            self.health -= damage - self.armor.durability
+        print("%s has %d health left" % (self.name, self.health))
+
+    def attack(self, target):
+        print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.durability))
+        target.take_damage(self.weapon.durability)
+
+sword = Sword("Sword","Quick", 15, 20, 10)
+canoe = Sword("Canoe Sword", "SLOW", 90, 150, 42)
+weibe_armor = BodyArmor("Armor of the gods", "GOOD", 18, 10000000000000000000000000000)
 
 
-
+orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10))
+orc2 = Character("Weibe", 1000, canoe, weibe_armor)
+orc.attack(orc2)
+orc2.attack(orc)
