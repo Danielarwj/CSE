@@ -1,25 +1,25 @@
 class Item(object):
-    def __init__(self, name=None, durability=None):
+    def __init__(self, name=None, health=None):
         self.name = name
-        self.durability = durability
+        self.health = health
 
 
 class Armor(Item):
-    def __init__(self, name, classification, durability):
-        super(Armor, self).__init__(name, durability)
+    def __init__(self, name, classification, health):
+        super(Armor, self).__init__(name, health)
         self.type = classification
 
     def get_hit(self, dmg):
-        print("Your armor looses some durability")
-        self.durability -= 1
+        print("Your armor looses some health")
+        self.health -= 1
 
     def power(self, exertion):
         print("Your helmet tries to shoot energy back to the enemy")
 
 
 class Helmet(Armor):
-    def __init__(self, name, color, protection_ability, durability=100):
-        super(Helmet, self).__init__(name, "Helmet", durability)
+    def __init__(self, name, color, protection_ability, health=100):
+        super(Helmet, self).__init__(name, "Helmet", health)
         self.ability = protection_ability
         self.color = color
 
@@ -32,7 +32,7 @@ class Aegon(Helmet):
     def get_hit(self, dmg):
         super(Aegon, self).get_hit(dmg)
         print("Your helmet cannot be damaged.")
-        self.durability += 1
+        self.health += 1
 
     def power(self, exertion):
         super(Aegon, self).power(100)
@@ -42,7 +42,7 @@ class Aegon(Helmet):
 
 class Gold(Helmet):
     def __init__(self):
-        super(Gold, self).__init__("Gold", "Gold", "Normal", durability=100)
+        super(Gold, self).__init__("Gold", "Gold", "Normal", health=100)
         self.power = 50
 
     def get_hit(self, dmg):
@@ -56,7 +56,7 @@ class Gold(Helmet):
 
 class Leaf(Helmet):
     def __init__(self):
-        super(Leaf, self).__init__("Leaf", "Green", "Weak", durability=10)
+        super(Leaf, self).__init__("Leaf", "Green", "Weak", health=10)
         self.power = 1
 
     def get_hit(self, dmg):
@@ -69,9 +69,9 @@ class Leaf(Helmet):
 
 
 class Weapon(Item):
-    def __init__(self, size, name, classification):
+    def __init__(self, size, name, health, classification):
         super(Weapon, self).__init__()
-        self.durability = 100
+        self.health = health
         self.size = size
         self.name = name
         self.classification = classification
@@ -79,7 +79,7 @@ class Weapon(Item):
 
 class Sword(Weapon):
     def __init__(self, name, agility, weight, size, damage_output, health=100):
-        super(Sword, self).__init__(size, name, "Sword")
+        super(Sword, self).__init__(size, name, health, "Sword")
         self.agility = agility
         self.weight = weight
         self.name = name
@@ -108,16 +108,15 @@ class Noodle(Sword):
 
 
 class SchoolMaterials(Item):
-    def __init__(self, name, durability, impact):
+    def __init__(self, name, health):
         super(SchoolMaterials, self).__init__()
         self.name = name
-        self.durability = durability
-        self.impact = impact
+        self.health = health
 
 
 class Food(SchoolMaterials):
-    def __init__(self, name, taste, size, quality, restoration):
-        super(Food, self).__init__(name, durability=None, impact=None)
+    def __init__(self, name, taste, size, quality, health, restoration):
+        super(Food, self).__init__(name, health)
         self.taste = taste
         self.size = size
         self.quality = quality
@@ -125,8 +124,8 @@ class Food(SchoolMaterials):
 
 
 class CrappyLunch(Food):
-    def __init__(self, name, restoration, size, edibility):
-        super(CrappyLunch, self).__init__(name, "Deplorable", size, "Bad", restoration)
+    def __init__(self, name, restoration, size, edibility, health):
+        super(CrappyLunch, self).__init__(name, "Deplorable", size, "Bad", restoration, health)
         self.name = name
         self.health_restoration = restoration
         self.size = size
@@ -135,8 +134,8 @@ class CrappyLunch(Food):
 
 # Reheated Broccoli, Chili, Pizza, Raw Chicken
 class Chili(CrappyLunch):
-    def __init__(self, color, present_container, health_restoration, size):
-        super(Chili, self).__init__("Chili", -20, size, "Unpalatable")
+    def __init__(self, color, present_container, health_restoration, size, health):
+        super(Chili, self).__init__("Chili", -20, size, "Unpalatable", health)
         self.color = color
         self.present_container = present_container
         self.health_restoration = health_restoration
@@ -144,12 +143,12 @@ class Chili(CrappyLunch):
 
 class MeatLoversChili(Chili):
     def __init__(self):
-        super(MeatLoversChili, self).__init__("Brown", "Styrofoam_Cup", -100, 80)
+        super(MeatLoversChili, self).__init__("Brown", "Styrofoam_Cup", -100, 80, -90)
 
 
 class VegetarianChili(Chili):
     def __init__(self):
-        super(VegetarianChili, self).__init__("Green", "Red_Cup", -70, 15)
+        super(VegetarianChili, self).__init__("Green", "Red_Cup", -70, 15, 9)
 
 
 class Pizza(CrappyLunch):
@@ -220,8 +219,8 @@ class Pastries(TeacherSustenance):
 
 
 class BodyArmor(Armor):
-    def __init__(self, name, protection_ability, size, damage_output ,durability=100):
-        super(BodyArmor, self).__init__(name, "Body Armor", durability)
+    def __init__(self, name, protection_ability, size, damage_output, health=100):
+        super(BodyArmor, self).__init__(name, "Body Armor", health)
         self.protection_ability = protection_ability
         self.size = size
         self.name = name
@@ -262,9 +261,9 @@ class ModularTacticalVest(BodyArmor):
 
 class Lasers(Weapon):
 
-    def __init__(self, size, name, classification, joules, energy_output, damage_output):
+    def __init__(self, size, name, health, classification, joules, energy_output, damage_output):
 
-        super(Lasers, self).__init__(size, name, classification)
+        super(Lasers, self).__init__(size, name, health, classification)
         self.joules = joules
         self.energy = energy_output
         self.size = size
@@ -275,8 +274,15 @@ class Lasers(Weapon):
 
 class TwoPettawattLaser(Lasers):
     def __init__(self, damage_ouput):
-        super(TwoPettawattLaser, self).__init__(78, "Two Pettawatt Laser", Lasers, 2000000000000, 2000000000000)
+        super(TwoPettawattLaser, self).__init__(78, "Two Pettawatt Laser", 99999, Lasers, 2000000000000, 2000000000000,
+                                                2000000000)
         self.damage_output = damage_ouput
+
+
+class LaserPointer(Lasers):
+    def __init__(self, damage_output):
+        super(LaserPointer, self).__init__(20, "Laser Pointer", 1, Lasers, 20, 10, 1)
+        self.damage_output = damage_output
 
 
 class Character(object):
@@ -288,22 +294,23 @@ class Character(object):
         self.armor = armor
 
     def take_damage(self, damage: int):
-        if self.armor.durability >= damage:
+        if self.armor.health >= damage:
             print("No damage is done because of some AMAZING armor")
         else:
-            self.health -= damage - self.armor.durability
+            self.health -= damage - self.armor.health
         print("%s has %d health left" % (self.name, self.health))
 
     def attack(self, target):
-        print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.durability))
-        target.take_damage(self.weapon.durability)
+        print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.health))
+        target.take_damage(self.weapon.health)
 
-sword = Sword("Sword","Quick", 15, 20, 10)
+
+sword = Sword("Sword", "Quick", 15, 20, 10)
 canoe = Sword("Canoe Sword", "SLOW", 90, 150, 42)
 weibe_armor = BodyArmor("Armor of the gods", "GOOD", 18, 10000000000000000000000000000)
 
 
 orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10))
-orc2 = Character("Weibe", 1000, canoe, weibe_armor)
+orc2 = Character("Wiebe", 1000, canoe, weibe_armor)
 orc.attack(orc2)
 orc2.attack(orc)
