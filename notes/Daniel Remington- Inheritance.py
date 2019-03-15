@@ -308,6 +308,10 @@ class Character(object):
 sword = Sword("Sword", "Quick", 15, 20, 10)
 canoe = Sword("Canoe Sword", "SLOW", 90, 150, 42)
 weibe_armor = BodyArmor("Armor of the gods", "GOOD", 18, 10000000000000000000000000000)
+Laser_pointer_1 = LaserPointer(5)
+_007_Laser = TwoPettawattLaser(7000)
+Cardstock_Armor = Cardstock(10)
+Modular_Tactical_Vest_1 = ModularTacticalVest()
 
 
 orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10))
