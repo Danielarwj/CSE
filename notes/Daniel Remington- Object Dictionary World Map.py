@@ -1,7 +1,9 @@
 # Option 2- Set all at once, modify controller
 class Room(object):
     def __init__(self, north=None, south=None, east=None, west=None, name=None, description=None, up=None, down=None,
-                 characters=None):
+                 characters=None, items=None):
+        if items is None:
+            items = []
         self.description = description
         self.up = up
         self.down = down
@@ -11,6 +13,13 @@ class Room(object):
         self.west = west
         self.name = name
         self.characters = characters
+        self.items = items
+
+
+class Item(object):
+    def __init__(self, name=None, health=None):
+        self.name = name
+        self.health = health
 
 
 class Player(object):
@@ -35,6 +44,304 @@ class Player(object):
         return globals()[name_of_room]
 
 
+class Armor(Item):
+    def __init__(self, name, classification, health):
+        super(Armor, self).__init__(name, health)
+        self.type = classification
+
+    def get_hit(self, dmg):
+        print("Your armor looses some health")
+        self.health -= 1
+
+    def power(self, exertion):
+        print("Your helmet tries to shoot energy back to the enemy")
+
+
+class Helmet(Armor):
+    def __init__(self, name, color, protection_ability, health=100):
+        super(Helmet, self).__init__(name, "Helmet", health)
+        self.ability = protection_ability
+        self.color = color
+
+
+class Aegon(Helmet):
+    def __init__(self):
+        super(Aegon, self).__init__("Aegon", "Blue", "Indestructible", 999999999999999999999999999999999999999999999)
+        self.power = 100
+
+    def get_hit(self, dmg):
+        super(Aegon, self).get_hit(dmg)
+        print("Your helmet cannot be damaged.")
+        self.health += 1
+
+    def power(self, exertion):
+        super(Aegon, self).power(100)
+        print("Your helmet sends back TEN THOUSANDS units of energy. Good Job")
+        self.power += 1
+
+
+class Gold(Helmet):
+    def __init__(self):
+        super(Gold, self).__init__("Gold", "Gold", "Normal", health=100)
+        self.power = 50
+
+    def get_hit(self, dmg):
+        super(Gold, self).get_hit(dmg)
+        print("Your helmet tries to fight back. IT IS A FUGILE ATTEMPT!")
+
+    def power(self, exertion):
+        super(Gold, self).power(50)
+        print("Your helmet is attempting... so close but no.")
+
+
+class Leaf(Helmet):
+    def __init__(self):
+        super(Leaf, self).__init__("Leaf", "Green", "Weak", health=10)
+        self.power = 1
+
+    def get_hit(self, dmg):
+        super(Leaf, self).get_hit(dmg)
+        print("Your helmet doesn't even try. It is destroyed")
+
+    def power(self, exertion):
+        super(Leaf, self).power(1)
+        print("Don't even try.")
+
+
+class Weapon(Item):
+    def __init__(self, size, name, health, classification):
+        super(Weapon, self).__init__()
+        self.health = health
+        self.size = size
+        self.name = name
+        self.classification = classification
+
+
+class Sword(Weapon):
+    def __init__(self, name, agility, weight, size, damage_output, health=100):
+        super(Sword, self).__init__(size, name, health, "Sword")
+        self.agility = agility
+        self.weight = weight
+        self.name = name
+        self.health = health
+        self.damage_output = damage_output
+
+
+class SevenBranchedSword(Sword):
+    def __init__(self):
+        super(SevenBranchedSword, self).__init__("Seven Branched Sword", "Quick", 150, 25, health=100, damage_output=30)
+
+
+class Urumi(Sword):
+    def __init__(self):
+        super(Urumi, self).__init__("The Urumi", "Quick", 400, 35, health=999999999999999999999, damage_output=99999999)
+
+
+class Pencil(Sword):
+    def __init__(self):
+        super(Pencil, self).__init__("A Pencil", "Slow", 0.2, 12, health=2, damage_output=3)
+
+
+class Noodle(Sword):
+    def __init__(self):
+        super(Noodle, self).__init__("A Noodle", "Immobile", "0.001", 5, health=1, damage_output=1)
+
+
+class SchoolMaterials(Item):
+    def __init__(self, name, health):
+        super(SchoolMaterials, self).__init__()
+        self.name = name
+        self.health = health
+
+
+class Food(SchoolMaterials):
+    def __init__(self, name, taste, size, quality, health, restoration):
+        super(Food, self).__init__(name, health)
+        self.taste = taste
+        self.size = size
+        self.quality = quality
+        self.health_restoration = restoration
+
+
+class CrappyLunch(Food):
+    def __init__(self, name, restoration, size, edibility, health):
+        super(CrappyLunch, self).__init__(name, "Deplorable", size, "Bad", restoration, health)
+        self.name = name
+        self.health_restoration = restoration
+        self.size = size
+        self.edibility = edibility
+
+
+# Reheated Broccoli, Chili, Pizza, Raw Chicken
+class Chili(CrappyLunch):
+    def __init__(self, color, present_container, health_restoration, size, health):
+        super(Chili, self).__init__("Chili", -20, size, "Unpalatable", health)
+        self.color = color
+        self.present_container = present_container
+        self.health_restoration = health_restoration
+
+
+class MeatLoversChili(Chili):
+    def __init__(self):
+        super(MeatLoversChili, self).__init__("Brown", "Styrofoam_Cup", -100, 80, -90)
+
+
+class VegetarianChili(Chili):
+    def __init__(self):
+        super(VegetarianChili, self).__init__("Green", "Red_Cup", -70, 15, 9)
+
+
+class Pizza(CrappyLunch):
+    def __init__(self, restoration, size, edibility, color, health):
+        super(Pizza, self).__init__("Pizza", restoration, size, edibility, health)
+        self.color = color
+        self.size = size
+        self.health_restoration = restoration
+        self.edibility = edibility
+        self.health = health
+
+
+class SaladPizza(Pizza):
+    def __init__(self):
+        super(SaladPizza, self).__init__(10, 15, "Tolerable", "Green", 50)
+
+
+class CannedTunaPizza(Pizza):
+    def __init__(self):
+        super(CannedTunaPizza, self).__init__(1, 25, "Disgusting", "Brown", 80)
+
+
+class DecentPizza(Pizza):
+    def __init__(self):
+        super(DecentPizza, self).__init__(20, 10, "Good", "Normal", 100)
+
+
+class TeacherSustenance(Food):
+    def __init__(self, name, taste, size, quality, restoration, health):
+        super(TeacherSustenance, self).__init__(name, taste, size, quality, health, restoration)
+        self.name = name
+        self.taste = taste
+        self.size = size
+        self.quality = quality
+        self.health_restoration = restoration
+
+
+class Eggs(TeacherSustenance):
+    def __init__(self, taste, size, quality, state, texture, name, health, restoration=100):
+        super(Eggs, self).__init__("EGGS", taste, size, quality, restoration, health)
+        self.taste = taste
+        self.size = size
+        self.quality = quality
+        self.texture = texture
+        self.state = state
+        self.health_restoration = restoration
+        self.name = name
+        self.health = health
+
+
+class BoiledEggs(Eggs):
+    def __init__(self, restoration):
+        super(BoiledEggs, self).__init__("GOOD", 10, "GOOD", "BOILED", "MUSHY", "Boiled Eggs", restoration, 80)
+
+
+class ScrambledEggs(Eggs):
+    def __init__(self, restoration):
+        super(ScrambledEggs, self).__init__("GREAT", 12, "GOOD", "SCRAMBLED", "SOFT", "Scrambled Eggs", restoration, 90)
+
+
+class VervainHummingbirdEggs(Eggs):
+    def __init__(self):
+        super(VervainHummingbirdEggs, self).__init__("GREAT", 0.3, "GREAT", "RAW", "LIQUID", "Vervain Hummingbird Eggs",
+                                                     9999999999999)
+
+
+class BodyArmor(Armor):
+    def __init__(self, name, protection_ability, size, damage_output, health=100):
+        super(BodyArmor, self).__init__(name, "Body Armor", health)
+        self.protection_ability = protection_ability
+        self.size = size
+        self.name = name
+        self.damage_output = damage_output
+
+
+class Cardstock(BodyArmor):
+    def __init__(self, exertion):
+        super(Cardstock, self).__init__("Cardstock", "WEAK", 15, 0, 20)
+        self.power = 10
+        self.exertion = exertion
+
+    def get_hit(self, dmg):
+            super(Cardstock, self).get_hit(dmg)
+            print("Your armor tries to fight back. IT IS A FUGILE ATTEMPT!")
+
+    def power(self, exertion):
+            super(Cardstock, self).power(10)
+            self.exertion = 10
+            print("It can't exert power back at them! It is destroyed")
+
+
+class ModularTacticalVest(BodyArmor):
+    def __init__(self, exertion, size):
+        super(ModularTacticalVest, self).__init__('Modular Tactical Vest', "STRONG", size, 9999999, 10)
+        self.exertion = exertion
+        self.power = 99999999999
+
+    def get_hit(self, dmg):
+            super(ModularTacticalVest, self).get_hit(dmg)
+            print("Your armor hits them back with the MIGHT OF ZEUS")
+
+    def power(self, exertion):
+            super(ModularTacticalVest, self).power(99999999999)
+            self.exertion = 999999999
+            print("YOU ARE INVINCIBLE! They are destroyed")
+
+
+class Lasers(Weapon):
+
+    def __init__(self, size, name, health, classification, joules, energy_output, damage_output):
+
+        super(Lasers, self).__init__(size, name, health, classification)
+        self.joules = joules
+        self.energy = energy_output
+        self.size = size
+        self.name = name
+        self.classification = classification
+        self.damage_output = damage_output
+
+
+class TwoPettawattLaser(Lasers):
+    def __init__(self, damage_ouput):
+        super(TwoPettawattLaser, self).__init__(78, "Two Pettawatt Laser", 99999, Lasers, 2000000000000, 2000000000000,
+                                                2000000000)
+        self.damage_output = damage_ouput
+
+
+class LaserPointer(Lasers):
+    def __init__(self, damage_output):
+        super(LaserPointer, self).__init__(20, "Laser Pointer", 1, Lasers, 20, 10, 1)
+        self.damage_output = damage_output
+
+
+class Character(object):
+    def __init__(self, name, health: int, weapon, armor):
+
+        self.name = name
+        self.health = health
+        self.weapon = weapon
+        self.armor = armor
+
+    def take_damage(self, damage: int):
+        if self.armor.health >= damage:
+            print("No damage is done because of some AMAZING armor")
+        else:
+            self.health -= damage - self.armor.health
+        print("%s has %d health left" % (self.name, self.health))
+
+    def attack(self, target):
+        print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.health))
+        target.take_damage(self.weapon.health)
+
+
 class Hobo(object):
     def __init__(self, personality, cleanliness, clothing, appearance, items):
             self.items = items
@@ -56,7 +363,8 @@ Krishang = Hobo("NICE", "CLEAN", "PLAID_SHIRT", "Scruffy yet, well kept", ["Swor
 
 R19A = Room("PARKING_LOT", "QUAD", "DRAMA_BUILDING", "SCIENCE_BUILDING", "R19A",
             "This is the classroom you are in right now. There are two doors on the north wall. There are two doors on"
-            " the north wall. There is a big mailbox in the sky for some reason", "MAILBOX", None)
+            " the north wall. There is a big mailbox in the sky for some reason", "MAILBOX", None, None,
+            [Cardstock(10) for i in range(5)])
 
 PARKING_LOT = Room(None, "R19A", "HOBO_ATTACKS", "GYM_PORTAL", "Parking Lot", "There are a couple cars parked here. ",
                    None, "FLOOR")
@@ -160,34 +468,54 @@ NIGHTMARE_SCIENCE_BUILDING = Room("NIGHTMARE_QUAD", "NIGHTMARE_HOBO_WORLD", "NIG
 
 HAMLET = Room("NORTH_ROOM", "SOUTH_ROOM", "HALLWAY", "GROVE", "Hamlet", "Considered to be his best play, Hamlet is "
               "play in which Hamlet's father dies and it tells of his slow descent into madness. Get to the last scene "
-              "to win", "CEILING", "FLOOR")
+              "to win", "CEILING", "FLOOR", None)
 
 OTHELLO = Room("VENITIAN_STREET", "COUNCIL_CHAMBER", "SEA_PORT", "THE_CASTLE", "Othello", "Welcome to othello- The "
                "play, not the game. The play is about a Venetian soldier who passed over promotion by Othello and the "
                "story of how Othello undermines him, causing him to get revenge. Get to the last scene to win",
                "CEILING", "FLOOR")
 
-PROBLEMA_UNO = ("SECCION_UNO", "SECCION_DOS", "SECCION_TRES", "SECCION_QUATRO", "Problema Uno", "Es el primero problema"
-                ". You need to solve one puzzle and ten queestions", "CEILING", "FLOOR")
+PROBLEMA_UNO = Room("SECCION_UNO", "SECCION_DOS", "SECCION_TRES", "SECCION_QUATRO", "Problema Uno", "Es el primero"
+                    " problema. You need to solve one puzzle and ten queestions", "CEILING", "FLOOR")
 
-PROBLEMA_DOS = ("SECCION_CINCO", "SECCION_SEIS", "SECCION_SIETE", "SECCION_OCHO", "Problema Dos", " Es el segundo "
-                "problema. This challenges requires you to complete four mazes and code in spanish ", None, None)
+PROBLEMA_DOS = Room("SECCION_CINCO", "SECCION_SEIS", "SECCION_SIETE", "SECCION_OCHO", "Problema Dos", " Es el segundo "
+                    "problema. This challenges requires you to complete four mazes and code in spanish ", None, None)
 
-PROBLEMA_TRES = ("LOS_PANQUEQUES", "EL_FUTURO", "EL_PRETERITO", "PRESENTE-PROGRESIVO", "Problema Tres", "Es el trecero"
-                 " problema. In this one, you have to answer high intensity questions on verbs and vocabulary",
-                 "VOCABULARIO_UNO", None)
+PROBLEMA_TRES = Room("LOS_PANQUEQUES", "EL_FUTURO", "EL_PRETERITO", "PRESENTE-PROGRESIVO", "Problema Tres", "Es el "
+                     "trecero problema. In this one, you have to answer high intensity questions on verbs and "
+                     "vocabulary", "VOCABULARIO_UNO", None)
 
-THE_MAZE = ("NULL_PATH", "IMPORT_GOD_PATH", "__INIT__PATH", "BAD_JOKE_PATH", "The Maze", "Welcome to the Heisenwiebe "
-            "Maze. This maze has each path leading to a different aspect of the Heisenwiebe. Reach the center to win",
-            "SPAAAACE_PATH", "LUCKY_7'S_PATH")
+THE_MAZE = Room("NULL_PATH", "IMPORT_GOD_PATH", "__INIT__PATH", "BAD_JOKE_PATH", "The Maze", "Welcome to the "
+                "Heisenwiebe Maze. This maze has each path leading to a different aspect of the Heisenwiebe. Reach the "
+                "center to win", "SPAAAACE_PATH", "LUCKY_7'S_PATH")
 
-THE_LONG_WINDING_HALLWAY = ("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "THE_INTEGRAL_OF_THE_SIN_OF_THE_COSINE_OF_THE"
-                            "_DERIVATIVE_OF_INTEGRAL_OF_THE_LOG_OF_X_SQUARED_CUBED_SQUARED", "The Long Winding Hallway",
-                            "It's... just... It'sj really difficult. Complete all 4 to win","CEILING","FLOOR")
+THE_LONG_WINDING_HALLWAY = Room("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "THE_INTEGRAL_OF_THE_SIN_OF_THE_COSINE_OF_"
+                                "THE_DERIVATIVE_OF_INTEGRAL_OF_THE_LOG_OF_X_SQUARED_CUBED_SQUARED", "The Long Winding "
+                                "Hallway", "It's... just... It'sj really difficult. Complete all 4 to win", "CEILING",
+                                "FLOOR")
 
 print(GYM_PORTAL. description)
 print(R19A.north)
 
+sword = Sword("Sword", "Quick", 15, 20, 10)
+canoe = Sword("Canoe Sword", "SLOW", 90, 150, 42)
+weibe_armor = BodyArmor("Armor of the gods", "GOOD", 18, 10000000000000000000000000000)
+Laser_pointer_1 = LaserPointer(5)
+_007_Laser = TwoPettawattLaser(7000)
+Cardstock_Armor = Cardstock(10)
+Modular_Tactical_Vest_1 = ModularTacticalVest()
+Slow_Sword = Sword("Slow Sword", "SLOW", 10, 20, 5)
+
+
+orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10))
+orc2 = Character("Wiebe", 1000, canoe, weibe_armor)
+orc.attack(orc2)
+orc2.attack(orc)
+TROLL1 = Character("Dave", 999999999999999999999, Urumi, Modular_Tactical_Vest_1)
+TROLL2 = Character("Bob", 10, Slow_Sword, weibe_armor)
+TROLL3 = Character("Jaxx", 80, Slow_Sword, weibe_armor)
+TROLL4 = Character("Yosroel", 50, Slow_Sword, Cardstock_Armor)
+TROLL5 = Character
 
 player = Player(R19A)
 
@@ -198,6 +526,11 @@ while playing:
     print(player.current_location.name)  # player- indicates the instantiated object. current_location- refers to the
     # variable. .name = refers to the attribute of the location
     print(player.current_location.description)
+    if len(player.current_location.items) > 0:
+        print("There are the following items in the room:")
+        print()
+        for num, item in enumerate(player.current_location.items):
+            print(str(num + 1) + ": " + item.name)
     command = input(">_")
     if command.lower() in ["q", "quit", 'exit']:
         playing = False

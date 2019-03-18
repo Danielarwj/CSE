@@ -23,7 +23,7 @@
     <SUITE FILE_PATH="coverage/notes$Hangman.coverage" NAME="Hangman Coverage Results" MODIFIED="1550079537543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Daniel_Remington__Hard_Challenges.coverage" NAME="Daniel Remington- Hard Challenges Coverage Results" MODIFIED="1544029802874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Daniel_Remington_Challenges.coverage" NAME="Daniel Remington-Challenges Coverage Results" MODIFIED="1543858167195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/notes$Daniel_Remington__Object_Dictionary_World_Map.coverage" NAME="Daniel Remington- Object Dictionary World Map Coverage Results" MODIFIED="1551473450978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/notes$Daniel_Remington__Object_Dictionary_World_Map.coverage" NAME="Daniel Remington- Object Dictionary World Map Coverage Results" MODIFIED="1552925977251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Fix_It.coverage" NAME="Fix_It Coverage Results" MODIFIED="1543611618888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Daniel_Remington_Guess_Game1.coverage" NAME="Daniel Remington-Guess Game1 Coverage Results" MODIFIED="1542389618941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Daniel_Remington__Medium_Challenges.coverage" NAME="Daniel Remington- Medium Challenges Coverage Results" MODIFIED="1544030865729" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -48,7 +48,7 @@
     <session id="-1396482444">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="23" />
+          <entry key="project.closed" value="24" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.40" value="1" />
           <entry key="project.open.time.41" value="1" />
@@ -58,14 +58,14 @@
           <entry key="project.open.time.54" value="3" />
           <entry key="project.open.time.56" value="3" />
           <entry key="project.open.time.59" value="1" />
-          <entry key="project.open.time.60" value="2" />
+          <entry key="project.open.time.60" value="3" />
           <entry key="project.open.time.64" value="1" />
           <entry key="project.open.time.65" value="1" />
           <entry key="project.open.time.66" value="2" />
           <entry key="project.open.time.67" value="3" />
           <entry key="project.open.time.86" value="1" />
           <entry key="project.open.time.88" value="1" />
-          <entry key="project.opened" value="24" />
+          <entry key="project.opened" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -81,13 +81,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="11" />
-          <entry key="py" value="18647" />
+          <entry key="py" value="19327" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="11" />
-          <entry key="Python" value="18647" />
+          <entry key="Python" value="19327" />
         </counts>
       </usages-collector>
     </session>
@@ -112,24 +112,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Daniel Remington- Object Dictionary World Map.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2754">
-              <caret line="162" column="43" selection-start-line="162" selection-start-column="43" selection-end-line="162" selection-end-column="43" />
+            <state relative-caret-position="153">
+              <caret line="515" column="13" selection-start-line="515" selection-start-column="13" selection-end-line="515" selection-end-column="13" />
               <folding>
-                <marker date="1551894360737" expanded="true" signature="870:875" ph="..." />
-                <marker date="1551894360737" expanded="true" signature="1315:1324" ph="..." />
+                <marker date="1552927356950" expanded="true" signature="1082:1087" ph="..." />
+                <marker date="1552927356950" expanded="true" signature="11179:11188" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Daniel Remington- Inheritance.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="313" column="33" selection-start-line="313" selection-start-column="33" selection-end-line="313" selection-end-column="33" />
+            <state relative-caret-position="39">
+              <caret line="307" selection-start-line="307" selection-end-line="320" />
               <folding>
                 <marker date="1552671340671" expanded="true" signature="19:24" ph="..." />
                 <marker date="1552671340671" expanded="true" signature="728:733" ph="..." />
@@ -227,9 +227,9 @@
         <option value="$PROJECT_DIR$/Daniel Remington- Dictionary World Map.py" />
         <option value="$PROJECT_DIR$/Inheritance.py" />
         <option value="$PROJECT_DIR$/Daniel Remington- Item.py" />
-        <option value="$PROJECT_DIR$/Daniel Remington- Object Dictionary World Map.py" />
         <option value="$PROJECT_DIR$/character.py" />
         <option value="$PROJECT_DIR$/Daniel Remington- Inheritance.py" />
+        <option value="$PROJECT_DIR$/Daniel Remington- Object Dictionary World Map.py" />
       </list>
     </option>
   </component>
@@ -283,7 +283,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Daniel Remington- Inheritance">
+  <component name="RunManager" selected="Python.Daniel Remington- Object Dictionary World Map">
     <configuration name="Daniel Remington- Inheritance" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="notes" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -403,9 +403,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Daniel Remington- Object Dictionary World Map" />
         <item itemvalue="Python.Daniel Remington- Inheritance" />
         <item itemvalue="Python.Daniel Remington- Lucky 7's" />
-        <item itemvalue="Python.Daniel Remington- Object Dictionary World Map" />
         <item itemvalue="Python.Daniel Remington- Object-(Planet)" />
         <item itemvalue="Python.Object Notes" />
       </list>
@@ -438,7 +438,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.32786885" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.32786885" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -586,17 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Daniel Remington- Object Dictionary World Map.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2754">
-          <caret line="162" column="43" selection-start-line="162" selection-start-column="43" selection-end-line="162" selection-end-column="43" />
-          <folding>
-            <marker date="1551894360737" expanded="true" signature="870:875" ph="..." />
-            <marker date="1551894360737" expanded="true" signature="1315:1324" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -627,8 +616,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Daniel Remington- Inheritance.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="313" column="33" selection-start-line="313" selection-start-column="33" selection-end-line="313" selection-end-column="33" />
+        <state relative-caret-position="39">
+          <caret line="307" selection-start-line="307" selection-end-line="320" />
           <folding>
             <marker date="1552671340671" expanded="true" signature="19:24" ph="..." />
             <marker date="1552671340671" expanded="true" signature="728:733" ph="..." />
@@ -642,6 +631,17 @@
             <marker date="1552671340671" expanded="true" signature="7588:8150" ph="..." />
             <marker date="1552671340671" expanded="true" signature="8874:9045" ph="..." />
             <marker date="1552671340671" expanded="true" signature="8999:9000" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Daniel Remington- Object Dictionary World Map.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="515" column="13" selection-start-line="515" selection-start-column="13" selection-end-line="515" selection-end-column="13" />
+          <folding>
+            <marker date="1552927356950" expanded="true" signature="1082:1087" ph="..." />
+            <marker date="1552927356950" expanded="true" signature="11179:11188" ph="..." />
           </folding>
         </state>
       </provider>
