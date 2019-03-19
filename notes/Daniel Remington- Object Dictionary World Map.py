@@ -1,4 +1,5 @@
 # Option 2- Set all at once, modify controller
+# ALL CLASSES DONE
 class Room(object):
     def __init__(self, north=None, south=None, east=None, west=None, name=None, description=None, up=None, down=None,
                  characters=None, items=None):
