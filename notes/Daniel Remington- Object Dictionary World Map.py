@@ -117,6 +117,27 @@ class Weapon(Item):
         self.classification = classification
 
 
+class Spear(Weapon):
+    def __init__(self, size, name, health, classification):
+        super(Spear, self).__init__(size, name, health, classification)
+        self.health = health
+        self.size = size
+        self.name = name
+        self.classification = classification
+
+
+class StoneTiconderoga(Spear):
+    def __init__(self):
+        super(StoneTiconderoga, self).__init__(18, "Stone Ticonderoga", 80, Spear)
+        self.damage_output = 90
+
+
+class HolyLance(Spear):
+    def __init__(self):
+        super(HolyLance, self).__init__(90, "HOLY LANCE", 9999999999999999999999, Spear)
+        self.damage_output = 9999999999999999999999999
+
+
 class Sword(Weapon):
     def __init__(self, name, agility, weight, size, damage_output, health=100):
         super(Sword, self).__init__(size, name, health, "Sword")
@@ -152,6 +173,30 @@ class SchoolMaterials(Item):
         super(SchoolMaterials, self).__init__()
         self.name = name
         self.health = health
+
+
+class ClassMaterials(SchoolMaterials):
+    def __init__(self, name, classification):
+        super(ClassMaterials, self).__init__(name, health=None)
+        self.name = name
+        self.classification = classification
+
+
+class GoldenTiconderogaPencils(ClassMaterials):
+    def __init__(self):
+        super(GoldenTiconderogaPencils, self).__init__("Golden Ticonderoga Pencils! You've obtained Ticonderoga "
+                                                       "Pencils", ClassMaterials)
+
+
+class MSITitan(ClassMaterials):
+    def __init__(self):
+        super(MSITitan, self).__init__("MSI Titan! You've obtained the MSI Titan", ClassMaterials)
+
+
+class GrizzlyBearProtection(ClassMaterials):
+    def __init__(self):
+        super(GrizzlyBearProtection, self).__init__("Grizzly Bear Protection! You've obtained the Grizzly Bear "
+                                                    "Protection!", ClassMaterials)
 
 
 class Food(SchoolMaterials):
@@ -253,6 +298,11 @@ class VervainHummingbirdEggs(Eggs):
     def __init__(self):
         super(VervainHummingbirdEggs, self).__init__("GREAT", 0.3, "GREAT", "RAW", "LIQUID", "Vervain Hummingbird Eggs",
                                                      9999999999999)
+
+
+class TreeOfLifeEggs(Eggs):
+    def __init__(self):
+        super(TreeOfLifeEggs, self).__init__("BAD", 10, "BAD", "RAW", 'LIQUID', "Tree of Life Eggs", 10, )
 
 
 class BodyArmor(Armor):
