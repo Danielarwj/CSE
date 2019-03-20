@@ -374,12 +374,13 @@ class LaserPointer(Lasers):
 
 
 class Character(object):
-    def __init__(self, name, health: int, weapon, armor):
+    def __init__(self, name, health: int, weapon, armor, size):
 
         self.name = name
         self.health = health
         self.weapon = weapon
         self.armor = armor
+        self.size = size
 
     def take_damage(self, damage: int):
         if self.armor.health >= damage:
@@ -554,19 +555,60 @@ weibe_armor = BodyArmor("Armor of the gods", "GOOD", 18, 10000000000000000000000
 Laser_pointer_1 = LaserPointer(5)
 _007_Laser = TwoPettawattLaser(7000)
 Cardstock_Armor = Cardstock(10)
-Modular_Tactical_Vest_1 = ModularTacticalVest()
+Modular_Tactical_Vest_1 = ModularTacticalVest(80, 15)
 Slow_Sword = Sword("Slow Sword", "SLOW", 10, 20, 5)
-
-
-orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10))
-orc2 = Character("Wiebe", 1000, canoe, weibe_armor)
+Vervain = VervainHummingbirdEggs()
+Boiled = BoiledEggs(15)
+Scrambled = ScrambledEggs(50)
+Chestplate = BodyArmor("Chestplate", 15, 20, 10)
+Aegon = Aegon()
+Gold = Gold()
+Golden_Ticonderoga_Pencils = GoldenTiconderogaPencils()
+StoneTiconderoga = StoneTiconderoga()
+Laser_Pointer_2 = LaserPointer(18)
+Urumi = Urumi()
+Seven_Branched_Sword_1 = SevenBranchedSword()
+Vegetarian_Chili = VegetarianChili()
+Meat_Lovers_Chili = MeatLoversChili()
+Tree_Of_Life = TreeOfLifeEggs()
+Canned_Tuna_Pizza = CannedTunaPizza()
+Salad_Pizza = SaladPizza()
+Decent_Pizza = DecentPizza()
+MSI_Titan = MSITitan()
+Grizzly_Bear_Protection= GrizzlyBearProtection()
+Noodle = Noodle()
+Pencil = Pencil()
+Holy_Lance = HolyLance()
+Leaf = Leaf()
+orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 10)
+orc2 = Character("Wiebe", 1000, canoe, weibe_armor, 10)
 orc.attack(orc2)
 orc2.attack(orc)
-TROLL1 = Character("Dave", 999999999999999999999, Urumi, Modular_Tactical_Vest_1)
-TROLL2 = Character("Bob", 10, Slow_Sword, weibe_armor)
-TROLL3 = Character("Jaxx", 80, Slow_Sword, weibe_armor)
-TROLL4 = Character("Yosroel", 50, Slow_Sword, Cardstock_Armor)
-TROLL5 = Character
+TROLL1 = Character("Dave", 999999999999999999999, Urumi, Modular_Tactical_Vest_1, 20)
+TROLL2 = Character("Bob", 10, Slow_Sword, weibe_armor, 20)
+TROLL3 = Character("Jaxx", 80, Slow_Sword, weibe_armor, 20)
+TROLL4 = Character("Yosroel", 50, Slow_Sword, Cardstock_Armor, 20)
+TROLL5 = Character("Arnold", 10, Slow_Sword, Cardstock_Armor, 20)
+"""
+TROLL6
+TROLL7
+TROLL8
+TROLL9
+TROLL10
+TROLL11
+TROLL12
+TROLL13
+TROLL14
+TROLL15
+TROLL16
+TROLL17
+TROLL18
+TROLL19
+TROLL20
+TROLL21
+TROLL22
+"""
+
 
 player = Player(R19A)
 
