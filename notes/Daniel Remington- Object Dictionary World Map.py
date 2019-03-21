@@ -394,6 +394,27 @@ class Character(object):
         target.take_damage(self.weapon.health)
 
 
+class Boss(Character):
+    def __init__(self, name, health: int, weapon, armor, size, BOSS_POWER):
+        super(Boss, self).__init__(name, health, weapon, armor, size)
+        self.name = name
+        self.health = health
+        self.weapon = weapon
+        self.armor = armor
+        self.size = size
+        self.BOSS_POWER = BOSS_POWER
+
+    def attack(self, target):
+        print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.health))
+        target.take_damage(self.weapon.health)
+
+    def take_damage(self, damage: int):
+        if self.BOSS_POWER >= damage:
+            print("Because %s is a BOSS, he takes no damage")
+        else:
+            self.health -= damage - self.armor.health
+            print("%s has %d health left! %s is losing his BOSSINESS")
+
 class Hobo(object):
     def __init__(self, personality, cleanliness, clothing, appearance, items):
             self.items = items
@@ -552,6 +573,7 @@ print(R19A.north)
 sword = Sword("Sword", "Quick", 15, 20, 10)
 canoe = Sword("Canoe Sword", "SLOW", 90, 150, 42)
 weibe_armor = BodyArmor("Armor of the gods", "GOOD", 18, 10000000000000000000000000000)
+Traaaaaaaaaaaaash_Armor = BodyArmor("Traaaaaaaaaaash Armor", 99999999999999999, 20, 999999999999, 99999999)
 Laser_pointer_1 = LaserPointer(5)
 _007_Laser = TwoPettawattLaser(7000)
 Cardstock_Armor = Cardstock(10)
@@ -582,6 +604,7 @@ Holy_Lance = HolyLance()
 Leaf = Leaf()
 orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 10)
 orc2 = Character("Wiebe", 1000, canoe, weibe_armor, 10)
+Armor_Of_The_Gods = BodyArmor("Armor of the Gods", 999999999, 18, 99999999, 99999999999)
 orc.attack(orc2)
 orc2.attack(orc)
 TROLL1 = Character("Dave", 999999999999999999999, Urumi, Modular_Tactical_Vest_1, 20)
@@ -589,25 +612,33 @@ TROLL2 = Character("Bob", 10, Slow_Sword, weibe_armor, 20)
 TROLL3 = Character("Jaxx", 80, Slow_Sword, weibe_armor, 20)
 TROLL4 = Character("Yosroel", 50, Slow_Sword, Cardstock_Armor, 20)
 TROLL5 = Character("Arnold", 10, Slow_Sword, Cardstock_Armor, 20)
-"""
-TROLL6
-TROLL7
-TROLL8
-TROLL9
-TROLL10
-TROLL11
-TROLL12
-TROLL13
-TROLL14
-TROLL15
-TROLL16
-TROLL17
-TROLL18
-TROLL19
-TROLL20
-TROLL21
-TROLL22
-"""
+TROLL6 = Character("Peter", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL7 = Character("Justin", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL8 = Character("Oliver", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL9 = Character("DANNY DEVITO", 9999999, Urumi, Armor_Of_The_Gods, 20)
+TROLL10 = Character("Mason", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL11 = Character("Alex", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL12 = Character("Henry", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL13 = Character("Wyatt", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL14 = Character("Owen", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL15 = Character("Sebastian", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL16 = Character("Levi", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL17 = Character("Joshua", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL18 = Character("Issac", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL19 = Character("Aaron", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL20 = Character("Thomas", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL21 = Character("Caleb", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL22 = Character("DANNY DEVITO- REDUX", 999999999999999999999, Slow_Sword, Traaaaaaaaaaaaash_Armor, 20)
+
+orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 20)
+orc2 = Character("Wiebe", 1000, canoe, weibe_armor, 20)
+orc.attack(orc2)
+orc2.attack(orc)
+
+TROLL20.attack(TROLL22)
+
+Heisenwiebe = Boss("HEISENWIEBE", 250,Urumi, Modular_Tactical_Vest_1, 250, 100)
+
 
 
 player = Player(R19A)

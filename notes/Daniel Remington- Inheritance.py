@@ -314,7 +314,3 @@ Cardstock_Armor = Cardstock(10)
 Modular_Tactical_Vest_1 = ModularTacticalVest()
 
 
-orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10))
-orc2 = Character("Wiebe", 1000, canoe, weibe_armor)
-orc.attack(orc2)
-orc2.attack(orc)
