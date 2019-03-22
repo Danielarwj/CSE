@@ -1,5 +1,7 @@
 # Option 2- Set all at once, modify controller
 # ALL CLASSES DONE
+
+
 class Room(object):
     def __init__(self, north=None, south=None, east=None, west=None, name=None, description=None, up=None, down=None,
                  characters=None, items=None):
@@ -602,6 +604,7 @@ Noodle = Noodle()
 Pencil = Pencil()
 Holy_Lance = HolyLance()
 Leaf = Leaf()
+Math_Sword = Sword("Math Sword", "QUICK", 20, 10, 80)
 orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 10)
 orc2 = Character("Wiebe", 1000, canoe, weibe_armor, 10)
 Armor_Of_The_Gods = BodyArmor("Armor of the Gods", 999999999, 18, 99999999, 99999999999)
@@ -637,9 +640,9 @@ orc2.attack(orc)
 
 TROLL20.attack(TROLL22)
 
-Heisenwiebe = Boss("HEISENWIEBE", 250,Urumi, Modular_Tactical_Vest_1, 250, 100)
-
-
+Heisenwiebe = Boss("HEISENWIEBE", 250, Urumi, Modular_Tactical_Vest_1, 250, 100)
+Papa_Pearson = Boss("Papa Pearson", 200, Math_Sword, Chestplate, 250, 100)
+HOBO = Boss("Hobo.... It's a hobo. Not much more to say", 80, Slow_Sword, Cardstock, 80, 50)
 
 player = Player(R19A)
 
@@ -660,6 +663,7 @@ while playing:
         playing = False
         print("GAME OVER.")
     elif command.lower() in directions:
+
         try:
             next_room = player.find_next_room(command)
             player.move(next_room)
