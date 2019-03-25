@@ -442,7 +442,7 @@ R19A = Room("PARKING_LOT", "QUAD", "DRAMA_BUILDING", "SCIENCE_BUILDING", "R19A",
             [Cardstock(10) for i in range(5)])
 
 PARKING_LOT = Room(None, "R19A", "HOBO_ATTACKS", "GYM_PORTAL", "Parking Lot", "There are a couple cars parked here. ",
-                   None, "FLOOR")
+                   None, "FLOOR", ['TROLL1'], ["Noodle", ])
 
 HOBO_ATTACKS = Room(None, "HOBO_WORLD", None, None, "Hobo Attacks you", "There is a homeless person here. He does not"
                     "like you. He hits you! You also can't seem to go back", "CEILING", "FLOOR")
@@ -561,8 +561,9 @@ PROBLEMA_TRES = Room("LOS_PANQUEQUES", "EL_FUTURO", "EL_PRETERITO", "PRESENTE-PR
                      "vocabulary", "VOCABULARIO_UNO", None)
 
 THE_MAZE = Room("NULL_PATH", "IMPORT_GOD_PATH", "__INIT__PATH", "BAD_JOKE_PATH", "The Maze", "Welcome to the "
-                "Heisenwiebe Maze. This maze has each path leading to a different aspect of the Heisenwiebe. Reach the "
-                "center to win", "SPAAAACE_PATH", "LUCKY_7'S_PATH")
+                "Heisenwiebe Maze. This maze has each path leading to a different aspect of the Heisenwiebe. Complete "
+                "the path you go down to win. At the end of each path, you will fight the HEISENWIEBE himself",
+                "SPAAAACE_PATH", "LUCKY_7'S_PATH")
 
 THE_LONG_WINDING_HALLWAY = Room("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "THE_INTEGRAL_OF_THE_SIN_OF_THE_COSINE_OF_"
                                 "THE_DERIVATIVE_OF_INTEGRAL_OF_THE_LOG_OF_X_SQUARED_CUBED_SQUARED", "The Long Winding "

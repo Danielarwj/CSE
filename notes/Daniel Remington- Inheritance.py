@@ -89,22 +89,22 @@ class Sword(Weapon):
 
 class SevenBranchedSword(Sword):
     def __init__(self):
-        super(SevenBranchedSword, self).__init__("Seven Branched Sword", "Quick", 150, 25, health=100, damage_output=30)
+        super(SevenBranchedSword, self).__init__("Seven Branched Sword", "Quick", 150, 25, 100, 30)
 
 
 class Urumi(Sword):
     def __init__(self):
-        super(Urumi, self).__init__("The Urumi", "Quick", 400, 35, health=999999999999999999999, damage_output=99999999)
+        super(Urumi, self).__init__("The Urumi", "Quick", 400, 35, 999999999999999999999, 99999999)
 
 
 class Pencil(Sword):
     def __init__(self):
-        super(Pencil, self).__init__("A Pencil", "Slow", 0.2, 12, health=2, damage_output=3)
+        super(Pencil, self).__init__("A Pencil", "Slow", 0.2, 12, 2, 3)
 
 
 class Noodle(Sword):
     def __init__(self):
-        super(Noodle, self).__init__("A Noodle", "Immobile", "0.001", 5, health=1, damage_output=1)
+        super(Noodle, self).__init__("A Noodle", "Immobile", "0.001", 5, 1, 1)
 
 
 class SchoolMaterials(Item):
@@ -152,8 +152,8 @@ class VegetarianChili(Chili):
 
 
 class Pizza(CrappyLunch):
-    def __init__(self, restoration, size, edibility, color):
-        super(Pizza, self).__init__("Pizza", restoration, size, edibility)
+    def __init__(self, restoration, size, edibility, color, health):
+        super(Pizza, self).__init__("Pizza", restoration, size, edibility, health)
         self.color = color
         self.size = size
         self.health_restoration = restoration
@@ -162,22 +162,22 @@ class Pizza(CrappyLunch):
 
 class SaladPizza(Pizza):
     def __init__(self):
-        super(SaladPizza, self).__init__(10, 15, "Tolerable", "Green")
+        super(SaladPizza, self).__init__(10, 15, "Tolerable", "Green", 10)
 
 
 class CannedTunaPizza(Pizza):
     def __init__(self):
-        super(CannedTunaPizza, self).__init__(1, 25, "Disgusting", "Brown")
+        super(CannedTunaPizza, self).__init__(1, 25, "Disgusting", "Brown", 10)
 
 
 class DecentPizza(Pizza):
     def __init__(self):
-        super(DecentPizza, self).__init__(20, 10, "Good", "Normal")
+        super(DecentPizza, self).__init__(20, 10, "Good", "Normal", 10)
 
 
 class TeacherSustenance(Food):
-    def __init__(self, name, taste, size, quality, restoration):
-        super(TeacherSustenance, self).__init__(name, taste, size, quality, restoration)
+    def __init__(self, name, taste, size, quality, restoration, health):
+        super(TeacherSustenance, self).__init__(name, taste, size, quality, health, restoration)
         self.name = name
         self.taste = taste
         self.size = size
@@ -186,8 +186,8 @@ class TeacherSustenance(Food):
 
 
 class Eggs(TeacherSustenance):
-    def __init__(self, taste, size, quality, state, texture, name, restoration=100):
-        super(Eggs, self).__init__("EGGS", taste, size, quality, restoration)
+    def __init__(self, taste, size, quality, state, health, texture, name, restoration=100):
+        super(Eggs, self).__init__("EGGS", taste, size, quality, restoration, health)
         self.taste = taste
         self.size = size
         self.quality = quality
@@ -199,23 +199,18 @@ class Eggs(TeacherSustenance):
 
 class BoiledEggs(Eggs):
     def __init__(self):
-        super(BoiledEggs, self).__init__("GOOD", 10, "GOOD", "BOILED", "MUSHY", "Boiled Eggs")
+        super(BoiledEggs, self).__init__("GOOD", 10, "GOOD", "BOILED", "MUSHY", "Boiled Eggs", 10)
 
 
 class ScrambledEggs(Eggs):
     def __init__(self):
-        super(ScrambledEggs, self).__init__("GREAT", 12, "GOOD", "SCRAMBLED", "SOFT", "Scrambled Eggs")
+        super(ScrambledEggs, self).__init__("GREAT", 12, "GOOD", "SCRAMBLED", "SOFT", "Scrambled Eggs", 10)
 
 
 class VervainHummingbirdEggs(Eggs):
     def __init__(self):
         super(VervainHummingbirdEggs, self).__init__("GREAT", 0.3, "GREAT", "RAW", "LIQUID", "Vervain Hummingbird Eggs",
                                                      9999999999999)
-
-
-class Pastries(TeacherSustenance):
-    def __init__(self):
-        super(Pastries, self).__init__()
 
 
 class BodyArmor(Armor):
@@ -311,6 +306,3 @@ weibe_armor = BodyArmor("Armor of the gods", "GOOD", 18, 10000000000000000000000
 Laser_pointer_1 = LaserPointer(5)
 _007_Laser = TwoPettawattLaser(7000)
 Cardstock_Armor = Cardstock(10)
-Modular_Tactical_Vest_1 = ModularTacticalVest()
-
-
