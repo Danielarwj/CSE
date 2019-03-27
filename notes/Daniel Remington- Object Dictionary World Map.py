@@ -397,14 +397,14 @@ class Character(object):
 
 
 class Boss(Character):
-    def __init__(self, name, health: int, weapon, armor, size, BOSS_POWER):
+    def __init__(self, name, health: int, weapon, armor, size, boss_power):
         super(Boss, self).__init__(name, health, weapon, armor, size)
         self.name = name
         self.health = health
         self.weapon = weapon
         self.armor = armor
         self.size = size
-        self.BOSS_POWER = BOSS_POWER
+        self.BOSS_POWER = boss_power
 
     def attack(self, target):
         print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.health))
@@ -416,6 +416,28 @@ class Boss(Character):
         else:
             self.health -= damage - self.armor.health
             print("%s has %d health left! %s is losing his BOSSINESS")
+
+
+class Albert(Character):
+    def __init__(self, name, health, weapon, armor, size):
+        super(Albert, self).__init__(name, health, weapon, armor, size)
+        self.name = name
+        self.health = health
+        self.weapon = weapon
+        self.armor = armor
+        self.size = size
+
+    def take_damage(self, damage: int):
+        if self.armor.health >= damage:
+            print("No damage is done because of some AMAZING armor")
+        else:
+            self.health -= damage - self.armor.health
+        print("%s has %d health left" % (self.name, self.health))
+
+    def attack(self, target):
+        print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.health))
+        target.take_damage(self.weapon.health)
+
 
 class Hobo(object):
     def __init__(self, personality, cleanliness, clothing, appearance, items):
@@ -436,22 +458,124 @@ Krishang = Hobo("NICE", "CLEAN", "PLAID_SHIRT", "Scruffy yet, well kept", ["Swor
 # Presets-(like name=None)- must be applied to all attributes within the constructor
 
 
+sword = Sword("Sword", "Quick", 15, 20, 10)
+canoe = Sword("Canoe Sword", "SLOW", 90, 150, 42)
+weibe_armor = BodyArmor("Armor of the gods", "GOOD", 18, 10000000000000000000000000000)
+Traaaaaaaaaaaaash_Armor = BodyArmor("Traaaaaaaaaaash Armor", 99999999999999999, 20, 999999999999, 99999999)
+Laser_pointer_1 = LaserPointer(5)
+_007_Laser = TwoPettawattLaser(7000)
+Laser_Pointer_3 = LaserPointer(10)
+Laser_Pointer_4 = LaserPointer(10)
+Cardstock_Armor = Cardstock(10)
+Modular_Tactical_Vest_1 = ModularTacticalVest(80, 15)
+Slow_Sword = Sword("Slow Sword", "SLOW", 10, 20, 5)
+Vervain = VervainHummingbirdEggs()
+Boiled = BoiledEggs(15)
+Scrambled = ScrambledEggs(50)
+Chestplate = BodyArmor("Chestplate", 15, 20, 10)
+Aegon = Aegon()
+Gold = Gold()
+Golden_Ticonderoga_Pencils = GoldenTiconderogaPencils()
+StoneTiconderoga = StoneTiconderoga()
+Laser_Pointer_2 = LaserPointer(18)
+Urumi = Urumi()
+Seven_Branched_Sword_1 = SevenBranchedSword()
+Vegetarian_Chili = VegetarianChili()
+Meat_Lovers_Chili = MeatLoversChili()
+Pencil1 = Pencil()
+Pencil2 = Pencil()
+Pencil3 = Pencil()
+Pencil4 = Pencil()
+Pencil5 = Pencil()
+Pencil7 = Pencil()
+Pencil8 = Pencil()
+Pencil9 = Pencil()
+Pencil10 = Pencil()
+Tree_Of_Life = TreeOfLifeEggs()
+Canned_Tuna_Pizza = CannedTunaPizza()
+Salad_Pizza = SaladPizza()
+Decent_Pizza = DecentPizza()
+MSI_Titan = MSITitan()
+MSI_Titan2 = MSITitan()
+MSI_Titan3 = MSITitan()
+Grizzly_Bear_Protection = GrizzlyBearProtection()
+Noodle = Noodle()
+Pencil = Pencil()
+Noodle2 = Noodle
+Noodle3 = Noodle
+Noodle4 = Noodle
+Noodle5 = Noodle
+Noodle7 = Noodle
+Noodle8 = Noodle
+Noodle9 = Noodle
+Noodle10 = Noodle
+Holy_Lance = HolyLance()
+Leaf = Leaf()
+Albert2 = Albert("IT'S ALBERT""...."".... 2!", 900, Urumi, Modular_Tactical_Vest_1, 800)
+Math_Sword = Sword("Math Sword", "QUICK", 20, 10, 80)
+orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 10)
+orc2 = Character("Wiebe", 1000, canoe, weibe_armor, 10)
+Armor_Of_The_Gods = BodyArmor("Armor of the Gods", 999999999, 18, 99999999, 99999999999)
+orc.attack(orc2)
+orc2.attack(orc)
+Albert = Albert("IT'S ALBERT!", 50, Noodle10, Cardstock_Armor, 90)
+TROLL1 = Character("Dave", 999999999999999999999, Urumi, Modular_Tactical_Vest_1, 20)
+TROLL2 = Character("Bob", 10, Slow_Sword, weibe_armor, 20)
+TROLL3 = Character("Jaxx", 80, Slow_Sword, weibe_armor, 20)
+TROLL4 = Character("Yosroel", 50, Slow_Sword, Cardstock_Armor, 20)
+TROLL5 = Character("Arnold", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL6 = Character("Peter", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL7 = Character("Justin", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL8 = Character("Oliver", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL9 = Character("DANNY DEVITO", 9999999, Urumi, Armor_Of_The_Gods, 20)
+TROLL10 = Character("Mason", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL11 = Character("Alex", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL12 = Character("Henry", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL13 = Character("Wyatt", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL14 = Character("Owen", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL15 = Character("Sebastian", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL16 = Character("Levi", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL17 = Character("Joshua", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL18 = Character("Issac", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL19 = Character("Aaron", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL20 = Character("Thomas", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL21 = Character("Caleb", 10, Slow_Sword, Cardstock_Armor, 20)
+TROLL22 = Character("DANNY DEVITO- REDUX", 999999999999999999999, Slow_Sword, Traaaaaaaaaaaaash_Armor, 20)
+Noodle1 = Noodle
+Hobo1 = Character("Hobo1", 10, Slow_Sword, Cardstock_Armor, 20)
+
+orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 20)
+orc2 = Character("Wiebe", 1000, canoe, weibe_armor, 20)
+orc.attack(orc2)
+orc2.attack(orc)
+
+TROLL20.attack(TROLL22)
+
+Heisenwiebe = Boss("HEISENWIEBE", 250, Urumi, Modular_Tactical_Vest_1, 250, 100)
+Papa_Pearson = Boss("Papa Pearson", 200, Math_Sword, Chestplate, 250, 100)
+HOBO = Boss("Hobo.... It's a hobo. Not much more to say", 80, Slow_Sword, Cardstock, 80, 50)
+
 R19A = Room("PARKING_LOT", "QUAD", "DRAMA_BUILDING", "SCIENCE_BUILDING", "R19A",
             "This is the classroom you are in right now. There are two doors on the north wall. There are two doors on"
             " the north wall. There is a big mailbox in the sky for some reason", "MAILBOX", None, None,
-            [Cardstock(10) for i in range(5)])
+            [Cardstock(10), Noodle1, Tree_Of_Life])
+
+print(Room(R19A.items))
 
 PARKING_LOT = Room(None, "R19A", "HOBO_ATTACKS", "GYM_PORTAL", "Parking Lot", "There are a couple cars parked here. ",
-                   None, "FLOOR", ['TROLL1'], ["Noodle", ])
+                   None, "FLOOR", [TROLL1], None)
 
 HOBO_ATTACKS = Room(None, "HOBO_WORLD", None, None, "Hobo Attacks you", "There is a homeless person here. He does not"
-                    "like you. He hits you! You also can't seem to go back", "CEILING", "FLOOR")
+                    "like you. He hits you! You also can't seem to go back", "CEILING", "FLOOR", [Hobo1],
+                    [Golden_Ticonderoga_Pencils])
 
 GYM_PORTAL = Room(None, None, None, None, "Gym Portal", "This is the gym. It is dark and extremely musty. "
-                  "I do not like it", "THE_REALM_OF_HEISENWEIBE", "THE_TRENCHES_OF_PAPA_PEARSON")
+                  "I do not like it", "THE_REALM_OF_HEISENWEIBE", "THE_TRENCHES_OF_PAPA_PEARSON", [TROLL3, TROLL4],
+                  [Modular_Tactical_Vest_1, Urumi])
 
 SCIENCE_BUILDING = Room("POOL", "W_BUILDING", "HOBO_ATTACKS_YOU", "QUAD", "The Science Building", "This is the science "
-                        "building. I suppose you know what they teach in this, given the name.", "CEILING", "FLOOR")
+                        "building. I suppose you know what they teach in this, given the name.", "CEILING", "FLOOR",
+                        [])
 
 QUAD = Room(None, None, "R_BUILDINGS", "W_BUILDINGS", "The Quad", "The main area. There is an ampitheatre here. There "
             "is also a couple of lamp posts.You can only go East and West, for some reason. ", "CEILING", "FLOOR")
@@ -570,86 +694,12 @@ THE_LONG_WINDING_HALLWAY = Room("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "TH
                                 "Hallway", "It's... just... It'sj really difficult. Complete all 4 to win", "CEILING",
                                 "FLOOR")
 
-print(GYM_PORTAL. description)
-print(R19A.north)
-
-sword = Sword("Sword", "Quick", 15, 20, 10)
-canoe = Sword("Canoe Sword", "SLOW", 90, 150, 42)
-weibe_armor = BodyArmor("Armor of the gods", "GOOD", 18, 10000000000000000000000000000)
-Traaaaaaaaaaaaash_Armor = BodyArmor("Traaaaaaaaaaash Armor", 99999999999999999, 20, 999999999999, 99999999)
-Laser_pointer_1 = LaserPointer(5)
-_007_Laser = TwoPettawattLaser(7000)
-Cardstock_Armor = Cardstock(10)
-Modular_Tactical_Vest_1 = ModularTacticalVest(80, 15)
-Slow_Sword = Sword("Slow Sword", "SLOW", 10, 20, 5)
-Vervain = VervainHummingbirdEggs()
-Boiled = BoiledEggs(15)
-Scrambled = ScrambledEggs(50)
-Chestplate = BodyArmor("Chestplate", 15, 20, 10)
-Aegon = Aegon()
-Gold = Gold()
-Golden_Ticonderoga_Pencils = GoldenTiconderogaPencils()
-StoneTiconderoga = StoneTiconderoga()
-Laser_Pointer_2 = LaserPointer(18)
-Urumi = Urumi()
-Seven_Branched_Sword_1 = SevenBranchedSword()
-Vegetarian_Chili = VegetarianChili()
-Meat_Lovers_Chili = MeatLoversChili()
-Tree_Of_Life = TreeOfLifeEggs()
-Canned_Tuna_Pizza = CannedTunaPizza()
-Salad_Pizza = SaladPizza()
-Decent_Pizza = DecentPizza()
-MSI_Titan = MSITitan()
-Grizzly_Bear_Protection= GrizzlyBearProtection()
-Noodle = Noodle()
-Pencil = Pencil()
-Holy_Lance = HolyLance()
-Leaf = Leaf()
-Math_Sword = Sword("Math Sword", "QUICK", 20, 10, 80)
-orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 10)
-orc2 = Character("Wiebe", 1000, canoe, weibe_armor, 10)
-Armor_Of_The_Gods = BodyArmor("Armor of the Gods", 999999999, 18, 99999999, 99999999999)
-orc.attack(orc2)
-orc2.attack(orc)
-TROLL1 = Character("Dave", 999999999999999999999, Urumi, Modular_Tactical_Vest_1, 20)
-TROLL2 = Character("Bob", 10, Slow_Sword, weibe_armor, 20)
-TROLL3 = Character("Jaxx", 80, Slow_Sword, weibe_armor, 20)
-TROLL4 = Character("Yosroel", 50, Slow_Sword, Cardstock_Armor, 20)
-TROLL5 = Character("Arnold", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL6 = Character("Peter", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL7 = Character("Justin", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL8 = Character("Oliver", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL9 = Character("DANNY DEVITO", 9999999, Urumi, Armor_Of_The_Gods, 20)
-TROLL10 = Character("Mason", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL11 = Character("Alex", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL12 = Character("Henry", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL13 = Character("Wyatt", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL14 = Character("Owen", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL15 = Character("Sebastian", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL16 = Character("Levi", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL17 = Character("Joshua", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL18 = Character("Issac", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL19 = Character("Aaron", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL20 = Character("Thomas", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL21 = Character("Caleb", 10, Slow_Sword, Cardstock_Armor, 20)
-TROLL22 = Character("DANNY DEVITO- REDUX", 999999999999999999999, Slow_Sword, Traaaaaaaaaaaaash_Armor, 20)
-
-orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 20)
-orc2 = Character("Wiebe", 1000, canoe, weibe_armor, 20)
-orc.attack(orc2)
-orc2.attack(orc)
-
-TROLL20.attack(TROLL22)
-
-Heisenwiebe = Boss("HEISENWIEBE", 250, Urumi, Modular_Tactical_Vest_1, 250, 100)
-Papa_Pearson = Boss("Papa Pearson", 200, Math_Sword, Chestplate, 250, 100)
-HOBO = Boss("Hobo.... It's a hobo. Not much more to say", 80, Slow_Sword, Cardstock, 80, 50)
-
 player = Player(R19A)
 
 # Controller
 playing = True
 directions = ['north', 'south', "west", "east", "up", "down"]
+short_directions = ['n', 's', 'w', 'e', 'u', 'd']
 while playing:
     print(player.current_location.name)  # player- indicates the instantiated object. current_location- refers to the
     # variable. .name = refers to the attribute of the location
@@ -660,6 +710,9 @@ while playing:
         for num, item in enumerate(player.current_location.items):
             print(str(num + 1) + ": " + item.name)
     command = input(">_")
+    if command in short_directions:
+        index = short_directions.index(command)
+        command = directions[index]
     if command.lower() in ["q", "quit", 'exit']:
         playing = False
         print("GAME OVER.")
