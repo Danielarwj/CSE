@@ -707,8 +707,18 @@ while playing:
     if len(player.current_location.items) > 0:
         print("There are the following items in the room:")
         print()
+
         for num, item in enumerate(player.current_location.items):
             print(str(num + 1) + ": " + item.name)
+        pick_up_command = input("What item would you like to pick up")
+
+        for item in player.current_location.items:
+            if pick_up_command in item.name:
+                print("You have selected %s" % pick_up_command)
+                player.inventory.append(item)
+            else:
+                print("Ok. You do not pick up an item!")
+
     command = input(">_")
     if command in short_directions:
         index = short_directions.index(command)
@@ -726,3 +736,6 @@ while playing:
             print("I can't go that way!")
     else:
         print("Command not found")
+
+    if command == "Inventory" or "I" or "i" or "inventory":
+        print(player.inventory)
