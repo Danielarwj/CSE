@@ -26,7 +26,7 @@ class Item(object):
 
 
 class Player(object):
-    def __init__(self, starting_location):
+    def __init__(self, starting_location, inventory):
         self.current_location = starting_location
         self.inventory = []
 
@@ -694,12 +694,14 @@ THE_LONG_WINDING_HALLWAY = Room("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "TH
                                 "Hallway", "It's... just... It'sj really difficult. Complete all 4 to win", "CEILING",
                                 "FLOOR")
 
-player = Player(R19A)
+player = Player(R19A, [])
+print(player.inventory)
 
 # Controller
 playing = True
 directions = ['north', 'south', "west", "east", "up", "down"]
 short_directions = ['n', 's', 'w', 'e', 'u', 'd']
+inventory_terms = ["Inventory", "I", "inventory", "i"]
 while playing:
     print(player.current_location.name)  # player- indicates the instantiated object. current_location- refers to the
     # variable. .name = refers to the attribute of the location
@@ -716,7 +718,7 @@ while playing:
             if pick_up_command in item.name:
                 print("You have selected %s" % pick_up_command)
                 player.inventory.append(item)
-            else:
+            elif pick_up_command not in item.name:
                 print("Ok. You do not pick up an item!")
 
     command = input(">_")
@@ -737,5 +739,12 @@ while playing:
     else:
         print("Command not found")
 
-    if command == "Inventory" or "I" or "i" or "inventory":
-        print(player.inventory)
+    if command in inventory_terms:
+        for item in player.inventory:
+            print("Your inventory consists of %s" % item.name)
+# Get rid of room items
+
+    if item.name in player.inventory in player.current_location:
+        player.current_location.items.remove()
+
+
