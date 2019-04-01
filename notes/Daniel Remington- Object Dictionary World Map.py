@@ -374,6 +374,13 @@ class LaserPointer(Lasers):
         super(LaserPointer, self).__init__(20, "Laser Pointer", 1, Lasers, 20, 10, 1)
         self.damage_output = damage_output
 
+class Scripts(Weapon):
+    def __init__(self, size, name, health, classification):
+        super(Scripts, self).__init__(size, name, health, classification)
+        self.size = size
+        self.name = name
+        self.health = health
+        self.classification = classification
 
 class Character(object):
     def __init__(self, name, health: int, weapon, armor, size):
@@ -416,6 +423,15 @@ class Boss(Character):
         else:
             self.health -= damage - self.armor.health
             print("%s has %d health left! %s is losing his BOSSINESS")
+
+class ShakespereanCharacters(Character):
+    def __init__(self, name, health, weapon, armor, size):
+        super(ShakespereanCharacters, self).__init__(name, health, weapon, armor, size)
+        self.name = name
+        self.health = health
+        self.weapon = weapon
+        self.armor = armor
+        self.size = size
 
 
 class Albert(Character):
@@ -543,11 +559,22 @@ TROLL21 = Character("Caleb", 10, Slow_Sword, Cardstock_Armor, 20)
 TROLL22 = Character("DANNY DEVITO- REDUX", 999999999999999999999, Slow_Sword, Traaaaaaaaaaaaash_Armor, 20)
 Noodle1 = Noodle
 Hobo1 = Character("Hobo1", 10, Slow_Sword, Cardstock_Armor, 20)
+Othello_Act1_Scene1 = Scripts(20, "Act 1; Scene 1", 20, Scripts)
+Othello_Act1_Scene2 = Scripts(20, "Act 1; Scene 2", 20, Scripts)
+Othello_Act4_Scene3 = Scripts(20, "Act 4; Scene 3", 20, Scripts)
+Othello_Act3_Scene2 = Scripts(20, "Act 3; Scene 2", 20, Scripts)
+
 
 orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 20)
 orc2 = Character("Wiebe", 1000, canoe, weibe_armor, 20)
 orc.attack(orc2)
 orc2.attack(orc)
+
+# Iago = ShakespereanCharacters()
+
+
+
+
 
 TROLL20.attack(TROLL22)
 
@@ -575,7 +602,7 @@ GYM_PORTAL = Room(None, None, None, None, "Gym Portal", "This is the gym. It is 
 
 SCIENCE_BUILDING = Room("POOL", "W_BUILDING", "HOBO_ATTACKS_YOU", "QUAD", "The Science Building", "This is the science "
                         "building. I suppose you know what they teach in this, given the name.", "CEILING", "FLOOR",
-                        [])
+                        [Albert, TROLL4], [])
 
 QUAD = Room(None, None, "R_BUILDINGS", "W_BUILDINGS", "The Quad", "The main area. There is an ampitheatre here. There "
             "is also a couple of lamp posts.You can only go East and West, for some reason. ", "CEILING", "FLOOR")
@@ -720,7 +747,6 @@ while playing:
                 player.inventory.append(item)
             elif pick_up_command not in item.name:
                 print("Ok. You do not pick up an item!")
-
     command = input(">_")
     if command in short_directions:
         index = short_directions.index(command)
@@ -743,8 +769,3 @@ while playing:
         for item in player.inventory:
             print("Your inventory consists of %s" % item.name)
 # Get rid of room items
-
-    if item.name in player.inventory in player.current_location:
-        player.current_location.items.remove()
-
-
