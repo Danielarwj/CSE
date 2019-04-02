@@ -27,8 +27,9 @@ class Item(object):
 
 class Player(object):
     def __init__(self, starting_location, inventory):
+        inventory = []
         self.current_location = starting_location
-        self.inventory = []
+        self.inventory = inventory
 
     def move(self, new_location):
         """ This moves the player to a new room
@@ -374,6 +375,7 @@ class LaserPointer(Lasers):
         super(LaserPointer, self).__init__(20, "Laser Pointer", 1, Lasers, 20, 10, 1)
         self.damage_output = damage_output
 
+
 class Scripts(Weapon):
     def __init__(self, size, name, health, classification):
         super(Scripts, self).__init__(size, name, health, classification)
@@ -381,6 +383,14 @@ class Scripts(Weapon):
         self.name = name
         self.health = health
         self.classification = classification
+
+
+class HealthPotions(Item):
+    def __init__(self, name, health_restoration):
+        super(HealthPotions, self).__init__()
+        self.name = name
+        self.health_restoration = health_restoration
+
 
 class Character(object):
     def __init__(self, name, health: int, weapon, armor, size):
@@ -401,6 +411,15 @@ class Character(object):
     def attack(self, target):
         print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.health))
         target.take_damage(self.weapon.health)
+
+
+class Shopkeepers(Character):
+    def __init__(self, name, health, size):
+        super(Shopkeepers, self).__init__(name, health, None, None, size)
+        self.name = name
+        self.health = health
+        self.size = size
+        self.inventory = []
 
 
 class Boss(Character):
@@ -424,6 +443,7 @@ class Boss(Character):
             self.health -= damage - self.armor.health
             print("%s has %d health left! %s is losing his BOSSINESS")
 
+
 class ShakespereanCharacters(Character):
     def __init__(self, name, health, weapon, armor, size):
         super(ShakespereanCharacters, self).__init__(name, health, weapon, armor, size)
@@ -432,6 +452,17 @@ class ShakespereanCharacters(Character):
         self.weapon = weapon
         self.armor = armor
         self.size = size
+
+        def take_damage(self, damage: int):
+            if self.armor.health >= damage:
+                print("No damage is done because of some AMAZING armor")
+            else:
+                self.health -= damage - self.armor.health
+            print("%s has %d health left" % (self.name, self.health))
+
+        def attack(self, target):
+            print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.health))
+            target.take_damage(self.weapon.health)
 
 
 class Albert(Character):
@@ -563,18 +594,31 @@ Othello_Act1_Scene1 = Scripts(20, "Act 1; Scene 1", 20, Scripts)
 Othello_Act1_Scene2 = Scripts(20, "Act 1; Scene 2", 20, Scripts)
 Othello_Act4_Scene3 = Scripts(20, "Act 4; Scene 3", 20, Scripts)
 Othello_Act3_Scene2 = Scripts(20, "Act 3; Scene 2", 20, Scripts)
-
+Basic_Potion = HealthPotions("Basic Potion", 10)
+Tier2_Potion = HealthPotions("Tier 2 potion", 20)
+Tier3_Potion = HealthPotions("Tier 3 potion", 30)
+Tier4_Potion = HealthPotions("Tier 4 potion", 50)
+MEGA_Potion = HealthPotions("MEGA POTION", 100)
+ShakespereanArmor = BodyArmor("Shakespearan Armor", 20, 20, 10)
+Hamlet_Act1_Scene1 = Scripts(20, "Act1; Scene 1", 20, Scripts)
+Hamlet_Act2_Scene2 = Scripts(20, "Act2; Scene 2", 20, Scripts)
+Hamlet_Act3_Scene4 = Scripts(20, "Act3; Scene4", 20, Scripts)
+Hamlet_Act5_Scene1 = Scripts(20, "Act 5; Scene1", 20, Scripts)
 
 orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 20)
 orc2 = Character("Wiebe", 1000, canoe, weibe_armor, 20)
 orc.attack(orc2)
 orc2.attack(orc)
 
-# Iago = ShakespereanCharacters()
-
-
-
-
+Iago = ShakespereanCharacters("Iago", 50, Othello_Act1_Scene1, ShakespereanArmor, 20)
+Othello = ShakespereanCharacters("Othello", 50, Othello_Act1_Scene2, ShakespereanArmor, 20)
+Desedemonda = ShakespereanCharacters("Desedemonda", 50, Othello_Act3_Scene2, ShakespereanArmor, 20)
+Cassio = ShakespereanCharacters("Cassio", 50, Othello_Act4_Scene3, ShakespereanArmor, 20)
+Hamlet = ShakespereanCharacters("Hamlet", 50, Hamlet_Act1_Scene1, ShakespereanArmor, 20)
+Ghosts_of_Hamlets_father = ShakespereanCharacters("The Ghosts of Hamlets father", 50, Hamlet_Act2_Scene2,
+                                                  ShakespereanArmor, 20)
+Claudius = ShakespereanCharacters("Claudius", 50, Hamlet_Act3_Scene4, ShakespereanArmor, 20)
+Horatio = ShakespereanCharacters("Horatio", 50, Hamlet_Act5_Scene1, ShakespereanArmor, 20)
 
 TROLL20.attack(TROLL22)
 
@@ -700,6 +744,8 @@ OTHELLO = Room("VENITIAN_STREET", "COUNCIL_CHAMBER", "SEA_PORT", "THE_CASTLE", "
                "play, not the game. The play is about a Venetian soldier who passed over promotion by Othello and the "
                "story of how Othello undermines him, causing him to get revenge. Get to the last scene to win",
                "CEILING", "FLOOR")
+
+THE_MERCHANT_OF_VENICE = Room()
 
 PROBLEMA_UNO = Room("SECCION_UNO", "SECCION_DOS", "SECCION_TRES", "SECCION_QUATRO", "Problema Uno", "Es el primero"
                     " problema. You need to solve one puzzle and ten queestions", "CEILING", "FLOOR")
