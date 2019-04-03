@@ -17,6 +17,7 @@ class Room(object):
         self.name = name
         self.characters = characters
         self.items = items
+        self.first_enter = True
 
 
 class Item(object):
@@ -558,6 +559,7 @@ Noodle9 = Noodle
 Noodle10 = Noodle
 Holy_Lance = HolyLance()
 Leaf = Leaf()
+QuadHobo = Character("Quad Hobo", )
 Albert2 = Albert("IT'S ALBERT""...."".... 2!", 900, Urumi, Modular_Tactical_Vest_1, 800)
 Math_Sword = Sword("Math Sword", "QUICK", 20, 10, 80)
 orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 10)
@@ -646,14 +648,15 @@ GYM_PORTAL = Room(None, None, None, None, "Gym Portal", "This is the gym. It is 
 
 SCIENCE_BUILDING = Room("POOL", "W_BUILDING", "HOBO_ATTACKS_YOU", "QUAD", "The Science Building", "This is the science "
                         "building. I suppose you know what they teach in this, given the name.", "CEILING", "FLOOR",
-                        [Albert, TROLL4], [])
+                        [Albert, TROLL4], [Slow_Sword, Cardstock_Armor, Noodle3])
 
 QUAD = Room(None, None, "R_BUILDINGS", "W_BUILDINGS", "The Quad", "The main area. There is an ampitheatre here. There "
-            "is also a couple of lamp posts.You can only go East and West, for some reason. ", "CEILING", "FLOOR")
+            "is also a couple of lamp posts.You can only go East and West, for some reason. ", "CEILING", "FLOOR",
+            [QuadHobo, TROLL7, TROLL13], [Noodle10, Cardstock_Armor])
 
 W_BUILDING = Room("PARKING_LOT", "R_BUILDING", "QUAD", "PARKING_LOT", "W Building", "This is the W Building. It is a "
                   "two story masterpiece of a building. It,conveniently, is the building for languages.",
-                  "THE SPANISH DILEMMA", "FLOOR")
+                  "THE SPANISH DILEMMA", "FLOOR", [])
 
 MAILBOX = Room(None, None, None, None, "THE HOLY MAILBOX WELCOMES YOU!", "WELCOME TO SCHOOL WARRIOR, THE HIGHEST "
                "QUALITY GAME IN SCHOOL BASED" "CHOOSE YOUR OWN ADVENTURE GAMES! DEFEAT ONE BOSS AND COLLECT 20 ITEMS TO"
@@ -779,7 +782,8 @@ while playing:
     print(player.current_location.name)  # player- indicates the instantiated object. current_location- refers to the
     # variable. .name = refers to the attribute of the location
     print(player.current_location.description)
-    if len(player.current_location.items) > 0:
+    if len(player.current_location.items) > 0 and player.current_location.first_enter:
+        player.current_location.first_enter = False
         print("There are the following items in the room:")
         print()
 
@@ -787,12 +791,19 @@ while playing:
             print(str(num + 1) + ": " + item.name)
         pick_up_command = input("What item would you like to pick up")
 
+        selected_item = None
         for item in player.current_location.items:
             if pick_up_command in item.name:
                 print("You have selected %s" % pick_up_command)
-                player.inventory.append(item)
-            elif pick_up_command not in item.name:
-                print("Ok. You do not pick up an item!")
+                selected_item = item
+
+        if selected_item is not None:
+            player.inventory.append(selected_item)
+        elif pick_up_command.lower() == "none":
+            print("Ok. You do not pick up an item!")
+        else:
+            print("I don't see one here")
+
     command = input(">_")
     if command in short_directions:
         index = short_directions.index(command)
@@ -814,4 +825,6 @@ while playing:
     if command in inventory_terms:
         for item in player.inventory:
             print("Your inventory consists of %s" % item.name)
+
+
 # Get rid of room items
