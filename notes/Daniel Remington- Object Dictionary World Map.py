@@ -559,7 +559,7 @@ Noodle9 = Noodle
 Noodle10 = Noodle
 Holy_Lance = HolyLance()
 Leaf = Leaf()
-QuadHobo = Character("Quad Hobo", )
+# QuadHobo = Character("Quad Hobo", )
 Albert2 = Albert("IT'S ALBERT""...."".... 2!", 900, Urumi, Modular_Tactical_Vest_1, 800)
 Math_Sword = Sword("Math Sword", "QUICK", 20, 10, 80)
 orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 10)
@@ -606,11 +606,20 @@ Hamlet_Act1_Scene1 = Scripts(20, "Act1; Scene 1", 20, Scripts)
 Hamlet_Act2_Scene2 = Scripts(20, "Act2; Scene 2", 20, Scripts)
 Hamlet_Act3_Scene4 = Scripts(20, "Act3; Scene4", 20, Scripts)
 Hamlet_Act5_Scene1 = Scripts(20, "Act 5; Scene1", 20, Scripts)
+SecretRoomBoss = Boss("Secret Room Boss", 20, None, Gold, 20, 10)
+Leaf1 = Leaf
+Urumi1 = Urumi
+Null_Sword = Sword("Null Sword", "QUICK", 15, 20, 10)
+Math_Armor = BodyArmor("Math Armor", 20, 15, 20)
 
 orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 20)
 orc2 = Character("Wiebe", 1000, canoe, weibe_armor, 20)
 orc.attack(orc2)
 orc2.attack(orc)
+MATHTROLL1 = Character("Math Troll 1", 10, Math_Sword, Math_Armor, 10)
+MATHTROLL2 = Character("Math Troll 2", 20, Math_Sword, Math_Armor, 10)
+NIGHTMARETROLL1 = Character("It is a tRoLl!", 30, )
+
 
 Iago = ShakespereanCharacters("Iago", 50, Othello_Act1_Scene1, ShakespereanArmor, 20)
 Othello = ShakespereanCharacters("Othello", 50, Othello_Act1_Scene2, ShakespereanArmor, 20)
@@ -652,45 +661,53 @@ SCIENCE_BUILDING = Room("POOL", "W_BUILDING", "HOBO_ATTACKS_YOU", "QUAD", "The S
 
 QUAD = Room(None, None, "R_BUILDINGS", "W_BUILDINGS", "The Quad", "The main area. There is an ampitheatre here. There "
             "is also a couple of lamp posts.You can only go East and West, for some reason. ", "CEILING", "FLOOR",
-            [QuadHobo, TROLL7, TROLL13], [Noodle10, Cardstock_Armor])
+            [TROLL7, TROLL13], [Noodle10, Cardstock_Armor])
 
 W_BUILDING = Room("PARKING_LOT", "R_BUILDING", "QUAD", "PARKING_LOT", "W Building", "This is the W Building. It is a "
                   "two story masterpiece of a building. It,conveniently, is the building for languages.",
-                  "THE SPANISH DILEMMA", "FLOOR", [])
+                  "THE SPANISH DILEMMA", "FLOOR", [TROLL13, TROLL2], [Leaf1, Urumi1])
+
+SECRET_ROOM = Room(None, None, None, None, "Secret Room", "Welcome to the Secret Room- You will never find a place "
+                   "with more valuable treasures!", "STREETS_OF_VERONA", None, [SecretRoomBoss], [Aegon, Holy_Lance])
+
 
 MAILBOX = Room(None, None, None, None, "THE HOLY MAILBOX WELCOMES YOU!", "WELCOME TO SCHOOL WARRIOR, THE HIGHEST "
                "QUALITY GAME IN SCHOOL BASED" "CHOOSE YOUR OWN ADVENTURE GAMES! DEFEAT ONE BOSS AND COLLECT 20 ITEMS TO"
-               "WIN THE GAME!", None, "R19A")
+               "WIN THE GAME!", None, "R19A", [None], [None])
 
 DRAMA_BUILDING = Room("NIGHTMARE_EDISON", "SHAKESPEARE_WORLD", "W_BUILDING", "PARKING_LOT", "The Drama Building", "This"
                       "is a long winding hallway. At the end there is a large telephone box. Paintings cover the wall",
-                      "CEILING", None, Krishang)
+                      "CEILING", None, [Krishang, TROLL18], [Decent_Pizza, Boiled])
 
 R_BUILDINGS = Room("THE_ESSAY_TYPING", "GYM_PORTAL", "PARKING_LOT", "QUAD", "The R Buildings", "This is a row of "
-                   "buildings. You can only go North, however. The other areas are blocked off.", "CEILING", None)
+                   "buildings. You can only go North, however. The other areas are blocked off.", "CEILING", None,
+                   [TROLL7, TROLL22], [Pencil4, Scrambled])
 
 HOBO_WORLD = Room("CHALLENGE_AREA", None, None, None, "Hobo World", "YoU haVe DECidEd tO Go SoUtH! Welcome to Hobo "
                   "World, the realm of the desolate and the weak. Here, you must complete one of  three challenges- "
                   "Garbage collecting, tent folding, and the hardest one of all, finding 4 pieces of food. After you "
-                  "face these challenges, you win the game!", None, None)
+                  "face these challenges, you win the game!", None, None, [TROLL1, TROLL7, TROLL18], [None])
 
-POOL = Room("POOL", "POOL", "POOL", "POOL", "The Pool", "CONGRATULATIONS, YOU'VE MADE IT TO THE POOL!", "POOL", "POOL")
+POOL = Room("POOL", "POOL", "POOL", "POOL", "The Pool", "CONGRATULATIONS, YOU'VE MADE IT TO THE POOL!", "POOL", "POOL",
+            [None], [None])
 
 THE_REALM_OF_HEISENWEIBE = Room("THE_MAZE", "THE_MAZE", "THE_MAZE", "THE_MAZE", " The Realm of Heisenwiebe", "Welcome"
                                 " to a world unlike any other- THE REALM OF HEISENWIEBE. This place is a maze. Once you"
                                 "enter the realm, you can not get out. Reach the end of the realm,fight the Heisenwiebe"
-                                " himself, then you win.", "THE MAZE", "THE MAZE")
+                                " himself, then you win.", "THE MAZE", "THE MAZE", [TROLL5], [Null_Sword, Boiled])
 
 THE_DARK_TRENCHES_OF_PAPA_PEARSON = Room("THE_LONG_WINDING_HALLWAY", "LABYRINTH", "LABYRINTH", "LABYRINTH", "The Dark "
                                          "Trenches of Papa Pearson", "Welcome. There really is not much to say about "
                                          "this place. There is a jar of Jolly Ranchers. and Popcorn in the corner. In "
                                          "front of you is a long winding hallway that goes only north. It is dark. "
                                          "Really dark. Also, any other direction you go seems to drop you in sometime "
-                                         "of labyrinth ", "CEILING", "FLOOR")
+                                         "of labyrinth ", "CEILING", "FLOOR", [MATHTROLL1, MATHTROLL2], [Math_Sword,
+                                                                                                         Math_Armor])
 
 NIGHTMARE_EDISON = Room("NIGHTMARE_W_BUILDING", "NIGHTMARE_R19A", "NIGHTMARE_PARKING_LOT", "NIGHTMARE_SCIENCE_BUILDING",
                         "NiGhTmArE EDiSon.", "WELCOME! This is Nightmare Edison. It is the same map as before only "
-                        "SPOOKY! Get back to the normal world to win the game.", "NIGHTMARE_CEILING", None)
+                        "SPOOKY! Get back to the normal world to win the game.", "NIGHTMARE_CEILING", None,
+                        [NIGHTMARETROLL1, TROLL7])
 
 CEILING = Room("CEILING", "CEILING", "CEILING", "CEILING", "The Ceiling", "This is the ceiling. Do not go up, again!",
                "CEILING", None)
@@ -799,6 +816,7 @@ while playing:
 
         if selected_item is not None:
             player.inventory.append(selected_item)
+            player.current_location.items.remove(selected_item)
         elif pick_up_command.lower() == "none":
             print("Ok. You do not pick up an item!")
         else:
@@ -825,6 +843,9 @@ while playing:
     if command in inventory_terms:
         for item in player.inventory:
             print("Your inventory consists of %s" % item.name)
+
+    if command == "Print Items" or "print items":
+        player.current_location.first_enter = True
 
 
 # Get rid of room items
