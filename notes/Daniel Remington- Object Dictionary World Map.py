@@ -557,6 +557,7 @@ Noodle7 = Noodle
 Noodle8 = Noodle
 Noodle9 = Noodle
 Noodle10 = Noodle
+Aegon1 = Aegon
 Holy_Lance = HolyLance()
 Leaf = Leaf()
 # QuadHobo = Character("Quad Hobo", )
@@ -612,13 +613,15 @@ Urumi1 = Urumi
 Null_Sword = Sword("Null Sword", "QUICK", 15, 20, 10)
 Math_Armor = BodyArmor("Math Armor", 20, 15, 20)
 
+
+
 orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 20)
 orc2 = Character("Wiebe", 1000, canoe, weibe_armor, 20)
 orc.attack(orc2)
 orc2.attack(orc)
 MATHTROLL1 = Character("Math Troll 1", 10, Math_Sword, Math_Armor, 10)
 MATHTROLL2 = Character("Math Troll 2", 20, Math_Sword, Math_Armor, 10)
-NIGHTMARETROLL1 = Character("It is a tRoLl!", 30, )
+
 
 
 Iago = ShakespereanCharacters("Iago", 50, Othello_Act1_Scene1, ShakespereanArmor, 20)
@@ -707,10 +710,10 @@ THE_DARK_TRENCHES_OF_PAPA_PEARSON = Room("THE_LONG_WINDING_HALLWAY", "LABYRINTH"
 NIGHTMARE_EDISON = Room("NIGHTMARE_W_BUILDING", "NIGHTMARE_R19A", "NIGHTMARE_PARKING_LOT", "NIGHTMARE_SCIENCE_BUILDING",
                         "NiGhTmArE EDiSon.", "WELCOME! This is Nightmare Edison. It is the same map as before only "
                         "SPOOKY! Get back to the normal world to win the game.", "NIGHTMARE_CEILING", None,
-                        [NIGHTMARETROLL1, TROLL7])
+                        [ TROLL7])
 
 CEILING = Room("CEILING", "CEILING", "CEILING", "CEILING", "The Ceiling", "This is the ceiling. Do not go up, again!",
-               "CEILING", None)
+               "CEILING", None, [None], [Urumi1, Aegon1])
 
 
 SHAKESPEARE_WORLD = Room("HAMLET", "OTHELLO", "TAMING_OF_THE_SHREW", "ROMEO_AND_JULIET", "Shakespeare World", "You are "
@@ -724,7 +727,7 @@ THE_SPANISH_DILEMMA = Room("PROBLEMA_CUATRO", "PROBLEMA_UNO", "PROBLEMA_TRES", "
                            " resolver la problema rapidamente. Si tu resuelves en tiempo, tu seras GANAR!", "CEILING",
                            "PROBLEMA_DOS")
 
-FLOOR = Room("FLOOR", "FLOOR", "FLOOR", "FLOOR", "FLOOR", "This is the floor", "FLOOR", "FLOOR")
+FLOOR = Room("FLOOR", "FLOOR", "FLOOR", "FLOOR", "FLOOR", "This is the floor", "FLOOR", "FLOOR", [None], [None])
 
 CHALLENGE_AREA = Room("PATH_1", "HOBO_WORLD", "PATH_3", "PATH_2", "The Challenge Area", "Welcome to the Challenge area."
                       "This is a very dark and musty cave. From what it seems,in the cave there are walls that block "
