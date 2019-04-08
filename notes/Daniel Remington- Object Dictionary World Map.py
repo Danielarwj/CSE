@@ -612,8 +612,8 @@ Leaf1 = Leaf
 Urumi1 = Urumi
 Null_Sword = Sword("Null Sword", "QUICK", 15, 20, 10)
 Math_Armor = BodyArmor("Math Armor", 20, 15, 20)
-
-
+Nightmare_sword = Sword("Nightmare Sword", "SLOW", 10, 20, 5)
+Nightmare_Armor = BodyArmor("Nightmare Armor", 10, 10, 10)
 
 orc = Character("Orc1", 100, sword, BodyArmor("Generic Armor", "BAD", 15, 2, 10), 20)
 orc2 = Character("Wiebe", 1000, canoe, weibe_armor, 20)
@@ -621,8 +621,7 @@ orc.attack(orc2)
 orc2.attack(orc)
 MATHTROLL1 = Character("Math Troll 1", 10, Math_Sword, Math_Armor, 10)
 MATHTROLL2 = Character("Math Troll 2", 20, Math_Sword, Math_Armor, 10)
-
-
+NIGHTMARE_TROLL1 = Character("Spooky Dave", 20, Nightmare_sword, Nightmare_Armor, 10)
 
 Iago = ShakespereanCharacters("Iago", 50, Othello_Act1_Scene1, ShakespereanArmor, 20)
 Othello = ShakespereanCharacters("Othello", 50, Othello_Act1_Scene2, ShakespereanArmor, 20)
@@ -720,7 +719,7 @@ SHAKESPEARE_WORLD = Room("HAMLET", "OTHELLO", "TAMING_OF_THE_SHREW", "ROMEO_AND_
                          "now in a medieval area. The buildings are that of 16th century.Everyone around you is wearing"                   
                          "some type of Victorian clothing. In this world, you must act on a play. Essentially, You are"
                          " dropped into the world of the play and must find the way out.", "THE_GENTLEMEN_OF_VERONA",
-                         "THE_MERCHANT_OF_VENICE")
+                         "THE_MERCHANT_OF_VENICE", )
 
 THE_SPANISH_DILEMMA = Room("PROBLEMA_CUATRO", "PROBLEMA_UNO", "PROBLEMA_TRES", "UN PROBLEMA DIFICIL",
                            "THE_SPANISH_DILEMMA", "Este cuarto tiene una problema ese necesita resolver. Tu necesecitas"
@@ -740,10 +739,10 @@ PATH_2 = Room("MINI_PATH_3", "DEAD_END", "MINI_PATH_4", "MINI_PATH_5", "The West
               "is strange. Odd paintings cover the walls. South seems to go somewhere... or does it?", "CEILING",
               "FLOOR")
 
-NIGHTMARE_PARKING_LOT = Room("NIGHTMARE_CEILING", None, "NIGHTMARE_W_BUILDING", "NIGHTMARE_FLOOR", "Nightmare Floor",
-                             "Welcome to the Nightmare Version of the parking lot. All the cars are Hummers.Get spooked"
-                             " by their carbon emissions and their excessive gas prices!", "NIGHTMARE_GYM_PORTAL",
-                             "NIGHTMARE_R19A")
+NIGHTMARE_PARKING_LOT = Room("NIGHTMARE_CEILING", None, "NIGHTMARE_W_BUILDING", "NIGHTMARE_FLOOR", "Nightmare Parking "
+                             "Lot", "Welcome to the Nightmare Version of the parking lot. All the cars are Hummers."
+                             "Get spooked by their carbon emissions and their excessive gas prices!",
+                             "NIGHTMARE_GYM_PORTAL", "NIGHTMARE_R19A")
 
 NIGHTMARE_W_BUILDING = Room("NIGHTMARE_EDISON", "NIGHTMARE_CEILING", "NIGHTMARE_R_BUILDINGS", "NIGHTMARE_EDISON", "The "
                             "Nightmare W Buildings", "The building in a never ending staircase. It's almost like... a "
@@ -752,12 +751,18 @@ NIGHTMARE_W_BUILDING = Room("NIGHTMARE_EDISON", "NIGHTMARE_CEILING", "NIGHTMARE_
 
 NIGHTMARE_R19A = Room("NIGHTMARE_GYM_PORTAL", "NIGHTMARE_HOBO_WORLD", "NIGHTMARE_DRAMA_BUILDING", "NIGHTMARE_QUAD",
                       "Nightmare R19A", "This is a SpOoOky computer room. All of the computers are Windows 98 and are "
-                      "slower than paces of snails. ", "NIGHTMARE_CEILING", "NIGHTMARE_EDISON")
+                      "slower than paces of snails. ", "R19A", "NIGHTMARE_EDISON")
 
 NIGHTMARE_SCIENCE_BUILDING = Room("NIGHTMARE_QUAD", "NIGHTMARE_HOBO_WORLD", "NIGHTMARE_EDISON", "NIGHTMARE_FLOOR", "The"
                                   "Nightmare Science Buildings", "The classes are terrifying! They're taught by "
                                   "flat-earthers and people who are against vaccines. What has this world come to?!",
                                   "NIGHTMARE_FLOOR", None)
+
+NIGHTMARE_FLOOR = Room("")
+
+NIGHTMARE_QUAD = Room("NIGHTMARE_EDISON", "NIGHTMARE_FLOOR", "NIGHTMARE_CEILING", "NIGHTMARE_DRAMA_BUILDING",
+                      "Nightmare Quad", "The ampitheatre is upside down and the music playing is... DOLLY PARTON?!?!",
+                      "NIGHTMARE_GYM_PORTAL", "NIGHTMARE_PARKING_LOT", [TROLL13, TROLL22], [])
 
 HAMLET = Room("NORTH_ROOM", "SOUTH_ROOM", "HALLWAY", "GROVE", "Hamlet", "Considered to be his best play, Hamlet is "
               "play in which Hamlet's father dies and it tells of his slow descent into madness. Get to the last scene "
@@ -789,6 +794,8 @@ THE_LONG_WINDING_HALLWAY = Room("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "TH
                                 "THE_DERIVATIVE_OF_INTEGRAL_OF_THE_LOG_OF_X_SQUARED_CUBED_SQUARED", "The Long Winding "
                                 "Hallway", "It's... just... It'sj really difficult. Complete all 4 to win", "CEILING",
                                 "FLOOR")
+
+LABRYNITH = Room()
 
 player = Player(R19A, [])
 print(player.inventory)
