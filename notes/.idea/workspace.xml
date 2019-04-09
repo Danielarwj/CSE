@@ -23,7 +23,7 @@
     <SUITE FILE_PATH="coverage/notes$Hangman.coverage" NAME="Hangman Coverage Results" MODIFIED="1550079537543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Daniel_Remington__Hard_Challenges.coverage" NAME="Daniel Remington- Hard Challenges Coverage Results" MODIFIED="1544029802874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Daniel_Remington_Challenges.coverage" NAME="Daniel Remington-Challenges Coverage Results" MODIFIED="1543858167195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/notes$Daniel_Remington__Object_Dictionary_World_Map.coverage" NAME="Daniel Remington- Object Dictionary World Map Coverage Results" MODIFIED="1554739823533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/notes$Daniel_Remington__Object_Dictionary_World_Map.coverage" NAME="Daniel Remington- Object Dictionary World Map Coverage Results" MODIFIED="1554828200177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$RANDOM_TROLL_GENERATOR.coverage" NAME="RANDOM TROLL GENERATOR Coverage Results" MODIFIED="1553100298291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Fix_It.coverage" NAME="Fix_It Coverage Results" MODIFIED="1543611618888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Daniel_Remington_Guess_Game1.coverage" NAME="Daniel Remington-Guess Game1 Coverage Results" MODIFIED="1542389618941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -49,7 +49,7 @@
     <session id="-1396482444">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="39" />
+          <entry key="project.closed" value="40" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.40" value="1" />
           <entry key="project.open.time.41" value="1" />
@@ -63,6 +63,7 @@
           <entry key="project.open.time.55" value="1" />
           <entry key="project.open.time.56" value="4" />
           <entry key="project.open.time.57" value="1" />
+          <entry key="project.open.time.58" value="1" />
           <entry key="project.open.time.59" value="1" />
           <entry key="project.open.time.60" value="3" />
           <entry key="project.open.time.61" value="1" />
@@ -76,7 +77,7 @@
           <entry key="project.open.time.88" value="1" />
           <entry key="project.open.time.92" value="1" />
           <entry key="project.open.time.98" value="1" />
-          <entry key="project.opened" value="40" />
+          <entry key="project.opened" value="41" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -92,13 +93,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="11" />
-          <entry key="py" value="30861" />
+          <entry key="py" value="31574" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="11" />
-          <entry key="Python" value="30861" />
+          <entry key="Python" value="31574" />
         </counts>
       </usages-collector>
     </session>
@@ -108,19 +109,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Daniel Remington- Object Dictionary World Map.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="760" column="24" selection-start-line="760" selection-start-column="24" selection-end-line="760" selection-end-column="24" />
+            <state relative-caret-position="158">
+              <caret line="862" column="43" selection-start-line="862" selection-start-column="43" selection-end-line="862" selection-end-column="43" />
               <folding>
-                <marker date="1554741980592" expanded="true" signature="1176:1181" ph="..." />
-                <marker date="1554741980592" expanded="true" signature="4119:4290" ph="..." />
-                <marker date="1554741980592" expanded="true" signature="6112:6335" ph="..." />
-                <marker date="1554741980592" expanded="true" signature="9764:9898" ph="..." />
-                <marker date="1554741980592" expanded="true" signature="12264:12728" ph="..." />
-                <marker date="1554741980592" expanded="true" signature="12551:12728" ph="..." />
-                <marker date="1554741980592" expanded="true" signature="13442:13670" ph="..." />
-                <marker date="1554741980592" expanded="true" signature="13668:13669" ph="..." />
-                <marker date="1554741980592" expanded="true" signature="14507:15286" ph="..." />
-                <marker date="1554741980592" expanded="true" signature="15310:16037" ph="..." />
+                <marker date="1554828200092" expanded="true" signature="1316:1321" ph="..." />
+                <marker date="1554828200092" expanded="true" signature="4259:4430" ph="..." />
+                <marker date="1554828200092" expanded="true" signature="6252:6475" ph="..." />
+                <marker date="1554828200092" expanded="true" signature="9904:10038" ph="..." />
+                <marker date="1554828200092" expanded="true" signature="12430:12894" ph="..." />
+                <marker date="1554828200092" expanded="true" signature="12717:12894" ph="..." />
+                <marker date="1554828200092" expanded="true" signature="13608:13836" ph="..." />
+                <marker date="1554828200092" expanded="true" signature="13834:13835" ph="..." />
+                <marker date="1554828200092" expanded="true" signature="14673:15452" ph="..." />
+                <marker date="1554828200092" expanded="true" signature="15476:16203" ph="..." />
               </folding>
             </state>
           </provider>
@@ -608,19 +609,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Daniel Remington- Object Dictionary World Map.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="760" column="24" selection-start-line="760" selection-start-column="24" selection-end-line="760" selection-end-column="24" />
+        <state relative-caret-position="158">
+          <caret line="862" column="43" selection-start-line="862" selection-start-column="43" selection-end-line="862" selection-end-column="43" />
           <folding>
-            <marker date="1554741980592" expanded="true" signature="1176:1181" ph="..." />
-            <marker date="1554741980592" expanded="true" signature="4119:4290" ph="..." />
-            <marker date="1554741980592" expanded="true" signature="6112:6335" ph="..." />
-            <marker date="1554741980592" expanded="true" signature="9764:9898" ph="..." />
-            <marker date="1554741980592" expanded="true" signature="12264:12728" ph="..." />
-            <marker date="1554741980592" expanded="true" signature="12551:12728" ph="..." />
-            <marker date="1554741980592" expanded="true" signature="13442:13670" ph="..." />
-            <marker date="1554741980592" expanded="true" signature="13668:13669" ph="..." />
-            <marker date="1554741980592" expanded="true" signature="14507:15286" ph="..." />
-            <marker date="1554741980592" expanded="true" signature="15310:16037" ph="..." />
+            <marker date="1554828200092" expanded="true" signature="1316:1321" ph="..." />
+            <marker date="1554828200092" expanded="true" signature="4259:4430" ph="..." />
+            <marker date="1554828200092" expanded="true" signature="6252:6475" ph="..." />
+            <marker date="1554828200092" expanded="true" signature="9904:10038" ph="..." />
+            <marker date="1554828200092" expanded="true" signature="12430:12894" ph="..." />
+            <marker date="1554828200092" expanded="true" signature="12717:12894" ph="..." />
+            <marker date="1554828200092" expanded="true" signature="13608:13836" ph="..." />
+            <marker date="1554828200092" expanded="true" signature="13834:13835" ph="..." />
+            <marker date="1554828200092" expanded="true" signature="14673:15452" ph="..." />
+            <marker date="1554828200092" expanded="true" signature="15476:16203" ph="..." />
           </folding>
         </state>
       </provider>

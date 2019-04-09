@@ -21,16 +21,19 @@ class Room(object):
 
 
 class Item(object):
-    def __init__(self, name=None, health=None):
+    def __init__(self, name=None, health=None, size=None, weight=None):
         self.name = name
         self.health = health
-
+        self.size = size
+        self.weight = weight
 
 class Player(object):
     def __init__(self, starting_location, inventory):
         inventory = []
         self.current_location = starting_location
         self.inventory = inventory
+        self.weight_left = 100
+        self.size_capacity = 50
 
     def move(self, new_location):
         """ This moves the player to a new room
@@ -324,6 +327,7 @@ class Cardstock(BodyArmor):
         super(Cardstock, self).__init__("Cardstock", "WEAK", 15, 0, 20)
         self.power = 10
         self.exertion = exertion
+        self.weight = 100
 
     def get_hit(self, dmg):
             super(Cardstock, self).get_hit(dmg)
@@ -542,6 +546,7 @@ Pencil10 = Pencil()
 Tree_Of_Life = TreeOfLifeEggs()
 Canned_Tuna_Pizza = CannedTunaPizza()
 Salad_Pizza = SaladPizza()
+Quadsword= Sword("Quad Sword", "QUICK", 15, 10, 15)
 Decent_Pizza = DecentPizza()
 MSI_Titan = MSITitan()
 MSI_Titan2 = MSITitan()
@@ -663,7 +668,7 @@ SCIENCE_BUILDING = Room("POOL", "W_BUILDING", "HOBO_ATTACKS_YOU", "QUAD", "The S
 
 QUAD = Room(None, None, "R_BUILDINGS", "W_BUILDINGS", "The Quad", "The main area. There is an ampitheatre here. There "
             "is also a couple of lamp posts.You can only go East and West, for some reason. ", "CEILING", "FLOOR",
-            [TROLL7, TROLL13], [Noodle10, Cardstock_Armor])
+            [TROLL7, TROLL13], [Quadsword, Leaf1])
 
 W_BUILDING = Room("PARKING_LOT", "R_BUILDING", "QUAD", "PARKING_LOT", "W Building", "This is the W Building. It is a "
                   "two story masterpiece of a building. It,conveniently, is the building for languages.",
@@ -809,6 +814,7 @@ while playing:
     print(player.current_location.name)  # player- indicates the instantiated object. current_location- refers to the
     # variable. .name = refers to the attribute of the location
     print(player.current_location.description)
+
     if len(player.current_location.items) > 0 and player.current_location.first_enter:
         player.current_location.first_enter = False
         print("There are the following items in the room:")
@@ -854,8 +860,10 @@ while playing:
         for item in player.inventory:
             print("Your inventory consists of %s" % item.name)
 
-    if command == "Print Items" or "print items":
-        player.current_location.first_enter = True
+    weight_accumulated = player.weight_left
+
+    if weight_accumulated >= 100:
+        print("This item is too heavy. You can't pick it up WHATSOEVER!!!... unless you drop an item")
 
 
 # Get rid of room items
