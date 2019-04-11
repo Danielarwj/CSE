@@ -21,11 +21,12 @@ class Room(object):
 
 
 class Item(object):
-    def __init__(self, name=None, health=None, size=None, weight=None):
+    def __init__(self, name=None, health=None, size=None, weight=0):
         self.name = name
         self.health = health
         self.size = size
         self.weight = weight
+
 
 class Player(object):
     def __init__(self, starting_location, inventory):
@@ -33,7 +34,11 @@ class Player(object):
         self.current_location = starting_location
         self.inventory = inventory
         self.weight_left = 100
+        self.weight_max = 100
         self.size_capacity = 50
+        self.size_max = 50
+        self.health_max = 250
+        self.health_starting = 100
 
     def move(self, new_location):
         """ This moves the player to a new room
@@ -174,7 +179,7 @@ class Pencil(Sword):
 class Noodle(Sword):
     def __init__(self):
         super(Noodle, self).__init__("A Noodle", "Immobile", "0.001", 5, health=1, damage_output=1)
-
+        self.weight = 10
 
 class SchoolMaterials(Item):
     def __init__(self, name, health):
@@ -832,7 +837,12 @@ while playing:
 
         if selected_item is not None:
             player.inventory.append(selected_item)
+            player.weight_left -= selected_item.weight
+            player.size_capacity -= selected_item.size
             player.current_location.items.remove(selected_item)
+
+# try:
+# selected_item
         elif pick_up_command.lower() == "none":
             print("Ok. You do not pick up an item!")
         else:
@@ -860,10 +870,8 @@ while playing:
         for item in player.inventory:
             print("Your inventory consists of %s" % item.name)
 
-    weight_accumulated = player.weight_left
 
-    if weight_accumulated >= 100:
-        print("This item is too heavy. You can't pick it up WHATSOEVER!!!... unless you drop an item")
+
 
 
 # Get rid of room items
