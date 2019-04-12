@@ -181,6 +181,7 @@ class Noodle(Sword):
         super(Noodle, self).__init__("A Noodle", "Immobile", "0.001", 5, health=1, damage_output=1)
         self.weight = 10
 
+
 class SchoolMaterials(Item):
     def __init__(self, name, health):
         super(SchoolMaterials, self).__init__()
@@ -551,7 +552,7 @@ Pencil10 = Pencil()
 Tree_Of_Life = TreeOfLifeEggs()
 Canned_Tuna_Pizza = CannedTunaPizza()
 Salad_Pizza = SaladPizza()
-Quadsword= Sword("Quad Sword", "QUICK", 15, 10, 15)
+Quadsword = Sword("Quad Sword", "QUICK", 15, 10, 15)
 Decent_Pizza = DecentPizza()
 MSI_Titan = MSITitan()
 MSI_Titan2 = MSITitan()
@@ -719,7 +720,7 @@ THE_DARK_TRENCHES_OF_PAPA_PEARSON = Room("THE_LONG_WINDING_HALLWAY", "LABYRINTH"
 NIGHTMARE_EDISON = Room("NIGHTMARE_W_BUILDING", "NIGHTMARE_R19A", "NIGHTMARE_PARKING_LOT", "NIGHTMARE_SCIENCE_BUILDING",
                         "NiGhTmArE EDiSon.", "WELCOME! This is Nightmare Edison. It is the same map as before only "
                         "SPOOKY! Get back to the normal world to win the game.", "NIGHTMARE_CEILING", None,
-                        [ TROLL7])
+                        [TROLL7])
 
 CEILING = Room("CEILING", "CEILING", "CEILING", "CEILING", "The Ceiling", "This is the ceiling. Do not go up, again!",
                "CEILING", None, [None], [Urumi1, Aegon1])
@@ -807,7 +808,7 @@ THE_LONG_WINDING_HALLWAY = Room("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "TH
 
 LABRYNITH = Room()
 
-player = Player(R19A, [])
+player = Player(R19A,[])
 print(player.inventory)
 
 # Controller
@@ -815,7 +816,10 @@ playing = True
 directions = ['north', 'south', "west", "east", "up", "down"]
 short_directions = ['n', 's', 'w', 'e', 'u', 'd']
 inventory_terms = ["Inventory", "I", "inventory", "i"]
+health_and_eat_terms = ["EAT", "Eat", "eat", "CONSUME", "Consume", "consume"]
+food_list = []
 while playing:
+    command = input(">_")
     print(player.current_location.name)  # player- indicates the instantiated object. current_location- refers to the
     # variable. .name = refers to the attribute of the location
     print(player.current_location.description)
@@ -828,6 +832,7 @@ while playing:
         for num, item in enumerate(player.current_location.items):
             print(str(num + 1) + ": " + item.name)
         pick_up_command = input("What item would you like to pick up")
+        food_command = input("What item do you want to eat")
 
         selected_item = None
         for item in player.current_location.items:
@@ -841,14 +846,22 @@ while playing:
             player.size_capacity -= selected_item.size
             player.current_location.items.remove(selected_item)
 
-# try:
-# selected_item
         elif pick_up_command.lower() == "none":
             print("Ok. You do not pick up an item!")
         else:
             print("I don't see one here")
 
-    command = input(">_")
+        if command in health_and_eat_terms:
+            if getattr(selected_item, "health_restoration"):
+                food_list.append(selected_item)
+                print(food_command)
+                print(food_list)
+            if pick_up_command == selected_item in food_list:
+                if hasattr(selected_item, "health_restoration"):
+                    player.health_starting += selected_item.health_restoration
+            elif command == "None" or "none" or "nothing":
+                print("You don't eat anything")
+
     if command in short_directions:
         index = short_directions.index(command)
         command = directions[index]
@@ -869,8 +882,6 @@ while playing:
     if command in inventory_terms:
         for item in player.inventory:
             print("Your inventory consists of %s" % item.name)
-
-
 
 
 
