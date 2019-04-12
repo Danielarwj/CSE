@@ -28,35 +28,6 @@ class Item(object):
         self.weight = weight
 
 
-class Player(object):
-    def __init__(self, starting_location, inventory):
-        inventory = []
-        self.current_location = starting_location
-        self.inventory = inventory
-        self.weight_left = 100
-        self.weight_max = 100
-        self.size_capacity = 50
-        self.size_max = 50
-        self.health_max = 250
-        self.health_starting = 100
-
-    def move(self, new_location):
-        """ This moves the player to a new room
-
-        :param new_location: The rooms object of which you are going to
-        """
-        self.current_location = new_location
-
-    def find_next_room(self, direction):
-        """ This method searches the current room to see if a room exists in that direction
-
-        :param direction: The direction that ypu want to move to
-        :return: The room object if it exists, or none if it does not
-        """
-        name_of_room = getattr(self.current_location, direction)
-        return globals()[name_of_room]
-
-
 class Armor(Item):
     def __init__(self, name, classification, health):
         super(Armor, self).__init__(name, health)
@@ -808,6 +779,41 @@ THE_LONG_WINDING_HALLWAY = Room("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "TH
 
 LABRYNITH = Room()
 
+
+class Player(object):
+    def __init__(self, starting_location, inventory, weapon=Noodle10):
+        inventory = []
+        self.current_location = starting_location
+        self.inventory = inventory
+        self.weight_left = 100
+        self.weight_max = 100
+        self.size_capacity = 50
+        self.size_max = 50
+        self.health_max = 250
+        self.health_starting = 100
+        self.weapon = weapon
+
+    def attack(self, target):
+        print("You attack %s for %d damage" % (target.name, self.weapon.health))
+        target.take_damage(self.weapon.health)
+
+    def move(self, new_location):
+        """ This moves the player to a new room
+
+        :param new_location: The rooms object of which you are going to
+        """
+        self.current_location = new_location
+
+    def find_next_room(self, direction):
+        """ This method searches the current room to see if a room exists in that direction
+
+        :param direction: The direction that ypu want to move to
+        :return: The room object if it exists, or none if it does not
+        """
+        name_of_room = getattr(self.current_location, direction)
+        return globals()[name_of_room]
+
+
 player = Player(R19A,[])
 print(player.inventory)
 
@@ -818,8 +824,9 @@ short_directions = ['n', 's', 'w', 'e', 'u', 'd']
 inventory_terms = ["Inventory", "I", "inventory", "i"]
 health_and_eat_terms = ["EAT", "Eat", "eat", "CONSUME", "Consume", "consume"]
 food_list = []
+player.attack(Heisenwiebe)
 while playing:
-    command = input(">_")
+
     print(player.current_location.name)  # player- indicates the instantiated object. current_location- refers to the
     # variable. .name = refers to the attribute of the location
     print(player.current_location.description)
@@ -861,7 +868,7 @@ while playing:
                     player.health_starting += selected_item.health_restoration
             elif command == "None" or "none" or "nothing":
                 print("You don't eat anything")
-
+    command = input(">_")
     if command in short_directions:
         index = short_directions.index(command)
         command = directions[index]
