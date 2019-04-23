@@ -552,7 +552,7 @@ orc.attack(orc2)
 orc2.attack(orc)
 Albert = Albert("IT'S ALBERT!", 50, Noodle10, Cardstock_Armor, 90)
 TROLL1 = Character("Dave", 999999999999999999999, Urumi, Modular_Tactical_Vest_1, 20)
-TROLL2 = Character("Bob", 10, Slow_Sword, weibe_armor, 20)
+TROLL2 = Character("Bob", 10, Slow_Sword, Cardstock_Armor, 20)
 TROLL3 = Character("Jaxx", 80, Slow_Sword, weibe_armor, 20)
 TROLL4 = Character("Yosroel", 50, Slow_Sword, Cardstock_Armor, 20)
 TROLL5 = Character("Arnold", 10, Slow_Sword, Cardstock_Armor, 20)
@@ -623,7 +623,7 @@ HOBO = Boss("Hobo.... It's a hobo. Not much more to say", 80, Slow_Sword, Cardst
 
 R19A = Room("PARKING_LOT", "QUAD", "DRAMA_BUILDING", "SCIENCE_BUILDING", "R19A",
             "This is the classroom you are in right now. There are two doors on the north wall. There are two doors on"
-            " the north wall. There is a big mailbox in the sky for some reason", "MAILBOX", None, None,
+            " the north wall. There is a big mailbox in the sky for some reason", "MAILBOX", None, [TROLL2],
             [Cardstock(10), Noodle1, Tree_Of_Life])
 
 print(Room(R19A.items))
@@ -781,7 +781,7 @@ LABRYNITH = Room()
 
 
 class Player(object):
-    def __init__(self, starting_location, inventory, weapon=Noodle10):
+    def __init__(self, starting_location, inventory, weapon=Urumi1, armor=Cardstock_Armor):
         inventory = []
         self.current_location = starting_location
         self.inventory = inventory
@@ -792,6 +792,8 @@ class Player(object):
         self.health_max = 250
         self.health_starting = 100
         self.weapon = weapon
+        self.name = "Player"
+        self.armor = armor
 
     def attack(self, target):
         print("You attack %s for %d damage" % (target.name, self.weapon.health))
@@ -799,19 +801,24 @@ class Player(object):
 
     def move(self, new_location):
         """ This moves the player to a new room
-
         :param new_location: The rooms object of which you are going to
         """
         self.current_location = new_location
 
     def find_next_room(self, direction):
         """ This method searches the current room to see if a room exists in that direction
-
         :param direction: The direction that ypu want to move to
         :return: The room object if it exists, or none if it does not
         """
         name_of_room = getattr(self.current_location, direction)
         return globals()[name_of_room]
+
+    def take_damage(self, damage: int):
+        if self.armor.health >= damage:
+            print("No damage is done because of some AMAZING armor")
+        else:
+            self.health_starting -= damage - self.armor.health
+        print("%s has %d health left" % (self.name, self.health_starting))
 
 
 player = Player(R19A,[])
@@ -831,6 +838,34 @@ while playing:
     # variable. .name = refers to the attribute of the location
     print(player.current_location.description)
 
+    for num, character in enumerate(player.current_location.characters):
+
+        print_character = (print(str(num + 1) + ": " + character.name))
+        fight_command = input("Who do you want to fight?")
+        if fight_command == "Bob":
+            player.attack(TROLL2)
+            TROLL2.health -= player.weapon.damage_output
+            if TROLL2.health <= 0:
+                print("%s has died" % TROLL2.name)
+                TROLL2.alive = False
+                player.current_location.characters.remove(character)
+
+            else:
+                print("%s has %d health left" % TROLL2.name, TROLL2.health)
+
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL2.attack(player)
+
+        elif fight_command == "Justin":
+            player.attack(TROLL7)
+            TROLL7.health -= player.weapon.damage_output
+            if TROLL7.health <= 0:
+                print("%s has died" % TROLL7.name)
+            else:
+                print("%s has %d health left" % TROLL7.name, TROLL7.health)
+        elif fight_command == "None" or "none" or "no one":
+            TROLL7.attack(player)
+
     if len(player.current_location.items) > 0 and player.current_location.first_enter:
         player.current_location.first_enter = False
         print("There are the following items in the room:")
@@ -839,7 +874,7 @@ while playing:
         for num, item in enumerate(player.current_location.items):
             print(str(num + 1) + ": " + item.name)
         pick_up_command = input("What item would you like to pick up")
-        food_command = input("What item do you want to eat")
+
 
         selected_item = None
         for item in player.current_location.items:
@@ -858,16 +893,7 @@ while playing:
         else:
             print("I don't see one here")
 
-        if command in health_and_eat_terms:
-            if getattr(selected_item, "health_restoration"):
-                food_list.append(selected_item)
-                print(food_command)
-                print(food_list)
-            if pick_up_command == selected_item in food_list:
-                if hasattr(selected_item, "health_restoration"):
-                    player.health_starting += selected_item.health_restoration
-            elif command == "None" or "none" or "nothing":
-                print("You don't eat anything")
+
     command = input(">_")
     if command in short_directions:
         index = short_directions.index(command)
@@ -890,6 +916,12 @@ while playing:
         for item in player.inventory:
             print("Your inventory consists of %s" % item.name)
 
-
+    if command == "Eat":
+        for item in player.inventory:
+            print("Your inventory consists of %s" % item.name)
+            food_command = input("What do you want to eat")
+            if food_command == "Tree of Life Eggs":
+                player.health_starting += Tree_Of_Life.health_restoration
+                print("You now have %d health" % player.health_starting)
 
 # Get rid of room items

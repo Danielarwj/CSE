@@ -23,7 +23,7 @@
     <SUITE FILE_PATH="coverage/notes$Hangman.coverage" NAME="Hangman Coverage Results" MODIFIED="1550079537543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Daniel_Remington__Hard_Challenges.coverage" NAME="Daniel Remington- Hard Challenges Coverage Results" MODIFIED="1544029802874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Daniel_Remington_Challenges.coverage" NAME="Daniel Remington-Challenges Coverage Results" MODIFIED="1543858167195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/notes$Daniel_Remington__Object_Dictionary_World_Map.coverage" NAME="Daniel Remington- Object Dictionary World Map Coverage Results" MODIFIED="1555099190016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/notes$Daniel_Remington__Object_Dictionary_World_Map.coverage" NAME="Daniel Remington- Object Dictionary World Map Coverage Results" MODIFIED="1556037153615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$RANDOM_TROLL_GENERATOR.coverage" NAME="RANDOM TROLL GENERATOR Coverage Results" MODIFIED="1553100298291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Fix_It.coverage" NAME="Fix_It Coverage Results" MODIFIED="1543611618888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Daniel_Remington_Guess_Game1.coverage" NAME="Daniel Remington-Guess Game1 Coverage Results" MODIFIED="1542389618941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -49,7 +49,7 @@
     <session id="-1396482444">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="43" />
+          <entry key="project.closed" value="44" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.35" value="1" />
           <entry key="project.open.time.40" value="1" />
@@ -69,6 +69,7 @@
           <entry key="project.open.time.59" value="1" />
           <entry key="project.open.time.60" value="3" />
           <entry key="project.open.time.61" value="1" />
+          <entry key="project.open.time.63" value="1" />
           <entry key="project.open.time.64" value="1" />
           <entry key="project.open.time.65" value="2" />
           <entry key="project.open.time.66" value="3" />
@@ -79,7 +80,7 @@
           <entry key="project.open.time.88" value="1" />
           <entry key="project.open.time.92" value="1" />
           <entry key="project.open.time.98" value="1" />
-          <entry key="project.opened" value="44" />
+          <entry key="project.opened" value="45" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -95,13 +96,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="11" />
-          <entry key="py" value="32840" />
+          <entry key="py" value="33247" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="11" />
-          <entry key="Python" value="32840" />
+          <entry key="Python" value="33247" />
         </counts>
       </usages-collector>
     </session>
@@ -111,19 +112,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Daniel Remington- Object Dictionary World Map.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="826" column="25" selection-start-line="826" selection-start-column="25" selection-end-line="826" selection-end-column="25" />
-              <folding>
-                <marker date="1555099189938" expanded="true" signature="3409:3580" ph="..." />
-                <marker date="1555099189938" expanded="true" signature="5427:5650" ph="..." />
-                <marker date="1555099189938" expanded="true" signature="9079:9213" ph="..." />
-                <marker date="1555099189938" expanded="true" signature="11605:12069" ph="..." />
-                <marker date="1555099189938" expanded="true" signature="11892:12069" ph="..." />
-                <marker date="1555099189938" expanded="true" signature="12783:13011" ph="..." />
-                <marker date="1555099189938" expanded="true" signature="13009:13010" ph="..." />
-                <marker date="1555099189938" expanded="true" signature="13848:14627" ph="..." />
-                <marker date="1555099189938" expanded="true" signature="14651:15378" ph="..." />
-              </folding>
+            <state relative-caret-position="297">
+              <caret line="918" column="24" lean-forward="true" selection-start-line="918" selection-start-column="24" selection-end-line="918" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -210,6 +200,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>durability</find>
+      <find>character</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -448,6 +439,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.64826024" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24962178" />
@@ -609,19 +601,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Daniel Remington- Object Dictionary World Map.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="826" column="25" selection-start-line="826" selection-start-column="25" selection-end-line="826" selection-end-column="25" />
-          <folding>
-            <marker date="1555099189938" expanded="true" signature="3409:3580" ph="..." />
-            <marker date="1555099189938" expanded="true" signature="5427:5650" ph="..." />
-            <marker date="1555099189938" expanded="true" signature="9079:9213" ph="..." />
-            <marker date="1555099189938" expanded="true" signature="11605:12069" ph="..." />
-            <marker date="1555099189938" expanded="true" signature="11892:12069" ph="..." />
-            <marker date="1555099189938" expanded="true" signature="12783:13011" ph="..." />
-            <marker date="1555099189938" expanded="true" signature="13009:13010" ph="..." />
-            <marker date="1555099189938" expanded="true" signature="13848:14627" ph="..." />
-            <marker date="1555099189938" expanded="true" signature="14651:15378" ph="..." />
-          </folding>
+        <state relative-caret-position="297">
+          <caret line="918" column="24" lean-forward="true" selection-start-line="918" selection-start-column="24" selection-end-line="918" selection-end-column="24" />
         </state>
       </provider>
     </entry>
