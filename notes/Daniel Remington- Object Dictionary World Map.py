@@ -149,8 +149,10 @@ class Pencil(Sword):
 
 class Noodle(Sword):
     def __init__(self):
-        super(Noodle, self).__init__("A Noodle", "Immobile", "0.001", 5, health=1, damage_output=1)
+        super(Noodle, self).__init__("A Noodle", "Immobile", "0.001", 5, health=1, damage_output=10)
         self.weight = 10
+        self.health = 1
+        self.damage_output = 10
 
 
 class SchoolMaterials(Item):
@@ -419,32 +421,11 @@ class Boss(Character):
         target.take_damage(self.weapon.health)
 
     def take_damage(self, damage: int):
-        if self.BOSS_POWER >= damage:
-            print("Because %s is a BOSS, he takes no damage")
+        if self.armor.health >= damage:
+            print("No damage is done because of some AMAZING armor")
         else:
             self.health -= damage - self.armor.health
-            print("%s has %d health left! %s is losing his BOSSINESS")
-
-
-class ShakespereanCharacters(Character):
-    def __init__(self, name, health, weapon, armor, size):
-        super(ShakespereanCharacters, self).__init__(name, health, weapon, armor, size)
-        self.name = name
-        self.health = health
-        self.weapon = weapon
-        self.armor = armor
-        self.size = size
-
-        def take_damage(self, damage: int):
-            if self.armor.health >= damage:
-                print("No damage is done because of some AMAZING armor")
-            else:
-                self.health -= damage - self.armor.health
-            print("%s has %d health left" % (self.name, self.health))
-
-        def attack(self, target):
-            print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.health))
-            target.take_damage(self.weapon.health)
+        print("%s has %d health left" % (self.name, self.health))
 
 
 class Albert(Character):
@@ -476,6 +457,27 @@ class Hobo(object):
             self.health = 100
             self.appearance = appearance
             self.clothing = clothing
+
+
+class ShakespereanCharacters(Character):
+    def __init__(self, name, health, weapon, armor, size):
+        super(ShakespereanCharacters, self).__init__(name, health, weapon, armor, size)
+        self.name = name
+        self.health = health
+        self.weapon = weapon
+        self.armor = armor
+        self.size = size
+
+        def take_damage(self, damage: int):
+            if self.armor.health >= damage:
+                print("No damage is done because of some AMAZING armor")
+            else:
+                self.health -= damage - self.armor.health
+            print("%s has %d health left" % (self.name, self.health))
+
+        def attack(self, target):
+            print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.health))
+            target.take_damage(self.weapon.health)
 
 
 Krishang = Hobo("NICE", "CLEAN", "PLAID_SHIRT", "Scruffy yet, well kept", ["Sword", "Health_potion", "Roman_Candle"])
@@ -624,7 +626,7 @@ HOBO = Boss("Hobo.... It's a hobo. Not much more to say", 80, Slow_Sword, Cardst
 R19A = Room("PARKING_LOT", "QUAD", "DRAMA_BUILDING", "SCIENCE_BUILDING", "R19A",
             "This is the classroom you are in right now. There are two doors on the north wall. There are two doors on"
             " the north wall. There is a big mailbox in the sky for some reason", "MAILBOX", None, [TROLL2],
-            [Cardstock(10), Noodle1, Tree_Of_Life])
+            [Cardstock(10), Noodle1, Tree_Of_Life, _007_Laser, Modular_Tactical_Vest_1])
 
 print(Room(R19A.items))
 
@@ -701,7 +703,7 @@ SHAKESPEARE_WORLD = Room("HAMLET", "OTHELLO", "TAMING_OF_THE_SHREW", "ROMEO_AND_
                          "now in a medieval area. The buildings are that of 16th century.Everyone around you is wearing"                   
                          "some type of Victorian clothing. In this world, you must act on a play. Essentially, You are"
                          " dropped into the world of the play and must find the way out.", "THE_GENTLEMEN_OF_VERONA",
-                         "THE_MERCHANT_OF_VENICE", )
+                         "THE_MERCHANT_OF_VENICE", [])
 
 THE_SPANISH_DILEMMA = Room("PROBLEMA_CUATRO", "PROBLEMA_UNO", "PROBLEMA_TRES", "UN PROBLEMA DIFICIL",
                            "THE_SPANISH_DILEMMA", "Este cuarto tiene una problema ese necesita resolver. Tu necesecitas"
@@ -782,8 +784,8 @@ LABRYNITH = Room()
 
 class Player(object):
     def __init__(self, starting_location, inventory, weapon=Urumi1, armor=Cardstock_Armor):
-        inventory = []
         self.current_location = starting_location
+        inventory = []
         self.inventory = inventory
         self.weight_left = 100
         self.weight_max = 100
@@ -821,7 +823,7 @@ class Player(object):
         print("%s has %d health left" % (self.name, self.health_starting))
 
 
-player = Player(R19A,[])
+player = Player(R19A, [])
 print(player.inventory)
 
 # Controller
@@ -831,7 +833,7 @@ short_directions = ['n', 's', 'w', 'e', 'u', 'd']
 inventory_terms = ["Inventory", "I", "inventory", "i"]
 health_and_eat_terms = ["EAT", "Eat", "eat", "CONSUME", "Consume", "consume"]
 food_list = []
-player.attack(Heisenwiebe)
+player.attack(Iago)
 while playing:
 
     print(player.current_location.name)  # player- indicates the instantiated object. current_location- refers to the
@@ -863,7 +865,7 @@ while playing:
                 print("%s has died" % TROLL7.name)
             else:
                 print("%s has %d health left" % TROLL7.name, TROLL7.health)
-        elif fight_command == "None" or "none" or "no one":
+        elif fight_command in ["None", "none", "no one"]:
             TROLL7.attack(player)
 
     if len(player.current_location.items) > 0 and player.current_location.first_enter:
@@ -874,7 +876,6 @@ while playing:
         for num, item in enumerate(player.current_location.items):
             print(str(num + 1) + ": " + item.name)
         pick_up_command = input("What item would you like to pick up")
-
 
         selected_item = None
         for item in player.current_location.items:
@@ -892,7 +893,6 @@ while playing:
             print("Ok. You do not pick up an item!")
         else:
             print("I don't see one here")
-
 
     command = input(">_")
     if command in short_directions:
@@ -923,5 +923,24 @@ while playing:
             if food_command == "Tree of Life Eggs":
                 player.health_starting += Tree_Of_Life.health_restoration
                 print("You now have %d health" % player.health_starting)
+
+    if command == "switch weapon":
+        for item in player.inventory:
+            print("Your inventory consists of %s" % item.name)
+            switch_command = input("What weapon do you want to switch to")
+            if switch_command == "A Noodle":
+                    player.weapon = Noodle1
+                    print("You now have %s as your weapon" % player.weapon.name)
+
+    if command == "put on armor":
+        for item in player.inventory:
+            print("Your inventory consists of %s" % item.name)
+            armor_command = input("What armor do you want to put on")
+            if armor_command == "Modular Tactical Vest":
+                    player.armor = Modular_Tactical_Vest_1
+                    print("You now have %s as your armor" % player.armor.name)
+            if armor_command not in Armor:
+                    print("This is not an armor")
+                    player.armor = Cardstock_Armor
 
 # Get rid of room items
