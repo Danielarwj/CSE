@@ -309,13 +309,13 @@ class Cardstock(BodyArmor):
         self.weight = 100
 
     def get_hit(self, dmg):
-            super(Cardstock, self).get_hit(dmg)
-            print("Your armor tries to fight back. IT IS A FUGILE ATTEMPT!")
+        super(Cardstock, self).get_hit(dmg)
+        print("Your armor tries to fight back. IT IS A FUGILE ATTEMPT!")
 
     def power(self, exertion):
-            super(Cardstock, self).power(10)
-            self.exertion = 10
-            print("It can't exert power back at them! It is destroyed")
+        super(Cardstock, self).power(10)
+        self.exertion = 10
+        print("It can't exert power back at them! It is destroyed")
 
 
 class ModularTacticalVest(BodyArmor):
@@ -325,13 +325,13 @@ class ModularTacticalVest(BodyArmor):
         self.power = 99999999999
 
     def get_hit(self, dmg):
-            super(ModularTacticalVest, self).get_hit(dmg)
-            print("Your armor hits them back with the MIGHT OF ZEUS")
+        super(ModularTacticalVest, self).get_hit(dmg)
+        print("Your armor hits them back with the MIGHT OF ZEUS")
 
     def power(self, exertion):
-            super(ModularTacticalVest, self).power(99999999999)
-            self.exertion = 999999999
-            print("YOU ARE INVINCIBLE! They are destroyed")
+        super(ModularTacticalVest, self).power(99999999999)
+        self.exertion = 999999999
+        print("YOU ARE INVINCIBLE! They are destroyed")
 
 
 class Lasers(Weapon):
@@ -472,12 +472,12 @@ class ShakespereanCharacters(Character):
 
 class Hobo(object):
     def __init__(self, personality, cleanliness, clothing, appearance, items):
-            self.items = items
-            self.personality = personality
-            self.cleanliness = cleanliness
-            self.health = 100
-            self.appearance = appearance
-            self.clothing = clothing
+        self.items = items
+        self.personality = personality
+        self.cleanliness = cleanliness
+        self.health = 100
+        self.appearance = appearance
+        self.clothing = clothing
 
 
 Krishang = Hobo("NICE", "CLEAN", "PLAID_SHIRT", "Scruffy yet, well kept", ["Sword", "Health_potion", "Roman_Candle"])
@@ -742,7 +742,7 @@ NIGHTMARE_SCIENCE_BUILDING = Room("NIGHTMARE_QUAD", "NIGHTMARE_HOBO_WORLD", "NIG
                                   "flat-earthers and people who are against vaccines. What has this world come to?!",
                                   "NIGHTMARE_FLOOR", None)
 
-NIGHTMARE_FLOOR = Room("")
+NIGHTMARE_FLOOR = Room("R19A", "NIGHTMARE_EDISON")
 
 NIGHTMARE_QUAD = Room("NIGHTMARE_EDISON", "NIGHTMARE_FLOOR", "NIGHTMARE_CEILING", "NIGHTMARE_DRAMA_BUILDING",
                       "Nightmare Quad", "The ampitheatre is upside down and the music playing is... DOLLY PARTON?!?!",
@@ -772,12 +772,20 @@ PROBLEMA_TRES = Room("LOS_PANQUEQUES", "EL_FUTURO", "EL_PRETERITO", "PRESENTE-PR
 THE_MAZE = Room("NULL_PATH", "IMPORT_GOD_PATH", "__INIT__PATH", "BAD_JOKE_PATH", "The Maze", "Welcome to the "
                 "Heisenwiebe Maze. This maze has each path leading to a different aspect of the Heisenwiebe. Complete "
                 "the path you go down to win. At the end of each path, you will fight the HEISENWIEBE himself",
-                "SPAAAACE_PATH", "LUCKY_7'S_PATH")
+                "SPAAAACE_PATH", "LUCKY_7S_PATH")
 
 THE_LONG_WINDING_HALLWAY = Room("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "THE_INTEGRAL_OF_THE_SIN_OF_THE_COSINE_OF_"
                                 "THE_DERIVATIVE_OF_INTEGRAL_OF_THE_LOG_OF_X_SQUARED_CUBED_SQUARED", "The Long Winding "
                                 "Hallway", "It's... just... It'sj really difficult. Complete all 4 to win", "CEILING",
                                 "FLOOR")
+
+NULL_PATH = ()
+IMPORT_GOD_PATH = ()
+__INIT__PATH = ()
+BAD_JOKE_PATH = ()
+SPAAAACE_PATH = ()
+LUCKY_7S_PATH =()
+
 
 LABRYNITH = Room()
 
@@ -841,6 +849,7 @@ while playing:
     print(player.current_location.description)
 
     for num, character in enumerate(player.current_location.characters):
+        beat_characters = []
 
         print_character = (print(str(num + 1) + ": " + character.name))
         fight_command = input("Who do you want to fight?")
@@ -852,7 +861,7 @@ while playing:
                 print("%s has died" % TROLL2.name)
                 TROLL2.alive = False
                 player.current_location.characters.remove(character)
-
+                beat_characters.append(TROLL2.name)
             else:
                 print("%s has %d health left" % TROLL2.name, TROLL2.health)
 
@@ -868,6 +877,10 @@ while playing:
                 print("%s has %d health left" % TROLL7.name, TROLL7.health)
         elif fight_command in ["None", "none", "no one"]:
             TROLL7.attack(player)
+
+        if len(inventory_terms) >= 20 and len(beat_characters) >= 10:
+            print("You have won the GAME!")
+            playing = False
 
         while player.health_starting > 0:
             if fight_command == "Heisenwiebe":
@@ -936,16 +949,16 @@ while playing:
             print("Your inventory consists of %s" % item.name)
             switch_command = input("What weapon do you want to switch to")
             if switch_command == "A Noodle":
-                    player.weapon = Noodle1
-                    print("You now have %s as your weapon" % player.weapon.name)
+                player.weapon = Noodle1
+                print("You now have %s as your weapon" % player.weapon.name)
 
     if command == "put on armor":
         for item in player.inventory:
             print("Your inventory consists of %s" % item.name)
             armor_command = input("What armor do you want to put on")
             if armor_command == "Modular Tactical Vest":
-                    player.armor = Modular_Tactical_Vest_1
-                    print("You now have %s as your armor" % player.armor.name)
+                player.armor = Modular_Tactical_Vest_1
+                print("You now have %s as your armor" % player.armor.name)
             elif armor_command == "Cardstock":
                 player.armor = Cardstock_Armor
                 print("You now have %s as your armor" % player.armor.name)
@@ -953,7 +966,12 @@ while playing:
                 player.armor = weibe_armor
                 print("You now have %s as your armor" % player.armor.name)
             elif armor_command not in Armor:
-                    print("This is not an armor")
-                    player.armor = Cardstock_Armor
+                print("This is not an armor")
+                player.armor = Cardstock_Armor
+
+
+
+
+
 
 # Get rid of room items
