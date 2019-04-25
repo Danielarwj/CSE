@@ -449,16 +449,6 @@ class Albert(Character):
         target.take_damage(self.weapon.health)
 
 
-class Hobo(object):
-    def __init__(self, personality, cleanliness, clothing, appearance, items):
-            self.items = items
-            self.personality = personality
-            self.cleanliness = cleanliness
-            self.health = 100
-            self.appearance = appearance
-            self.clothing = clothing
-
-
 class ShakespereanCharacters(Character):
     def __init__(self, name, health, weapon, armor, size):
         super(ShakespereanCharacters, self).__init__(name, health, weapon, armor, size)
@@ -478,6 +468,16 @@ class ShakespereanCharacters(Character):
         def attack(self, target):
             print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.health))
             target.take_damage(self.weapon.health)
+
+
+class Hobo(object):
+    def __init__(self, personality, cleanliness, clothing, appearance, items):
+            self.items = items
+            self.personality = personality
+            self.cleanliness = cleanliness
+            self.health = 100
+            self.appearance = appearance
+            self.clothing = clothing
 
 
 Krishang = Hobo("NICE", "CLEAN", "PLAID_SHIRT", "Scruffy yet, well kept", ["Sword", "Health_potion", "Roman_Candle"])
@@ -783,7 +783,7 @@ LABRYNITH = Room()
 
 
 class Player(object):
-    def __init__(self, starting_location, inventory, weapon=Urumi1, armor=Cardstock_Armor):
+    def __init__(self, starting_location, weapon=Urumi1, armor=Cardstock_Armor):
         self.current_location = starting_location
         inventory = []
         self.inventory = inventory
@@ -823,7 +823,7 @@ class Player(object):
         print("%s has %d health left" % (self.name, self.health_starting))
 
 
-player = Player(R19A, [])
+player = Player(R19A)
 print(player.inventory)
 
 # Controller
@@ -844,6 +844,7 @@ while playing:
 
         print_character = (print(str(num + 1) + ": " + character.name))
         fight_command = input("Who do you want to fight?")
+
         if fight_command == "Bob":
             player.attack(TROLL2)
             TROLL2.health -= player.weapon.damage_output
@@ -867,6 +868,12 @@ while playing:
                 print("%s has %d health left" % TROLL7.name, TROLL7.health)
         elif fight_command in ["None", "none", "no one"]:
             TROLL7.attack(player)
+
+        while player.health_starting > 0:
+            if fight_command == "Heisenwiebe":
+                player.attack(Heisenwiebe)
+            elif Heisenwiebe.health > 0:
+                Heisenwiebe.attack(player)
 
     if len(player.current_location.items) > 0 and player.current_location.first_enter:
         player.current_location.first_enter = False
@@ -939,7 +946,13 @@ while playing:
             if armor_command == "Modular Tactical Vest":
                     player.armor = Modular_Tactical_Vest_1
                     print("You now have %s as your armor" % player.armor.name)
-            if armor_command not in Armor:
+            elif armor_command == "Cardstock":
+                player.armor = Cardstock_Armor
+                print("You now have %s as your armor" % player.armor.name)
+            elif armor_command == "Armor of the Gods":
+                player.armor = weibe_armor
+                print("You now have %s as your armor" % player.armor.name)
+            elif armor_command not in Armor:
                     print("This is not an armor")
                     player.armor = Cardstock_Armor
 
