@@ -544,6 +544,7 @@ Noodle8 = Noodle
 Noodle9 = Noodle
 Noodle10 = Noodle
 Aegon1 = Aegon
+StoneTiconderoga1 = StoneTiconderoga
 Holy_Lance = HolyLance()
 Leaf = Leaf()
 # QuadHobo = Character("Quad Hobo", )
@@ -722,7 +723,7 @@ PATH_1 = Room("MINI_PATH_1", "HOBO_WORLD", "MINI_PATH_2", "DEAD_END", "The North
               "area is quite large. I don't like it. North and East seem to both have something", "CEILING", "FLOOR"
               )
 
-PATH_2 = Room("MINI_PATH_3", "DEAD_END", "MINI_PATH_4", "MINI_PATH_5", "The Western Path", "This part of the challenge "
+PATH_2 = Room("MINI_PATH_3", "DEAD_END", None, None, "The Western Path", "This part of the challenge "
               "is strange. Odd paintings cover the walls. South seems to go somewhere... or does it?", "CEILING",
               "FLOOR")
 
@@ -735,9 +736,6 @@ MINI_PATH_2 = Room()
 
 MINI_PATH_3 = Room()
 
-MINI_PATH_4 = Room()
-
-MINI_PATH_5 = Room()
 
 NIGHTMARE_PARKING_LOT = Room("NIGHTMARE_CEILING", None, "NIGHTMARE_W_BUILDING", "NIGHTMARE_FLOOR", "Nightmare Parking "
                              "Lot", "Welcome to the Nightmare Version of the parking lot. All the cars are Hummers."
@@ -776,11 +774,19 @@ HALLWAY = Room()
 
 GROVE = Room()
 
+
 OTHELLO = Room("VENITIAN_STREET", "COUNCIL_CHAMBER", "SEA_PORT", "THE_CASTLE", "Othello", "Welcome to othello- The "
                "play, not the game. The play is about a Venetian soldier who passed over promotion by Othello and the "
                "story of how Othello undermines him, causing him to get revenge. Get to the last scene to win",
                "CEILING", "FLOOR")
 
+VENITIAN_STREET = Room()
+
+COUNCIL_CHAMBER = Room()
+
+SEA_PORT = Room()
+
+THE_CASTLE = Room()
 
 THE_MAZE = Room("NULL_PATH", "IMPORT_GOD_PATH", "__INIT__PATH", "BAD_JOKE_PATH", "The Maze", "Welcome to the "
                 "Heisenwiebe Maze. This maze has each path leading to a different aspect of the Heisenwiebe. Complete "
@@ -789,7 +795,7 @@ THE_MAZE = Room("NULL_PATH", "IMPORT_GOD_PATH", "__INIT__PATH", "BAD_JOKE_PATH",
 
 THE_LONG_WINDING_HALLWAY = Room("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "THE_INTEGRAL_OF_THE_SIN_OF_THE_COSINE_OF_"
                                 "THE_DERIVATIVE_OF_INTEGRAL_OF_THE_LOG_OF_X_SQUARED_CUBED_SQUARED", "The Long Winding "
-                                "Hallway", "It's... just... It'sj really difficult. Complete all 4 to win", "CEILING",
+                                "Hallway", "It's... just... It'sj really difficult. Complete all 1 to win", "CEILING",
                                 "FLOOR")
 
 NULL_PATH = Room("ERROR_ROOM", "HEISENWIEBE_ROOM", "NULL_PATH", "DEAD_END", "The Null Path", "Welcome to..."
@@ -812,9 +818,19 @@ IMPORT_GOD_PATH = Room("CODE_ITEMS_AREA", "HEISENWIEBE_ROOM", "NULL_PATH", "IMPO
 CODE_ITEMS_AREA = Room(None, "IMPORT_GOD_PATH", None, None, "The area with code items", "You'll need these", None, None,
                        [], [Codesword, Codearmor])
 
-SPAAAACE_PATH = ()
-LUCKY_7S_PATH =()
+SPAAAACE_PATH = ("CEILING", "CEILING", "CEILING", "CEILING", "SPAAAAAAACE!", "Welcome.", "CEILING", "CEILING", [], [])
 
+
+LUCKY_7S_PATH = ("R19A", "R19A", "R19A", "R19A", "Lucky 7's", "Your lucky to get on out of here!", "R19A", "R19A", [],
+                 [])
+
+MATH_JESUS = Room()
+
+_2019S_CANCEL_OUT = Room()
+
+THE_INTEGRAL_OF_THE_SINE_OF_THE_COSINE_OF_THE_DERIVATIVE_OF_INTEGRAL_OF_THE_LOG_OF_X_SQUARED_CUBED_SQUARED = Room
+
+_2019_SQUARED = Room()
 
 
 class Player(object):
@@ -1174,6 +1190,30 @@ while playing:
             if food_command == "Tree of Life Eggs":
                 player.health_starting += Tree_Of_Life.health_restoration
                 print("You now have %d health" % player.health_starting)
+            elif food_command == "Meat Lover's Chili":
+                player.health_starting += Meat_Lovers_Chili.health_restoration
+                print("You now have %d health" % player.health_starting)
+            elif food_command == "Vegetarian Chili":
+                player.health_starting += Vegetarian_Chili.health_restoration
+                print("You now have %d health" % player.health_starting)
+            elif food_command == "Vervain Hummingbird Eggs":
+                player.health_starting += Vervain.health_restoration
+                print("You now have %d health" % player.health_starting)
+            elif food_command == "Scrambled Eggs":
+                player.health_starting += Scrambled.health_restoration
+                print("You now have %d health" % player.health_starting)
+            elif food_command == "Boiled Eggs":
+                player.health_starting += Boiled.health_restoration
+                print("You now have %d health" % player.health_starting)
+            elif food_command == "Tier 2 Health Potion":
+                player.health_starting += Tier2_Potion.health_restoration
+                print("You now have %d health" % player.health_starting)
+            elif food_command == "Tier 3 Health Potion":
+                player.health_starting += Tier3_Potion.health_restoration
+                print("You now have %d health" % player.health_starting)
+            elif food_command == "Tier 4 Health Potion":
+                player.health_starting += Tier4_Potion.health_restoration
+                print("You now have %d health" % player.health_starting)
 
     if command == "switch weapon":
         for item in player.inventory:
@@ -1181,6 +1221,21 @@ while playing:
             switch_command = input("What weapon do you want to switch to")
             if switch_command == "A Noodle":
                 player.weapon = Noodle1
+                print("You now have %s as your weapon" % player.weapon.name)
+            elif switch_command == "Urumi":
+                player.weapon = Urumi1
+                print("You now have %s as your weapon" % player.weapon.name)
+            elif switch_command == "_007_Laser":
+                player.weapon = _007_Laser
+                print("You now have %s as your weapon" % player.weapon.name)
+            elif switch_command == "Laser Pointer":
+                player.weapon = Laser_pointer_1
+                print("You now have %s as your weapon" % player.weapon.name)
+            elif switch_command == "Stone Ticonderoga":
+                player.weapon = StoneTiconderoga1
+                print("You now have %s as your weapon" % player.weapon.name)
+            elif switch_command == "Pencil":
+                player.weapon = Pencil1
                 print("You now have %s as your weapon" % player.weapon.name)
 
     if command == "put on armor":
