@@ -531,6 +531,8 @@ MSI_Titan = MSITitan()
 MSI_Titan2 = MSITitan()
 MSI_Titan3 = MSITitan()
 Grizzly_Bear_Protection = GrizzlyBearProtection()
+Codesword = Sword("Code Sword", "QUICK",20, 20, 100)
+Codearmor = BodyArmor("Code Armor", 50, 20, 50)
 Noodle = Noodle()
 Pencil = Pencil()
 Noodle2 = Noodle
@@ -699,29 +701,43 @@ CEILING = Room("CEILING", "CEILING", "CEILING", "CEILING", "The Ceiling", "This 
                "CEILING", None, [None], [Urumi1, Aegon1])
 
 
-SHAKESPEARE_WORLD = Room("HAMLET", "OTHELLO", "TAMING_OF_THE_SHREW", "ROMEO_AND_JULIET", "Shakespeare World", "You are "
+SHAKESPEARE_WORLD = Room("HAMLET", "OTHELLO", None, "ROMEO_AND_JULIET", "Shakespeare World", "You are "
                          "now in a medieval area. The buildings are that of 16th century.Everyone around you is wearing"                   
                          "some type of Victorian clothing. In this world, you must act on a play. Essentially, You are"
-                         " dropped into the world of the play and must find the way out.", "THE_GENTLEMEN_OF_VERONA",
-                         "THE_MERCHANT_OF_VENICE", [])
+                         " dropped into the world of the play and must find the way out.", "CEILING",
+                         "FLOOR", [], [])
 
 THE_SPANISH_DILEMMA = Room("PROBLEMA_CUATRO", "PROBLEMA_UNO", "PROBLEMA_TRES", "UN PROBLEMA DIFICIL",
                            "THE_SPANISH_DILEMMA", "Este cuarto tiene una problema ese necesita resolver. Tu necesecitas"
                            " resolver la problema rapidamente. Si tu resuelves en tiempo, tu seras GANAR!", "CEILING",
                            "PROBLEMA_DOS")
 
-FLOOR = Room("FLOOR", "FLOOR", "FLOOR", "FLOOR", "FLOOR", "This is the floor", "FLOOR", "FLOOR", [None], [None])
+FLOOR = Room("FLOOR", "FLOOR", "FLOOR", "FLOOR", "FLOOR", "This is the floor", "FLOOR", "FLOOR", [], [])
 
 CHALLENGE_AREA = Room("PATH_1", "HOBO_WORLD", "PATH_3", "PATH_2", "The Challenge Area", "Welcome to the Challenge area."
                       "This is a very dark and musty cave. From what it seems,in the cave there are walls that block "
-                      "off certain areas. Kind of like a maze?", "CEILING", "FLOOR")
+                      "off certain areas. Kind of like a maze?", "CEILING", "FLOOR", [], [])
 
 PATH_1 = Room("MINI_PATH_1", "HOBO_WORLD", "MINI_PATH_2", "DEAD_END", "The North Path", "This part of the challenge "
-              "area is quite large. I don't like it. North and East seem to both have something", "CEILING", "FLOOR")
+              "area is quite large. I don't like it. North and East seem to both have something", "CEILING", "FLOOR"
+              )
 
 PATH_2 = Room("MINI_PATH_3", "DEAD_END", "MINI_PATH_4", "MINI_PATH_5", "The Western Path", "This part of the challenge "
               "is strange. Odd paintings cover the walls. South seems to go somewhere... or does it?", "CEILING",
               "FLOOR")
+
+PATH_3 = Room("DEAD_END", "DEAD_END", "DEAD_END", "DEAD_END", "Path 3", "There's something strnages about this path. "
+              "It doesen't seem to go anywhere", "DEAD_END", "DEAD_END", [], [])
+
+MINI_PATH_1 = Room("HOBO_BOSS_ROOM", )
+
+MINI_PATH_2 = Room()
+
+MINI_PATH_3 = Room()
+
+MINI_PATH_4 = Room()
+
+MINI_PATH_5 = Room()
 
 NIGHTMARE_PARKING_LOT = Room("NIGHTMARE_CEILING", None, "NIGHTMARE_W_BUILDING", "NIGHTMARE_FLOOR", "Nightmare Parking "
                              "Lot", "Welcome to the Nightmare Version of the parking lot. All the cars are Hummers."
@@ -752,22 +768,19 @@ HAMLET = Room("NORTH_ROOM", "SOUTH_ROOM", "HALLWAY", "GROVE", "Hamlet", "Conside
               "play in which Hamlet's father dies and it tells of his slow descent into madness. Get to the last scene "
               "to win", "CEILING", "FLOOR", None)
 
+NORTH_ROOM = Room()
+
+SOUTH_ROOM = Room()
+
+HALLWAY = Room()
+
+GROVE = Room()
+
 OTHELLO = Room("VENITIAN_STREET", "COUNCIL_CHAMBER", "SEA_PORT", "THE_CASTLE", "Othello", "Welcome to othello- The "
                "play, not the game. The play is about a Venetian soldier who passed over promotion by Othello and the "
                "story of how Othello undermines him, causing him to get revenge. Get to the last scene to win",
                "CEILING", "FLOOR")
 
-THE_MERCHANT_OF_VENICE = Room()
-
-PROBLEMA_UNO = Room("SECCION_UNO", "SECCION_DOS", "SECCION_TRES", "SECCION_QUATRO", "Problema Uno", "Es el primero"
-                    " problema. You need to solve one puzzle and ten queestions", "CEILING", "FLOOR")
-
-PROBLEMA_DOS = Room("SECCION_CINCO", "SECCION_SEIS", "SECCION_SIETE", "SECCION_OCHO", "Problema Dos", " Es el segundo "
-                    "problema. This challenges requires you to complete four mazes and code in spanish ", None, None)
-
-PROBLEMA_TRES = Room("LOS_PANQUEQUES", "EL_FUTURO", "EL_PRETERITO", "PRESENTE-PROGRESIVO", "Problema Tres", "Es el "
-                     "trecero problema. In this one, you have to answer high intensity questions on verbs and "
-                     "vocabulary", "VOCABULARIO_UNO", None)
 
 THE_MAZE = Room("NULL_PATH", "IMPORT_GOD_PATH", "__INIT__PATH", "BAD_JOKE_PATH", "The Maze", "Welcome to the "
                 "Heisenwiebe Maze. This maze has each path leading to a different aspect of the Heisenwiebe. Complete "
@@ -779,15 +792,29 @@ THE_LONG_WINDING_HALLWAY = Room("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "TH
                                 "Hallway", "It's... just... It'sj really difficult. Complete all 4 to win", "CEILING",
                                 "FLOOR")
 
-NULL_PATH = ()
-IMPORT_GOD_PATH = ()
-__INIT__PATH = ()
-BAD_JOKE_PATH = ()
+NULL_PATH = Room("ERROR_ROOM", "HEISENWIEBE_ROOM", "NULL_PATH", "DEAD_END", "The Null Path", "Welcome to..."
+                 "the Null Path! Don't expect anything of value.", "CEILING", "FLOOR", [], [])
+
+ERROR_ROOM = Room("DEAD_END", "DEAD_END", "DEAD_END", "DEAD_END", "It's not working",
+                  "Welcome to... ERROR 43942478-(DOES NOT COMPUTE ATTRIBUTE NAME- PRINTING- ^^%%*@##<<>@??<@##&. ",
+                  "DEAD_END", "FLOOR")
+
+HEISENWIEBE_ROOM = Room(None, None, None, None, "Heisenwiebe's lair", "Welcome to the fiery depths of the Heisenwiebe"
+                        "Here, the strongest, most powerful organism known to life resides- The HEISENWIEBE"
+                        "He acknowledges your existance, but is mad at you, for being a mortal", None, None,
+                        [Heisenwiebe], [])
+
+
+IMPORT_GOD_PATH = Room("CODE_ITEMS_AREA", "HEISENWIEBE_ROOM", "NULL_PATH", "IMPORT_GOD_PATH", "Welcome to Import God",
+                       "This isn't an evil path. Come, take some necessities so you can fight the Heisenwiebe, himself",
+                       "CEILING", "FLOOR", [], [])
+
+CODE_ITEMS_AREA = Room(None, "IMPORT_GOD_PATH", None, None, "The area with code items", "You'll need these", None, None,
+                       [], [Codesword, Codearmor])
+
 SPAAAACE_PATH = ()
 LUCKY_7S_PATH =()
 
-
-LABRYNITH = Room()
 
 
 class Player(object):
@@ -877,6 +904,195 @@ while playing:
                 print("%s has %d health left" % TROLL7.name, TROLL7.health)
         elif fight_command in ["None", "none", "no one"]:
             TROLL7.attack(player)
+        elif fight_command == "Jaxx":
+            player.attack(TROLL3)
+            TROLL3.health -= player.weapon.damage_output
+            if TROLL3.health <= 0:
+                print("%s has died" % TROLL3.name)
+            else:
+                print("%s has %d health left" % TROLL3.name, TROLL3.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL3.attack(player)
+
+        elif fight_command == "Yosroel":
+            player.attack(TROLL4)
+            TROLL4.health -= player.weapon.damage_output
+            if TROLL7.health <= 0:
+                print("%s has died" % TROLL4.name)
+            else:
+                print("%s has %d health left" % TROLL4.name, TROLL4.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL4.attack(player)
+
+        elif fight_command == "Arnold":
+            player.attack(TROLL5)
+            TROLL5.health -= player.weapon.damage_output
+            if TROLL5.health <= 0:
+                print("%s has died" % TROLL5.name)
+            else:
+                print("%s has %d health left" % TROLL5.name, TROLL5.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL5.attack(player)
+
+        elif fight_command == "Peter":
+            player.attack(TROLL6)
+            TROLL6.health -= player.weapon.damage_output
+            if TROLL6.health <= 0:
+                print("%s has died" % TROLL6.name)
+            else:
+                print("%s has %d health left" % TROLL6.name, TROLL6.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL6.attack(player)
+
+        elif fight_command == "Oliver":
+            player.attack(TROLL8)
+            TROLL8.health -= player.weapon.damage_output
+            if TROLL8.health <= 0:
+                print("%s has died" % TROLL8.name)
+            else:
+                print("%s has %d health left" % TROLL8.name, TROLL8.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL8.attack(player)
+
+        elif fight_command == "DANNY DEVITO":
+            player.attack(TROLL9)
+            TROLL9.health -= player.weapon.damage_output
+            if TROLL9.health <= 0:
+                print("%s has died" % TROLL9.name)
+            else:
+                print("%s has %d health left" % TROLL9.name, TROLL9.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL9.attack(player)
+
+        elif fight_command == "Mason":
+            player.attack(TROLL10)
+            TROLL10.health -= player.weapon.damage_output
+            if TROLL10.health <= 0:
+                print("%s has died" % TROLL10.name)
+            else:
+                print("%s has %d health left" % TROLL10.name, TROLL10.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL10.attack(player)
+
+        elif fight_command == "Alex":
+            player.attack(TROLL11)
+            TROLL11.health -= player.weapon.damage_output
+            if TROLL11.health <= 0:
+                print("%s has died" % TROLL11.name)
+            else:
+                print("%s has %d health left" % TROLL11.name, TROLL11.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL11.attack(player)
+
+        elif fight_command == "Henry":
+            player.attack(TROLL12)
+            TROLL12.health -= player.weapon.damage_output
+            if TROLL12.health <= 0:
+                print("%s has died" % TROLL12.name)
+            else:
+                print("%s has %d health left" % TROLL12.name, TROLL12.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL12.attack(player)
+
+        elif fight_command == "Wyatt":
+            player.attack(TROLL13)
+            TROLL13.health -= player.weapon.damage_output
+            if TROLL13.health <= 0:
+                print("%s has died" % TROLL13.name)
+            else:
+                print("%s has %d health left" % TROLL13.name, TROLL13.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL13.attack(player)
+
+        elif fight_command == "Owen":
+            player.attack(TROLL14)
+            TROLL14.health -= player.weapon.damage_output
+            if TROLL14.health <= 0:
+                print("%s has died" % TROLL14.name)
+            else:
+                print("%s has %d health left" % TROLL14.name, TROLL14.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL14.attack(player)
+
+        elif fight_command == "Sebastian":
+            player.attack(TROLL15)
+            TROLL15.health -= player.weapon.damage_output
+            if TROLL15.health <= 0:
+                print("%s has died" % TROLL15.name)
+            else:
+                print("%s has %d health left" % TROLL15.name, TROLL15.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL15.attack(player)
+
+        elif fight_command == "Levi":
+            player.attack(TROLL16)
+            TROLL16.health -= player.weapon.damage_output
+            if TROLL16.health <= 0:
+                print("%s has died" % TROLL16.name)
+            else:
+                print("%s has %d health left" % TROLL16.name, TROLL16.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL16.attack(player)
+
+        elif fight_command == "Joshua":
+            player.attack(TROLL17)
+            TROLL17.health -= player.weapon.damage_output
+            if TROLL17.health <= 0:
+                print("%s has died" % TROLL17.name)
+            else:
+                print("%s has %d health left" % TROLL17.name, TROLL17.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL17.attack(player)
+
+        elif fight_command == "Issac":
+            player.attack(TROLL18)
+            TROLL18.health -= player.weapon.damage_output
+            if TROLL18.health <= 0:
+                print("%s has died" % TROLL18.name)
+            else:
+                print("%s has %d health left" % TROLL18.name, TROLL18.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL18.attack(player)
+
+        elif fight_command == "Aaron":
+            player.attack(TROLL19)
+            TROLL19.health -= player.weapon.damage_output
+            if TROLL19.health <= 0:
+                print("%s has died" % TROLL19.name)
+            else:
+                print("%s has %d health left" % TROLL19.name, TROLL19.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL19.attack(player)
+
+        elif fight_command == "Thomas":
+            player.attack(TROLL20)
+            TROLL20.health -= player.weapon.damage_output
+            if TROLL20.health <= 0:
+                print("%s has died" % TROLL20.name)
+            else:
+                print("%s has %d health left" % TROLL20.name, TROLL20.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL20.attack(player)
+
+        elif fight_command == "Caleb":
+            player.attack(TROLL21)
+            TROLL21.health -= player.weapon.damage_output
+            if TROLL21.health <= 0:
+                print("%s has died" % TROLL21.name)
+            else:
+                print("%s has %d health left" % TROLL21.name, TROLL21.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL21.attack(player)
+
+        elif fight_command == "DANNY DEVITO- REDUX":
+            player.attack(TROLL22)
+            TROLL22.health -= player.weapon.damage_output
+            if TROLL22.health <= 0:
+                print("%s has died" % TROLL22.name)
+            else:
+                print("%s has %d health left" % TROLL22.name, TROLL22.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL22.attack(player)
 
         if len(inventory_terms) >= 20 and len(beat_characters) >= 10:
             print("You have won the GAME!")
@@ -887,6 +1103,21 @@ while playing:
                 player.attack(Heisenwiebe)
             elif Heisenwiebe.health > 0:
                 Heisenwiebe.attack(player)
+
+            elif fight_command == "Papa Pearson":
+                player.attack(Papa_Pearson)
+            elif Papa_Pearson.health > 0:
+                Papa_Pearson.attack(player)
+
+            elif fight_command == "Hobo":
+                player.attack(HOBO)
+            elif HOBO.health > 0:
+                HOBO.attack(player)
+
+            elif fight_command == "Secret Room Boss":
+                player.attack(SecretRoomBoss)
+            elif SecretRoomBoss.health > 0:
+                SecretRoomBoss.attack(player)
 
     if len(player.current_location.items) > 0 and player.current_location.first_enter:
         player.current_location.first_enter = False
