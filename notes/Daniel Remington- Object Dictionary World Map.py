@@ -373,24 +373,14 @@ class Character(object):
         target.take_damage(self.weapon.health)
 
 
-class Shopkeepers(Character):
-    def __init__(self, name, health, size):
-        super(Shopkeepers, self).__init__(name, health, None, None, size)
-        self.name = name
-        self.health = health
-        self.size = size
-        self.inventory = []
-
-
 class Boss(Character):
-    def __init__(self, name, health: int, weapon, armor, size, boss_power):
+    def __init__(self, name, health: int, weapon, armor, size, ):
         super(Boss, self).__init__(name, health, weapon, armor, size)
         self.name = name
         self.health = health
         self.weapon = weapon
         self.armor = armor
         self.size = size
-        self.BOSS_POWER = boss_power
 
     def attack(self, target):
         print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.health))
@@ -517,6 +507,7 @@ Noodle4 = Noodle
 Noodle5 = Noodle
 Noodle7 = Noodle
 Noodle8 = Noodle
+Gold1 = Gold
 Noodle9 = Noodle
 Noodle10 = Noodle
 Aegon1 = Aegon
@@ -570,7 +561,7 @@ Hamlet_Act1_Scene1 = Scripts(20, "Act1; Scene 1", 20, Scripts)
 Hamlet_Act2_Scene2 = Scripts(20, "Act2; Scene 2", 20, Scripts)
 Hamlet_Act3_Scene4 = Scripts(20, "Act3; Scene4", 20, Scripts)
 Hamlet_Act5_Scene1 = Scripts(20, "Act 5; Scene1", 20, Scripts)
-SecretRoomBoss = Boss("Secret Room Boss", 20, None, Gold, 20, 10)
+SecretRoomBoss = Boss("Secret Room Boss", 20, None, Gold, 20)
 Leaf1 = Leaf
 Urumi1 = Urumi
 Null_Sword = Sword("Null Sword", "QUICK", 15, 20, 10)
@@ -598,10 +589,10 @@ Horatio = ShakespereanCharacters("Horatio", 50, Hamlet_Act5_Scene1, Shakesperean
 
 TROLL20.attack(TROLL22)
 
-Heisenwiebe = Boss("HEISENWIEBE", 250, Urumi, Modular_Tactical_Vest_1, 250, 100)
-Papa_Pearson = Boss("Papa Pearson", 200, Math_Sword, Chestplate, 250, 100)
-HOBO = Boss("Hobo.... It's a hobo. Not much more to say", 80, Slow_Sword, Cardstock, 80, 50)
-MathJesus = Boss("Math Jesus", 100, Math_Sword, Math_Armor, 100, 50)
+Heisenwiebe = Boss("HEISENWIEBE", 250, Urumi, Modular_Tactical_Vest_1, 250)
+Papa_Pearson = Boss("Papa Pearson", 200, Math_Sword, Chestplate, 250)
+HOBO = Boss("Hobo.... It's a hobo. Not much more to say", 80, Slow_Sword, Cardstock, 80)
+MathJesus = Boss("Math Jesus", 100, Math_Sword, Math_Armor, 100)
 
 
 R19A = Room("PARKING_LOT", "QUAD", "DRAMA_BUILDING", "SCIENCE_BUILDING", "R19A",
@@ -787,7 +778,7 @@ _2019_SQUARED = Room("FLOOR", "FLOOR", "FLOOR", "FLOOR", "The 2019's square", "T
 
 
 class Player(object):
-    def __init__(self, starting_location, weapon=Urumi1, armor=Cardstock_Armor):
+    def __init__(self, starting_location, helmet=Aegon1, weapon=Urumi1, armor=Cardstock_Armor):
         self.current_location = starting_location
         inventory = []
         self.inventory = inventory
@@ -799,6 +790,7 @@ class Player(object):
         self.weapon = weapon
         self.name = "Player"
         self.armor = armor
+        self.helmet = helmet
 
     def attack(self, target):
         print("You attack %s for %d damage" % (target.name, self.weapon.health))
@@ -1354,6 +1346,16 @@ while playing:
                 player.current_location.characters.remove(character)
                 beat_characters.append(SecretRoomBoss.name)
 
+            elif fight_command == "Math Jesus":
+                player.attack(MathJesus)
+            elif MathJesus.health > 0:
+                MathJesus.attack(player)
+            elif MathJesus.health == 0:
+                print("Well, you defeated him. Congrats... I guess")
+                MathJesus.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(MathJesus.name)
+
     if len(player.current_location.items) > 0 and player.current_location.first_enter:
         player.current_location.first_enter = False
         print("There are the following items in the room:")
@@ -1433,6 +1435,9 @@ while playing:
             elif food_command == "Tier 4 Health Potion":
                 player.health_starting += Tier4_Potion.health_restoration
                 print("You now have %d health" % player.health_starting)
+            elif food_command not in Food:
+                print("This is not Food")
+                player.health_starting -= 10
 
     if command == "switch weapon":
         for item in player.inventory:
@@ -1456,6 +1461,9 @@ while playing:
             elif switch_command == "Pencil":
                 player.weapon = Pencil1
                 print("You now have %s as your weapon" % player.weapon.name)
+            elif switch_command not in Weapon:
+                print("This is not a weapon")
+                player.weapon = Slow_Sword
 
     if command == "put on armor":
         for item in player.inventory:
@@ -1473,5 +1481,22 @@ while playing:
             elif armor_command not in Armor:
                 print("This is not an armor")
                 player.armor = Cardstock_Armor
-    
+
+    if command == "put on helmet":
+        for item in player.inventory:
+            print("Your inventory consists of %s" % item.name)
+            armor_command = input("What helmet do you want to put on")
+            if armor_command == "Aegon":
+                player.helmet = Aegon1
+                print("You now have %s as your helmet" % player.helmet.name)
+            elif armor_command == "Gold":
+                player.helmet = Gold1
+                print("You now have %s as your helmet" % player.helmet.name)
+            elif armor_command == "Leaf":
+                player.helmet = Leaf1
+                print("You now have %s as your helmet" % player.helmet.name)
+            elif armor_command not in Helmet:
+                print("This is not a Helmet")
+                player.helmet = Leaf1
+
 # Get rid of room items
