@@ -37,9 +37,6 @@ class Armor(Item):
         print("Your armor looses some health")
         self.health -= 1
 
-    def power(self, exertion):
-        print("Your helmet tries to shoot energy back to the enemy")
-
 
 class Helmet(Armor):
     def __init__(self, name, color, protection_ability, health=100):
@@ -58,11 +55,6 @@ class Aegon(Helmet):
         print("Your helmet cannot be damaged.")
         self.health += 1
 
-    def power(self, exertion):
-        super(Aegon, self).power(100)
-        print("Your helmet sends back TEN THOUSANDS units of energy. Good Job")
-        self.power += 1
-
 
 class Gold(Helmet):
     def __init__(self):
@@ -73,10 +65,6 @@ class Gold(Helmet):
         super(Gold, self).get_hit(dmg)
         print("Your helmet tries to fight back. IT IS A FUGILE ATTEMPT!")
 
-    def power(self, exertion):
-        super(Gold, self).power(50)
-        print("Your helmet is attempting... so close but no.")
-
 
 class Leaf(Helmet):
     def __init__(self):
@@ -86,10 +74,6 @@ class Leaf(Helmet):
     def get_hit(self, dmg):
         super(Leaf, self).get_hit(dmg)
         print("Your helmet doesn't even try. It is destroyed")
-
-    def power(self, exertion):
-        super(Leaf, self).power(1)
-        print("Don't even try.")
 
 
 class Weapon(Item):
@@ -189,6 +173,7 @@ class GrizzlyBearProtection(ClassMaterials):
 class Food(SchoolMaterials):
     def __init__(self, name, taste, size, quality, health, restoration):
         super(Food, self).__init__(name, health)
+        self.name = name
         self.taste = taste
         self.size = size
         self.quality = quality
@@ -272,13 +257,14 @@ class Eggs(TeacherSustenance):
 
 
 class BoiledEggs(Eggs):
-    def __init__(self, restoration):
-        super(BoiledEggs, self).__init__("GOOD", 10, "GOOD", "BOILED", "MUSHY", "Boiled Eggs", restoration, 80)
+    def __init__(self, health_restoration):
+        super(BoiledEggs, self).__init__("GOOD", 10, "GOOD", "BOILED", "MUSHY", "Boiled Eggs", health_restoration, 80)
 
 
 class ScrambledEggs(Eggs):
-    def __init__(self, restoration):
-        super(ScrambledEggs, self).__init__("GREAT", 12, "GOOD", "SCRAMBLED", "SOFT", "Scrambled Eggs", restoration, 90)
+    def __init__(self, health_restoration):
+        super(ScrambledEggs, self).__init__("GREAT", 12, "GOOD", "SCRAMBLED", "SOFT", "Scrambled Eggs",
+                                            health_restoration, 90)
 
 
 class VervainHummingbirdEggs(Eggs):
@@ -312,11 +298,6 @@ class Cardstock(BodyArmor):
         super(Cardstock, self).get_hit(dmg)
         print("Your armor tries to fight back. IT IS A FUGILE ATTEMPT!")
 
-    def power(self, exertion):
-        super(Cardstock, self).power(10)
-        self.exertion = 10
-        print("It can't exert power back at them! It is destroyed")
-
 
 class ModularTacticalVest(BodyArmor):
     def __init__(self, exertion, size):
@@ -327,11 +308,6 @@ class ModularTacticalVest(BodyArmor):
     def get_hit(self, dmg):
         super(ModularTacticalVest, self).get_hit(dmg)
         print("Your armor hits them back with the MIGHT OF ZEUS")
-
-    def power(self, exertion):
-        super(ModularTacticalVest, self).power(99999999999)
-        self.exertion = 999999999
-        print("YOU ARE INVINCIBLE! They are destroyed")
 
 
 class Lasers(Weapon):
@@ -458,29 +434,28 @@ class ShakespereanCharacters(Character):
         self.armor = armor
         self.size = size
 
-        def take_damage(self, damage: int):
-            if self.armor.health >= damage:
-                print("No damage is done because of some AMAZING armor")
-            else:
-                self.health -= damage - self.armor.health
-            print("%s has %d health left" % (self.name, self.health))
+    def take_damage(self, damage: int):
+        if self.armor.health >= damage:
+            print("No damage is done because of some AMAZING armor")
+        else:
+            self.health -= damage - self.armor.health
+        print("%s has %d health left" % (self.name, self.health))
 
-        def attack(self, target):
-            print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.health))
-            target.take_damage(self.weapon.health)
+    def attack(self, target):
+        print("%s attacks for %s for %d damage" % (self.name, target.name, self.weapon.health))
+        target.take_damage(self.weapon.health)
 
 
 class Hobo(object):
-    def __init__(self, personality, cleanliness, clothing, appearance, items):
+    def __init__(self, personality, cleanliness, clothing, appearance, items, name):
         self.items = items
+        self.name = name
         self.personality = personality
         self.cleanliness = cleanliness
         self.health = 100
         self.appearance = appearance
         self.clothing = clothing
 
-
-Krishang = Hobo("NICE", "CLEAN", "PLAID_SHIRT", "Scruffy yet, well kept", ["Sword", "Health_potion", "Roman_Candle"])
 
 # Blueprint for room
 # Ex. R-19A =(North-Parking lot, South-etc.)
@@ -521,6 +496,7 @@ Pencil5 = Pencil()
 Pencil7 = Pencil()
 Pencil8 = Pencil()
 Pencil9 = Pencil()
+Krishang = Hobo("NICE", "Krishang", "CLEAN", "PLAID_SHIRT", "Scruffy yet, well kept", "Slow_Sword")
 Pencil10 = Pencil()
 Tree_Of_Life = TreeOfLifeEggs()
 Canned_Tuna_Pizza = CannedTunaPizza()
@@ -531,7 +507,7 @@ MSI_Titan = MSITitan()
 MSI_Titan2 = MSITitan()
 MSI_Titan3 = MSITitan()
 Grizzly_Bear_Protection = GrizzlyBearProtection()
-Codesword = Sword("Code Sword", "QUICK",20, 20, 100)
+Codesword = Sword("Code Sword", "QUICK", 20, 20, 100)
 Codearmor = BodyArmor("Code Armor", 50, 20, 50)
 Noodle = Noodle()
 Pencil = Pencil()
@@ -625,6 +601,8 @@ TROLL20.attack(TROLL22)
 Heisenwiebe = Boss("HEISENWIEBE", 250, Urumi, Modular_Tactical_Vest_1, 250, 100)
 Papa_Pearson = Boss("Papa Pearson", 200, Math_Sword, Chestplate, 250, 100)
 HOBO = Boss("Hobo.... It's a hobo. Not much more to say", 80, Slow_Sword, Cardstock, 80, 50)
+MathJesus = Boss("Math Jesus", 100, Math_Sword, Math_Armor, 100, 50)
+
 
 R19A = Room("PARKING_LOT", "QUAD", "DRAMA_BUILDING", "SCIENCE_BUILDING", "R19A",
             "This is the classroom you are in right now. There are two doors on the north wall. There are two doors on"
@@ -715,95 +693,65 @@ THE_SPANISH_DILEMMA = Room("PROBLEMA_CUATRO", "PROBLEMA_UNO", "PROBLEMA_TRES", "
 
 FLOOR = Room("FLOOR", "FLOOR", "FLOOR", "FLOOR", "FLOOR", "This is the floor", "FLOOR", "FLOOR", [], [])
 
-CHALLENGE_AREA = Room("PATH_1", "HOBO_WORLD", "PATH_3", "PATH_2", "The Challenge Area", "Welcome to the Challenge area."
+CHALLENGE_AREA = Room(None, "HOBO_WORLD", None, None, "The Challenge Area", "Welcome to the Challenge area."
                       "This is a very dark and musty cave. From what it seems,in the cave there are walls that block "
-                      "off certain areas. Kind of like a maze?", "CEILING", "FLOOR", [], [])
-
-PATH_1 = Room("MINI_PATH_1", "HOBO_WORLD", "MINI_PATH_2", "DEAD_END", "The North Path", "This part of the challenge "
-              "area is quite large. I don't like it. North and East seem to both have something", "CEILING", "FLOOR"
-              )
-
-PATH_2 = Room("MINI_PATH_3", "DEAD_END", None, None, "The Western Path", "This part of the challenge "
-              "is strange. Odd paintings cover the walls. South seems to go somewhere... or does it?", "CEILING",
-              "FLOOR")
-
-PATH_3 = Room("DEAD_END", "DEAD_END", "DEAD_END", "DEAD_END", "Path 3", "There's something strnages about this path. "
-              "It doesen't seem to go anywhere", "DEAD_END", "DEAD_END", [], [])
-
-MINI_PATH_1 = Room("HOBO_BOSS_ROOM", )
-
-MINI_PATH_2 = Room()
-
-MINI_PATH_3 = Room()
+                      "off certain areas. There is also a huge homeless person here", "CEILING", "FLOOR", [HOBO], [])
 
 
 NIGHTMARE_PARKING_LOT = Room("NIGHTMARE_CEILING", None, "NIGHTMARE_W_BUILDING", "NIGHTMARE_FLOOR", "Nightmare Parking "
                              "Lot", "Welcome to the Nightmare Version of the parking lot. All the cars are Hummers."
                              "Get spooked by their carbon emissions and their excessive gas prices!",
-                             "NIGHTMARE_GYM_PORTAL", "NIGHTMARE_R19A")
+                             "NIGHTMARE_GYM_PORTAL", "NIGHTMARE_R19A", [NIGHTMARE_TROLL1], [])
 
 NIGHTMARE_W_BUILDING = Room("NIGHTMARE_EDISON", "NIGHTMARE_CEILING", "NIGHTMARE_R_BUILDINGS", "NIGHTMARE_EDISON", "The "
                             "Nightmare W Buildings", "The building in a never ending staircase. It's almost like... a "
                             "maze. But it isn't. However, there are a lot of signs that just say- Look out for the "
-                            "start.", "NIGHTMARE_CEILING", "NIGHTMARE_EDISON")
+                            "start.", "NIGHTMARE_CEILING", "NIGHTMARE_EDISON", [NIGHTMARE_TROLL1], [])
 
 NIGHTMARE_R19A = Room("NIGHTMARE_GYM_PORTAL", "NIGHTMARE_HOBO_WORLD", "NIGHTMARE_DRAMA_BUILDING", "NIGHTMARE_QUAD",
                       "Nightmare R19A", "This is a SpOoOky computer room. All of the computers are Windows 98 and are "
-                      "slower than paces of snails. ", "R19A", "NIGHTMARE_EDISON")
+                      "slower than paces of snails. ", "R19A", "NIGHTMARE_EDISON", [NIGHTMARE_TROLL1], [])
 
 NIGHTMARE_SCIENCE_BUILDING = Room("NIGHTMARE_QUAD", "NIGHTMARE_HOBO_WORLD", "NIGHTMARE_EDISON", "NIGHTMARE_FLOOR", "The"
                                   "Nightmare Science Buildings", "The classes are terrifying! They're taught by "
                                   "flat-earthers and people who are against vaccines. What has this world come to?!",
-                                  "NIGHTMARE_FLOOR", None)
+                                  "NIGHTMARE_FLOOR", None, [Albert2])
 
-NIGHTMARE_FLOOR = Room("R19A", "NIGHTMARE_EDISON")
+NIGHTMARE_FLOOR = Room("R19A", "NIGHTMARE_EDISON", "NIGHTMARE_FLOOR", None, "Nightmare Floor", "It's dirty- Be spooked",
+                       [], [MSI_Titan, MSI_Titan2, MSI_Titan3, Grizzly_Bear_Protection])
 
 NIGHTMARE_QUAD = Room("NIGHTMARE_EDISON", "NIGHTMARE_FLOOR", "NIGHTMARE_CEILING", "NIGHTMARE_DRAMA_BUILDING",
                       "Nightmare Quad", "The ampitheatre is upside down and the music playing is... DOLLY PARTON?!?!",
                       "NIGHTMARE_GYM_PORTAL", "NIGHTMARE_PARKING_LOT", [TROLL13, TROLL22], [])
 
-HAMLET = Room("NORTH_ROOM", "SOUTH_ROOM", "HALLWAY", "GROVE", "Hamlet", "Considered to be his best play, Hamlet is "
-              "play in which Hamlet's father dies and it tells of his slow descent into madness. Get to the last scene "
-              "to win", "CEILING", "FLOOR", None)
-
-NORTH_ROOM = Room()
-
-SOUTH_ROOM = Room()
-
-HALLWAY = Room()
-
-GROVE = Room()
+HAMLET = Room("DRAMA_BUILDING", None, None, None, "Hamlet", "Considered to be his best play, Hamlet is "
+              "play in which Hamlet's father dies and it tells of his slow descent into madness. Here, you fight some "
+              "important characters from this play, and collect a new series of weapon, THE SCRIPTS",
+              "CEILING", "FLOOR", [Ghosts_of_Hamlets_father, Hamlet, Claudius, Horatio], [Othello_Act1_Scene2])
 
 
-OTHELLO = Room("VENITIAN_STREET", "COUNCIL_CHAMBER", "SEA_PORT", "THE_CASTLE", "Othello", "Welcome to othello- The "
+OTHELLO = Room("DRAMA_BUILDING", None, None, None, None, "Welcome to othello- The "
                "play, not the game. The play is about a Venetian soldier who passed over promotion by Othello and the "
-               "story of how Othello undermines him, causing him to get revenge. Get to the last scene to win",
-               "CEILING", "FLOOR")
-
-VENITIAN_STREET = Room()
-
-COUNCIL_CHAMBER = Room()
-
-SEA_PORT = Room()
-
-THE_CASTLE = Room()
+               "story of how Othello undermines him, causing him to get revenge. Here, you fight some "
+               "important characters from this play, and collect a new series of weapon, THE SCRIPTS",
+               "CEILING", "FLOOR", [Hamlet, Ghosts_of_Hamlets_father, Claudius, Horatio], [Hamlet_Act1_Scene1])
 
 THE_MAZE = Room("NULL_PATH", "IMPORT_GOD_PATH", "__INIT__PATH", "BAD_JOKE_PATH", "The Maze", "Welcome to the "
                 "Heisenwiebe Maze. This maze has each path leading to a different aspect of the Heisenwiebe. Complete "
                 "the path you go down to win. At the end of each path, you will fight the HEISENWIEBE himself",
-                "SPAAAACE_PATH", "LUCKY_7S_PATH")
+                "SPAAAACE_PATH", "LUCKY_7S_PATH", [], [])
 
 THE_LONG_WINDING_HALLWAY = Room("MATH_JESUS", "2019'S_CANCEL_OUT", "2019^2", "THE_INTEGRAL_OF_THE_SIN_OF_THE_COSINE_OF_"
                                 "THE_DERIVATIVE_OF_INTEGRAL_OF_THE_LOG_OF_X_SQUARED_CUBED_SQUARED", "The Long Winding "
                                 "Hallway", "It's... just... It'sj really difficult. Complete all 1 to win", "CEILING",
-                                "FLOOR")
+                                "FLOOR", [MATHTROLL1, MATHTROLL2], [Math_Sword])
 
 NULL_PATH = Room("ERROR_ROOM", "HEISENWIEBE_ROOM", "NULL_PATH", "DEAD_END", "The Null Path", "Welcome to..."
                  "the Null Path! Don't expect anything of value.", "CEILING", "FLOOR", [], [])
 
 ERROR_ROOM = Room("DEAD_END", "DEAD_END", "DEAD_END", "DEAD_END", "It's not working",
                   "Welcome to... ERROR 43942478-(DOES NOT COMPUTE ATTRIBUTE NAME- PRINTING- ^^%%*@##<<>@??<@##&. ",
-                  "DEAD_END", "FLOOR")
+                  "DEAD_END", "FLOOR", [], [Aegon1])
 
 HEISENWIEBE_ROOM = Room(None, None, None, None, "Heisenwiebe's lair", "Welcome to the fiery depths of the Heisenwiebe"
                         "Here, the strongest, most powerful organism known to life resides- The HEISENWIEBE"
@@ -824,13 +772,18 @@ SPAAAACE_PATH = ("CEILING", "CEILING", "CEILING", "CEILING", "SPAAAAAAACE!", "We
 LUCKY_7S_PATH = ("R19A", "R19A", "R19A", "R19A", "Lucky 7's", "Your lucky to get on out of here!", "R19A", "R19A", [],
                  [])
 
-MATH_JESUS = Room()
+MATH_JESUS = Room(None, None, None, None, "MATH JESUS", "Welcome to the most difficult of boss fights- THE MATH JESUS"
+                  "Can you beat his lightning fast speed?", None, None, [MathJesus], [])
 
-_2019S_CANCEL_OUT = Room()
+_2019S_CANCEL_OUT = Room("R19A", "R19A", "R19A", "R19A", "The 2019's Cancel", "Come on! You didn't get that? Go back to"
+                         "the start", "R19A", "R19A", [], [])
 
-THE_INTEGRAL_OF_THE_SINE_OF_THE_COSINE_OF_THE_DERIVATIVE_OF_INTEGRAL_OF_THE_LOG_OF_X_SQUARED_CUBED_SQUARED = Room
+THE_INTEGRAL_OF_THE_SINE_OF_THE_COSINE_OF_THE_DERIVATIVE_OF_INTEGRAL_OF_THE_LOG_OF_X_SQUARED_CUBED_SQUARED = Room(
+    None, None, None, None, "THE_INTEGRAL_OF_THE_SINE_OF_THE_COSINE_OF_THE_DERIVATIVE_OF_INTEGRAL_OF_THE_LOG_OF_X_"
+    "SQUARED_CUBED_SQUARED", "Got it? NOW GO!", None, None, [Papa_Pearson], [])
 
-_2019_SQUARED = Room()
+_2019_SQUARED = Room("FLOOR", "FLOOR", "FLOOR", "FLOOR", "The 2019's square", "This does not work in your favor",
+                     "FLOOR", "FLOOR", [], [])
 
 
 class Player(object):
@@ -842,7 +795,6 @@ class Player(object):
         self.weight_max = 100
         self.size_capacity = 50
         self.size_max = 50
-        self.health_max = 250
         self.health_starting = 100
         self.weapon = weapon
         self.name = "Player"
@@ -907,7 +859,6 @@ while playing:
                 beat_characters.append(TROLL2.name)
             else:
                 print("%s has %d health left" % TROLL2.name, TROLL2.health)
-
         elif fight_command in ["None", "none", "no one"]:
             TROLL2.attack(player)
 
@@ -916,15 +867,22 @@ while playing:
             TROLL7.health -= player.weapon.damage_output
             if TROLL7.health <= 0:
                 print("%s has died" % TROLL7.name)
+                TROLL7.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL7.name)
             else:
                 print("%s has %d health left" % TROLL7.name, TROLL7.health)
         elif fight_command in ["None", "none", "no one"]:
             TROLL7.attack(player)
+
         elif fight_command == "Jaxx":
             player.attack(TROLL3)
             TROLL3.health -= player.weapon.damage_output
             if TROLL3.health <= 0:
                 print("%s has died" % TROLL3.name)
+                TROLL3.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL3.name)
             else:
                 print("%s has %d health left" % TROLL3.name, TROLL3.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -933,8 +891,11 @@ while playing:
         elif fight_command == "Yosroel":
             player.attack(TROLL4)
             TROLL4.health -= player.weapon.damage_output
-            if TROLL7.health <= 0:
+            if TROLL4.health <= 0:
                 print("%s has died" % TROLL4.name)
+                TROLL4.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL4.name)
             else:
                 print("%s has %d health left" % TROLL4.name, TROLL4.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -945,6 +906,9 @@ while playing:
             TROLL5.health -= player.weapon.damage_output
             if TROLL5.health <= 0:
                 print("%s has died" % TROLL5.name)
+                TROLL5.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL5.name)
             else:
                 print("%s has %d health left" % TROLL5.name, TROLL5.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -955,6 +919,9 @@ while playing:
             TROLL6.health -= player.weapon.damage_output
             if TROLL6.health <= 0:
                 print("%s has died" % TROLL6.name)
+                TROLL6.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL6.name)
             else:
                 print("%s has %d health left" % TROLL6.name, TROLL6.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -965,6 +932,9 @@ while playing:
             TROLL8.health -= player.weapon.damage_output
             if TROLL8.health <= 0:
                 print("%s has died" % TROLL8.name)
+                TROLL8.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL8.name)
             else:
                 print("%s has %d health left" % TROLL8.name, TROLL8.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -975,16 +945,35 @@ while playing:
             TROLL9.health -= player.weapon.damage_output
             if TROLL9.health <= 0:
                 print("%s has died" % TROLL9.name)
+                TROLL9.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL9.name)
             else:
                 print("%s has %d health left" % TROLL9.name, TROLL9.health)
         elif fight_command in ["None", "none", "no one"]:
             TROLL9.attack(player)
+
+        elif fight_command == "Dave":
+            player.attack(TROLL1)
+            TROLL1.health -= player.weapon.damage_output
+            if TROLL1.health <= 0:
+                print("%s has died" % TROLL1.name)
+                TROLL1.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL1.name)
+            else:
+                print("%s has %d health left" % TROLL1.name, TROLL1.health)
+        elif fight_command in ["None", "none", "no one"]:
+            TROLL1.attack(player)
 
         elif fight_command == "Mason":
             player.attack(TROLL10)
             TROLL10.health -= player.weapon.damage_output
             if TROLL10.health <= 0:
                 print("%s has died" % TROLL10.name)
+                TROLL10.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL10.name)
             else:
                 print("%s has %d health left" % TROLL10.name, TROLL10.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -995,6 +984,9 @@ while playing:
             TROLL11.health -= player.weapon.damage_output
             if TROLL11.health <= 0:
                 print("%s has died" % TROLL11.name)
+                TROLL11.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL11.name)
             else:
                 print("%s has %d health left" % TROLL11.name, TROLL11.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -1005,6 +997,10 @@ while playing:
             TROLL12.health -= player.weapon.damage_output
             if TROLL12.health <= 0:
                 print("%s has died" % TROLL12.name)
+                TROLL12.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL12.name)
+
             else:
                 print("%s has %d health left" % TROLL12.name, TROLL12.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -1015,6 +1011,9 @@ while playing:
             TROLL13.health -= player.weapon.damage_output
             if TROLL13.health <= 0:
                 print("%s has died" % TROLL13.name)
+                TROLL13.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL13.name)
             else:
                 print("%s has %d health left" % TROLL13.name, TROLL13.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -1025,6 +1024,9 @@ while playing:
             TROLL14.health -= player.weapon.damage_output
             if TROLL14.health <= 0:
                 print("%s has died" % TROLL14.name)
+                TROLL14.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL14.name)
             else:
                 print("%s has %d health left" % TROLL14.name, TROLL14.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -1035,6 +1037,9 @@ while playing:
             TROLL15.health -= player.weapon.damage_output
             if TROLL15.health <= 0:
                 print("%s has died" % TROLL15.name)
+                TROLL15.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL15.name)
             else:
                 print("%s has %d health left" % TROLL15.name, TROLL15.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -1045,6 +1050,9 @@ while playing:
             TROLL16.health -= player.weapon.damage_output
             if TROLL16.health <= 0:
                 print("%s has died" % TROLL16.name)
+                TROLL16.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL16.name)
             else:
                 print("%s has %d health left" % TROLL16.name, TROLL16.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -1055,6 +1063,9 @@ while playing:
             TROLL17.health -= player.weapon.damage_output
             if TROLL17.health <= 0:
                 print("%s has died" % TROLL17.name)
+                TROLL17.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL17.name)
             else:
                 print("%s has %d health left" % TROLL17.name, TROLL17.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -1065,6 +1076,9 @@ while playing:
             TROLL18.health -= player.weapon.damage_output
             if TROLL18.health <= 0:
                 print("%s has died" % TROLL18.name)
+                TROLL18.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL18.name)
             else:
                 print("%s has %d health left" % TROLL18.name, TROLL18.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -1075,6 +1089,9 @@ while playing:
             TROLL19.health -= player.weapon.damage_output
             if TROLL19.health <= 0:
                 print("%s has died" % TROLL19.name)
+                TROLL19.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL19.name)
             else:
                 print("%s has %d health left" % TROLL19.name, TROLL19.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -1085,6 +1102,9 @@ while playing:
             TROLL20.health -= player.weapon.damage_output
             if TROLL20.health <= 0:
                 print("%s has died" % TROLL20.name)
+                TROLL20.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL20.name)
             else:
                 print("%s has %d health left" % TROLL20.name, TROLL20.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -1095,6 +1115,9 @@ while playing:
             TROLL21.health -= player.weapon.damage_output
             if TROLL21.health <= 0:
                 print("%s has died" % TROLL21.name)
+                TROLL21.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL21.name)
             else:
                 print("%s has %d health left" % TROLL21.name, TROLL21.health)
         elif fight_command in ["None", "none", "no one"]:
@@ -1105,35 +1128,231 @@ while playing:
             TROLL22.health -= player.weapon.damage_output
             if TROLL22.health <= 0:
                 print("%s has died" % TROLL22.name)
+                TROLL22.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(TROLL22.name)
             else:
                 print("%s has %d health left" % TROLL22.name, TROLL22.health)
         elif fight_command in ["None", "none", "no one"]:
             TROLL22.attack(player)
 
-        if len(inventory_terms) >= 20 and len(beat_characters) >= 10:
+        elif fight_command == "Orc1":
+            player.attack(orc)
+            orc.health -= player.weapon.damage_output
+            if orc.health <= 0:
+                print("%s has died" % orc.name)
+                orc.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(orc.name)
+            else:
+                print("%s has %d health left" % orc.name, orc.health)
+        elif fight_command in ["None", "none", "no one"]:
+            orc.attack(player)
+
+        elif fight_command == "Wiebe":
+            player.attack(orc2)
+            orc2.health -= player.weapon.damage_output
+            if orc2.health <= 0:
+                print("%s has died" % orc2.name)
+                orc2.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(orc2.name)
+            else:
+                print("%s has %d health left" % orc2.name, orc2.health)
+        elif fight_command in ["None", "none", "no one"]:
+            orc2.attack(player)
+
+        elif fight_command == "Math Troll 1":
+            player.attack(MATHTROLL1)
+            MATHTROLL1.health -= player.weapon.damage_output
+            if MATHTROLL1.health <= 0:
+                print("%s has died" % MATHTROLL1.name)
+                MATHTROLL1.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(MATHTROLL1.name)
+            else:
+                print("%s has %d health left" % MATHTROLL1.name, MATHTROLL1.health)
+        elif fight_command in ["None", "none", "no one"]:
+            MATHTROLL1.attack(player)
+
+        elif fight_command == "Math Troll 2":
+            player.attack(MATHTROLL2)
+            MATHTROLL2.health -= player.weapon.damage_output
+            if MATHTROLL2.health <= 0:
+                print("%s has died" % MATHTROLL2.name)
+                MATHTROLL2.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(MATHTROLL2.name)
+            else:
+                print("%s has %d health left" % MATHTROLL2.name, MATHTROLL2.health)
+        elif fight_command in ["None", "none", "no one"]:
+            MATHTROLL2.attack(player)
+
+        elif fight_command == "Spooky Dave":
+            player.attack(NIGHTMARE_TROLL1)
+            NIGHTMARE_TROLL1.health -= player.weapon.damage_output
+            if NIGHTMARE_TROLL1.health <= 0:
+                print("%s has died" % NIGHTMARE_TROLL1.name)
+                NIGHTMARE_TROLL1.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(NIGHTMARE_TROLL1.name)
+            else:
+                print("%s has %d health left" % NIGHTMARE_TROLL1.name, NIGHTMARE_TROLL1.health)
+        elif fight_command in ["None", "none", "no one"]:
+            NIGHTMARE_TROLL1.attack(player)
+
+        elif fight_command == "Iago":
+            player.attack(Iago)
+            Iago.health -= player.weapon.damage_output
+            if Iago.health <= 0:
+                print("%s has died" % Iago.name)
+                Iago.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(Iago.name)
+            else:
+                print("%s has %d health left" % Iago.name, Iago.health)
+        elif fight_command in ["None", "none", "no one"]:
+            Iago.attack(player)
+
+        elif fight_command == "Othello":
+            player.attack(Othello)
+            Othello.health -= player.weapon.damage_output
+            if Othello.health <= 0:
+                print("%s has died" % Othello.name)
+                Othello.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(Othello.name)
+            else:
+                print("%s has %d health left" % Othello.name, Othello.health)
+        elif fight_command in ["None", "none", "no one"]:
+            Othello.attack(player)
+
+        elif fight_command == "Desedemonda":
+            player.attack(Desedemonda)
+            Desedemonda.health -= player.weapon.damage_output
+            if Desedemonda.health <= 0:
+                print("%s has died" % Desedemonda.name)
+                Desedemonda.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(Desedemonda.name)
+            else:
+                print("%s has %d health left" % Desedemonda.name, Desedemonda.health)
+        elif fight_command in ["None", "none", "no one"]:
+            Desedemonda.attack(player)
+
+        elif fight_command == "Cassio":
+            player.attack(Cassio)
+            Cassio.health -= player.weapon.damage_output
+            if Cassio.health <= 0:
+                print("%s has died" % Cassio.name)
+                Cassio.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(Cassio.name)
+            else:
+                print("%s has %d health left" % Cassio.name, Cassio.health)
+        elif fight_command in ["None", "none", "no one"]:
+            Cassio.attack(player)
+
+        elif fight_command == "Hamlet":
+            player.attack(Hamlet)
+            Hamlet.health -= player.weapon.damage_output
+            if Hamlet.health <= 0:
+                print("%s has died" % Hamlet.name)
+                Hamlet.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(Hamlet.name)
+            else:
+                print("%s has %d health left" % Hamlet.name, Hamlet.health)
+        elif fight_command in ["None", "none", "no one"]:
+            Hamlet.attack(player)
+
+        elif fight_command == "Ghosts of Hamlet's Father":
+            player.attack(Ghosts_of_Hamlets_father)
+            Ghosts_of_Hamlets_father.health -= player.weapon.damage_output
+            if Ghosts_of_Hamlets_father.health <= 0:
+                print("%s has died" % Ghosts_of_Hamlets_father.name)
+                Ghosts_of_Hamlets_father.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(Ghosts_of_Hamlets_father.name)
+            else:
+                print("%s has %d health left" % Ghosts_of_Hamlets_father.name, Ghosts_of_Hamlets_father.health)
+        elif fight_command in ["None", "none", "no one"]:
+            Ghosts_of_Hamlets_father.attack(player)
+
+        elif fight_command == "Claudius":
+            player.attack(Claudius)
+            Claudius.health -= player.weapon.damage_output
+            if Claudius.health <= 0:
+                print("%s has died" % Claudius.name)
+                Claudius.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(Claudius.name)
+            else:
+                print("%s has %d health left" % Claudius.name, Claudius.health)
+        elif fight_command in ["None", "none", "no one"]:
+            Claudius.attack(player)
+
+        elif fight_command == "Horatio":
+            player.attack(Horatio)
+            Horatio.health -= player.weapon.damage_output
+            if Horatio.health <= 0:
+                print("%s has died" % Horatio.name)
+                Horatio.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(Horatio.name)
+            else:
+                print("%s has %d health left" % Horatio.name, Horatio.health)
+        elif fight_command in ["None", "none", "no one"]:
+            Horatio.attack(player)
+
+        if len(inventory_terms) >= 20 and len(beat_characters) >= 30:
             print("You have won the GAME!")
             playing = False
+        elif player.health_starting <= 0:
+            print("You have died")
+            playing = False
 
-        while player.health_starting > 0:
+        while player.health_starting > 0 and fight_command in ["Heisenwiebe", "Papa Pearson", "Hobo",
+                                                               "Secret Room Boss"]:
             if fight_command == "Heisenwiebe":
                 player.attack(Heisenwiebe)
             elif Heisenwiebe.health > 0:
                 Heisenwiebe.attack(player)
+            elif Heisenwiebe.health == 0:
+                print("You have defeated the Heisenwiebe himself.")
+                Heisenwiebe.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(Heisenwiebe.name)
 
             elif fight_command == "Papa Pearson":
                 player.attack(Papa_Pearson)
             elif Papa_Pearson.health > 0:
                 Papa_Pearson.attack(player)
+            elif Papa_Pearson.health == 0:
+                print("Papa Pearson has left to buy more Jolly Ranchers. Consider him defeated.")
+                Papa_Pearson.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(Papa_Pearson.name)
 
             elif fight_command == "Hobo":
                 player.attack(HOBO)
             elif HOBO.health > 0:
                 HOBO.attack(player)
+            elif HOBO.health == 0:
+                print("The Hobo... he has died!")
+                HOBO.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(HOBO.name)
 
             elif fight_command == "Secret Room Boss":
                 player.attack(SecretRoomBoss)
             elif SecretRoomBoss.health > 0:
                 SecretRoomBoss.attack(player)
+            elif SecretRoomBoss.health == 0:
+                print("Well, you defeated him. Congrats... I guess")
+                SecretRoomBoss.alive = False
+                player.current_location.characters.remove(character)
+                beat_characters.append(SecretRoomBoss.name)
 
     if len(player.current_location.items) > 0 and player.current_location.first_enter:
         player.current_location.first_enter = False
@@ -1184,8 +1403,8 @@ while playing:
             print("Your inventory consists of %s" % item.name)
 
     if command == "Eat":
-        for item in player.inventory:
-            print("Your inventory consists of %s" % item.name)
+        for Food in player.inventory:
+            print("Your inventory consists of %s" % Food.name)
             food_command = input("What do you want to eat")
             if food_command == "Tree of Life Eggs":
                 player.health_starting += Tree_Of_Life.health_restoration
@@ -1254,10 +1473,5 @@ while playing:
             elif armor_command not in Armor:
                 print("This is not an armor")
                 player.armor = Cardstock_Armor
-
-
-
-
-
-
+    
 # Get rid of room items
