@@ -34,8 +34,7 @@ with open("Sales Records.csv", "r") as old_csv:
                 averages[item_type] = profit
 
 
-
 for key, item in items.items():
     print(key, end=": ")
     print("${:,}".format(round(item, 2)))
-    print(averages)
+print(averages)
