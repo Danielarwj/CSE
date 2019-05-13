@@ -38,3 +38,4 @@ for key, item in items.items():
     print(key, end=": ")
     print("${:,}".format(round(item, 2)))
 print(averages)
+print("The Keep The Koala Chlamydiah found that Cosmetics was the most profitable product")
