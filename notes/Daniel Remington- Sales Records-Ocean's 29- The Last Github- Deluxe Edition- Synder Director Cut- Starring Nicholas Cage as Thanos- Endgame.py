@@ -12,6 +12,8 @@ with open("Sales Records.csv", "r") as old_csv:
     print("Neither strategy has prevailed. But when conflicts reach an impasse, inevitably something "
           "happens to shift the balance forever.")
 
+    high_total_key = "Wiebe"
+    high_total = 0
     reader = csv.reader(old_csv)
     for row in reader:
         if row[0] == 'Region':
@@ -35,7 +37,12 @@ with open("Sales Records.csv", "r") as old_csv:
 
 
 for key, item in items.items():
+    if item > high_total:
+        high_total = item
+        high_total_key = key
+        print(high_total_key)
     print(key, end=": ")
     print("${:,}".format(round(item, 2)))
+
 print(averages)
-print("The Keep The Koala Chlamydiah found that Cosmetics was the most profitable product")
+print("The Keep The Koala Chlamydiah Community found that %s was the most profitable product" % high_total_key)
