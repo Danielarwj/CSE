@@ -630,12 +630,12 @@ SECRET_ROOM = Room(None, None, None, None, "Secret Room", "Welcome to the Secret
 
 
 MAILBOX = Room(None, None, None, None, "THE HOLY MAILBOX WELCOMES YOU!", "WELCOME TO SCHOOL WARRIOR, THE HIGHEST "
-               "QUALITY GAME IN SCHOOL BASED" "CHOOSE YOUR OWN ADVENTURE GAMES! DEFEAT ONE BOSS AND COLLECT 20 ITEMS TO"
-               "WIN THE GAME!", None, "R19A", [None], [None])
+               "QUALITY GAME IN SCHOOL BASED" "CHOOSE YOUR OWN ADVENTURE GAMES! DEFEAT 30 CHARACTERS "
+               "AND COLLECT 20 ITEMS TO WIN THE GAME!", None, "R19A", [], [])
 
 DRAMA_BUILDING = Room("NIGHTMARE_EDISON", "SHAKESPEARE_WORLD", "W_BUILDING", "PARKING_LOT", "The Drama Building", "This"
                       "is a long winding hallway. At the end there is a large telephone box. Paintings cover the wall",
-                      "CEILING", None, [Krishang, TROLL18], [Decent_Pizza, Boiled])
+                      "CEILING", None, [TROLL2, TROLL18], [Decent_Pizza, Boiled])
 
 R_BUILDINGS = Room("THE_ESSAY_TYPING", "GYM_PORTAL", "PARKING_LOT", "QUAD", "The R Buildings", "This is a row of "
                    "buildings. You can only go North, however. The other areas are blocked off.", "CEILING", None,
@@ -668,7 +668,7 @@ NIGHTMARE_EDISON = Room("NIGHTMARE_W_BUILDING", "NIGHTMARE_R19A", "NIGHTMARE_PAR
                         [TROLL7])
 
 CEILING = Room("CEILING", "CEILING", "CEILING", "CEILING", "The Ceiling", "This is the ceiling. Do not go up, again!",
-               "CEILING", None, [None], [Urumi1, Aegon1])
+               "CEILING", None, [], [Urumi1, Aegon1])
 
 
 SHAKESPEARE_WORLD = Room("HAMLET", "OTHELLO", None, "ROMEO_AND_JULIET", "Shakespeare World", "You are "
@@ -1374,7 +1374,6 @@ while playing:
         if selected_item is not None:
             player.inventory.append(selected_item)
             player.weight_left -= selected_item.weight
-            player.size_capacity -= selected_item.size
             player.current_location.items.remove(selected_item)
 
         elif pick_up_command.lower() == "none":
